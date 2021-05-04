@@ -1,0 +1,70 @@
+.user-main{
+    position: relative;
+    height: 501px;
+    margin-top: 40px;
+    /*background-color: #ec971f;*/
+    color: #f2f2f2;
+    border: 1px solid #cccccc;
+}
+.user-con{
+    width: 200px;
+    height: 499px;
+    background-color: #262426;
+    color: #f2f2f2;
+    margin-top: -20px;
+
+}
+.user-con h3{
+    text-align: center;
+    padding-top: 20px;
+}
+.user-con li{
+    font-size: 16px;
+    text-align: center;
+}
+.user-con li a{
+    /*color: #f2f2f2;*/
+    color: #ec971f;
+}
+.user-con li a:hover{
+    background-color: #5e5e5e;
+    color: #ec971f;
+}
+.user-content{
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 1000px;
+    height: 500px;
+    padding-left: 40px;
+    /*background-color: #2b542c;*/
+}
+.user-content .user-info{
+    width: 600px;
+    /*height: 500px;*/
+    /*background-color: #2aabd2;*/
+}
+.user-content .user-picture{
+    position: absolute;
+
+    top: 40px;
+    right: 0;
+    width: 400px;
+    height: 460px;
+    /*background-color: pink;*/
+    padding: 50px 100px 0px 100px;
+    text-align: center;
+}
+.user-info table tr td{
+    border: none;
+}
+.user-info table tr td:first-child{
+    text-align: right;
+}
+.user-info table tr td:last-child{
+    padding-right: 100px;
+
+}
+.user-content{
+    padding-right: 40px;
+}
