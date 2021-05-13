@@ -24,7 +24,8 @@
 
 <body>
 <!--页面头部 开始-->
-<jsp:include page="common/head.jsp"/>
+<%--<jsp:include page="common/head.jsp"/>--%>
+<%@include file="common/head.jsp"%>
 <!--页面头部 结束-->
 
 <section class="movie-type w">
@@ -128,94 +129,305 @@
         <ul>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021-04-12
+                    </p>
                     <img src="static/images/movie/1.jpg" alt="">
+
+<!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">指环王<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/2.png" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/3.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">一起走过<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/4.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/5.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
-                    <img src="static/images/movie/5.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
-                    <img src="static/images/movie/5.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
-                    <img src="static/images/movie/5.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/1.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">指环王<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/2.png" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/3.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">一起走过<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/4.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
                     <img src="static/images/movie/5.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
-                    <img src="static/images/movie/5.jpg" alt="">
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
+                    <img src="static/images/movie/1.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
             <li>
                 <a href="#">
-                    <h2 class="center">哥斯拉大战金刚<br>上映时间: 2021</h2>
-                    <img src="static/images/movie/5.jpg" alt="">
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
+                    <img src="static/images/movie/2.png" alt="">
+
+                    <!--                    <span>9.1</span>-->
                 </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
             </li>
+            <li>
+                <a href="#">
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
+                    <img src="static/images/movie/3.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
+                </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
+            </li>
+            <li>
+                <a href="#">
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
+                    <img src="static/images/movie/4.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
+                </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
+            </li>
+            <li>
+                <a href="#">
+                    <p>
+                        <span>哥斯拉大战金刚</span>
+                        <br>
+                        <br>
+                        类型: 爱情/喜剧
+                        <br>
+                        主演: 哥斯拉/金刚
+                        <br>
+                        上映时间: 2021
+                        <br>
+                    </p>
+                    <img src="static/images/movie/5.jpg" alt="">
+
+                    <!--                    <span>9.1</span>-->
+                </a>
+                <p class="text-center">哥斯拉大战金刚</p>
+                <p class="text-center">9.1</p>
+            </li>
+
+
 
         </ul>
     </div>

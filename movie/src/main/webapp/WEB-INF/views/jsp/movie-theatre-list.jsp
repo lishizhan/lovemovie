@@ -24,7 +24,8 @@
 
 <body>
 <!--页面头部 开始-->
-<jsp:include page="common/head.jsp"/>
+<%--<jsp:include page="common/head.jsp"/>--%>
+<%@include file="common/head.jsp"%>
 <!--页面头部 结束-->
 
 <section class="movie-type w">

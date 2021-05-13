@@ -21,7 +21,7 @@
         <p style=" font-size: 32px; color: #fff; ">让生活充满乐趣！！！</p>
     </div>
     <div class="box-r">
-        <form>
+        <form method="post">
             <h2>欢迎登陆电影售票系统</h2>
             <!--            <p class="text-success">...</p>-->
             <p class="text-danger" id="msg"></p>
@@ -35,10 +35,11 @@
                 <input type="password" name="code" class="form-control"  placeholder="输入验证码">
                 <a href="JavaScript:;"><img src="verification" width="100%" alt=""></a>
             </div>
-            <button type="button" class="btn btn-danger">登 &nbsp;陆</button>
+            <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;font-size: 18px;">登 &nbsp;陆</button>
             <p class="text-right" style="margin-top: 20px">
                 <span>没有账号？</span>
                 <a href="view/goRegister">去注册</a>
+
             </p>
         </form>
     </div>
@@ -62,6 +63,7 @@
 
             //非空校验
             if (userName==='' || userPwd==='' ||code ===''){
+                alert("请输入用户名密码进行登陆！！")
                 return false;
             }
             $.ajax({
@@ -87,7 +89,7 @@
                         return true;
                     }else {
                         //登陆失败
-                        $("#msg").text(res.msg);
+                        $("#msg").text(res.extend.msg);
                         return false;
                     }
 

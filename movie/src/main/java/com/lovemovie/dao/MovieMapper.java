@@ -17,5 +17,17 @@ public interface MovieMapper {
 
     int updateByPrimaryKey(Movie record);
 
+    /**
+     * 分页查询所有电影
+     * @param movie_state
+     * @return
+     */
     List<Movie> findAllMovies(int movie_state);
+
+    /**
+     * 查询所有电影并按上映时间排序
+     * @param movieState
+     * @return
+     */
+    List<Movie> findMovieByReleaseDateDesc(int movieState);
 }

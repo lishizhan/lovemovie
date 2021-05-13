@@ -13,6 +13,13 @@
         <package name="com.lovemovie.domain"/>
     </typeAliases>
 
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor" >
+            <!--参数合理化 <1的默认显示第一页，>总页数默认显示最后一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+
     <!-- 指定sql mapper（sql映射文件）的位置
      从类路径开始的信息：target/classes类路径
      -->

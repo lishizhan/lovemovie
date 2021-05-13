@@ -64,6 +64,13 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                     msg.setMsg(e.getMsg());
                 }
 
+                if (ex instanceof NotUserNameException){
+                    NotUserNameException e = (NotUserNameException) ex;
+                    msg.setCode(e.getCode());
+                    msg.setMsg(e.getMsg());
+                }
+
+
                 //将异常信息传递给页面
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json;Charset=utf-8");

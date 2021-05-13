@@ -44,7 +44,7 @@ body {
 
 }
 
-.movie-box h2 {
+.movie-box ul li a p  {
     height: 100%;
     width: 100%;
     top: 0;
@@ -55,11 +55,29 @@ body {
     font-size: 16px;
     margin-top: 0px;
     opacity: 0;
-    padding: 0 10px;
+    padding: 100px 10px 0px;
     position: absolute;
     transition: all 500ms ease-in-out;
+    text-align: center;
+
 }
-.movie-box h2:hover{
+.movie-box ul li a p span{
+    font-size: 18px;
+    font-weight: 800;
+}
+.movie-box ul li>p:nth-of-type(1){
+    font-size: 18px;
+    padding-top: 10px;
+}
+.movie-box ul li>p:nth-of-type(2){
+    font-size: 20px;
+    color: #ffb400;
+    font-style: italic;
+    font-weight: 700;
+    /*padding-left: 70px;*/
+    padding-top: 5px;
+}
+.movie-box ul li a p:hover{
     opacity: 1;
 }
 
@@ -68,6 +86,12 @@ body {
     display: flex;
     justify-content: center;
 }
+
+
+
+
+
+
 
 /*分类查询*/
 .movie-type{

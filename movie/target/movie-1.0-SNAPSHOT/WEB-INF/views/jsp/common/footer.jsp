@@ -11,7 +11,7 @@
     <div class="footer_area">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6">
+                <!--<div class="col-md-3 col-sm-6">
                     <div class="footer_menu">
                         <div class="news_heading_2">
                             <h3>Information </h3>
@@ -56,8 +56,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
+                </div>-->
+                <!--<div class="col-md-3 col-sm-6 col-md-offset-3">
                     <div class="footer_menu">
                         <div class="news_heading_2">
                             <h3> Our Services </h3>
@@ -79,28 +79,28 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
+                </div>-->
+<!--                <div class="col-md-3 col-sm-6">-->
                     <div class="footer_menu footer_menu_2">
                         <div class="news_heading_2">
-                            <h3> Store Information </h3>
+                            <h3> 联系我们 </h3>
                         </div>
                         <ul>
                             <li>
-                                <i class="fa fa-home"></i>
-                                <p>My Company : 42 avenue des Champs Elysées 75000 France</p>
+                                <i class="glyphicon glyphicon-home"></i>
+                                <p>团队: 卧龙凤雏</p>
                             </li>
                             <li>
-                                <i class="fa fa-phone"></i>
-                                <p>Phone: (0123) 456789</p>
+                                <i class="glyphicon glyphicon-earphone"></i>
+                                <p>电话: 18666041927</p>
                             </li>
                             <li>
-                                <i class="fa fa-envelope"></i>
-                                <p>Email: admin@hastech.company</p>
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                <p>邮箱: 1575234570@qq.com</p>
                             </li>
                         </ul>
                     </div>
-                </div>
+<!--                </div>-->
             </div>
         </div>
         <!--footer top area end-->
@@ -119,7 +119,7 @@
 <div class="footer-bottom">
     <div class="container">
         <div class="widget-copyright text-center">
-            Copyright &copy; 2017.Company name All rights reserved<a target="_blank" href="http://www.jq22.com/">.</a>
+            Copyright &copy; 2021.卧龙凤雏 All rights reserved<a target="_blank" href="http://www.jq22.com/">.</a>
         </div>
     </div>
 </div>

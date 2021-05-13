@@ -35,6 +35,7 @@ public class Msg {
 
     public int getCode() {
         return code;
+
     }
 
     public void setCode(int code) {

@@ -3,6 +3,9 @@ package com.lovemovie.test;
 import com.lovemovie.utils.MD5Util;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author : Alishiz
  * @Date : 2021/5/3/0003 20:16
@@ -14,7 +17,5 @@ public class TestMD5 {
     public void test01() {
         String user = MD5Util.getMD5("user");
         System.out.println("user = " + user);
-
-
     }
 }

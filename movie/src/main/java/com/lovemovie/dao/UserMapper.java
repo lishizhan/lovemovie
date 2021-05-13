@@ -2,6 +2,8 @@ package com.lovemovie.dao;
 
 import com.lovemovie.domain.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Long userId);
 
@@ -15,4 +17,6 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     User queryUserByName(String userName);
+
+    List<User> queryAllUser();
 }

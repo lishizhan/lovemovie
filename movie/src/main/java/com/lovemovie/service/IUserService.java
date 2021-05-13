@@ -1,6 +1,9 @@
 package com.lovemovie.service;
 
+import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
+
+import java.util.List;
 
 /**
  * @Author : Alishiz
@@ -11,4 +14,10 @@ import com.lovemovie.model.Msg;
 public interface IUserService {
 
     public Msg login(String userName, String userPwd);
+
+    List<User> getAllUser();
+
+    Msg register(String userName, String userEmail, String userPwd);
+
+    Msg checkUserName(String userName);
 }

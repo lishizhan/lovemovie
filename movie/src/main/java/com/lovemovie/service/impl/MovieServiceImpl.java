@@ -23,4 +23,9 @@ public class MovieServiceImpl implements IMovieService {
 
         return movieMapper.findAllMovies(movie_state);
     }
+
+    @Override
+    public Movie findMovieByMovieId(Integer movieId) {
+        return movieMapper.selectByPrimaryKey(new Long(movieId));
+    }
 }

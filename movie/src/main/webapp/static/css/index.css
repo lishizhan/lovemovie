@@ -1,6 +1,4 @@
 
-
-
 .w {
     width: 1200px;
     margin: 0 auto;
@@ -107,7 +105,8 @@ header {
 .header-body .search button:hover::before {
     color: #ec971f;
 }
-.header-body .user-pon{
+
+.header-body .user-pon {
     position: absolute;
     top: 30px;
     right: 60px;
@@ -118,6 +117,7 @@ header {
     font-size: 16px;
     /*background-color: #faf8fa;*/
 }
+
 .header-body .cart {
     position: absolute;
     top: 30px;
@@ -221,6 +221,7 @@ a {
     color: #ec971f;
     cursor: pointer;
 }
+
 .nav-active {
     background-color: #393739;
     color: #ec971f;
@@ -334,7 +335,7 @@ a {
 /*    border:1px solid #f2f2f2;*/
 /*}*/
 .hots-movie-content ul li {
-    float: left;
+    /*float: left;*/
     margin: 17px;
     width: 206px;
     background-color: rgb(0, 0, 0, 30%);
@@ -345,13 +346,42 @@ a {
     position: relative;
 }
 
-.hots-movie-content ul li:nth-child(5) {
+.hots-movie-content ul li p {
+    position: absolute;
+    bottom: 42px;
+    width: 182px;
+    height: 40px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0,.5);
+}
+.hots-movie-content ul li p span{
+    display: inline-block;
+    padding-left:10px;
+    width:120px;/*要显示文字的宽度*/
+    text-overflow :ellipsis; /*让截断的文字显示为点点。还有一个值是clip意截断不显示点点*/
+    white-space :nowrap; /*让文字不换行*/
+    overflow : hidden; /*超出要隐藏*/
+
+
+}
+.hots-movie-content ul li p em{
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    padding-left: 0px;
+    font-size: 24px;
+    font-style: italic;
+    color: #ffb409;
+}
+/*.hots-movie-content ul li:nth-child(5) {
     margin-right: 0px;
 }
 
 .hots-movie-content ul li:nth-child(10) {
     margin-right: 0px;
-}
+}*/
 
 .hots-movie-content ul li a {
     display: inline-block;
@@ -376,7 +406,7 @@ a {
 
 /*<!--底部 开始-->*/
 footer {
-    height: 400px;
+    /*height: 400px;*/
     width: 100%;
     /*background-color: #4c4c4c;*/
     background-color: #262426;
@@ -403,7 +433,7 @@ footer {
     text-transform: uppercase;
 }
 
-.news_heading_2 h3::after {
+/*.news_heading_2 h3::after {
     background: #444;
     content: "";
     height: 2px;
@@ -412,7 +442,7 @@ footer {
     top: 40px;
     width: 165px;
     z-index: 9999;
-}
+}*/
 
 .news_heading_2 h3::before {
     background: #fa7c63 none repeat scroll 0 0;
@@ -458,10 +488,12 @@ footer {
 }
 
 .footer_menu_2 ul li {
+    float: left;
     margin-bottom: 10px;
     min-height: 40px;
     overflow: hidden;
     padding-left: 50px;
+    padding-right: 20px;
     position: relative;
 }
 

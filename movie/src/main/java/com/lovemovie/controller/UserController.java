@@ -2,9 +2,8 @@ package com.lovemovie.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.lovemovie.domain.User;
-import com.lovemovie.exceptions.ParamsException;
-import com.lovemovie.service.IUserService;
 import com.lovemovie.model.Msg;
+import com.lovemovie.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +25,17 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 用户登陆
+     * @param userName 用户名
+     * @param userPwd 用户密码
+     * @param code 验证码
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(String userName, String userPwd, String code, HttpServletRequest request){
-
         //判断验证码是否正确
         String attribute = attribute = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);;
         if (!attribute.equals(code)){
@@ -98,6 +104,47 @@ public class UserController {
             return "redirect:/view/index";
         }
         return "jsp/user-main";
+    }
+
+
+    /**
+     * 检查用户名是否可用
+     * @param userName 用户名
+     * @return
+     */
+    @RequestMapping(value = "/checkUserName")
+    @ResponseBody
+    public Msg checkUserName(String userName) {
+        //数据库检验
+        Msg msg = userService.checkUserName(userName);
+        return Msg.success();
+    }
+
+
+    /**
+     * 用户注册
+     * @param userName 用户名
+     * @param userEmail 用户邮箱
+     * @param userPwd 用户密码
+     * @param userPwdTrue 确认密码
+     * @param code 验证码
+     * @param request 请求
+     * @return msg
+     */
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg register(String userName, String userEmail,
+                        String userPwd, String userPwdTrue,
+                        String code,HttpServletRequest request){
+
+        if (!code.equals(request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY))){
+            return Msg.fail().add("msg","验证码不正确");
+        }
+        if (!userPwd.equals(userPwdTrue)){
+            return Msg.fail().add("msg","两次密码输入不一致");
+        }
+        Msg msg = userService.register(userName,userEmail,userPwd);
+        return msg;
     }
 
 

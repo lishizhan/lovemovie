@@ -87,7 +87,7 @@
             <div class="box box-primary">
 
                 <h1>爱电影·电影售票系统管理平台</h1>
-                
+
             </div>
             <!-- 待处理订单 /-->
 

@@ -19,25 +19,18 @@
                     <span>首页</span>
                 </a>
             </li>
-            <li id="admin-info">
-                <a href="management/adminInfo">
-                    <i class="fa  fa-user"></i>
-                    <span>管理员信息管理</span>
-
-                </a>
-            </li>
             <li id="user-info">
                 <a href="management/userInfo">
                     <i class="fa fa-users"></i>
                     <span>用户信息管理</span>
+                </a>
+            </li>
+            <li id="movie-info">
+                <a href="management/movieInfo">
+                    <i class="fa  fa-film"></i> <span>电影信息管理</span>
+                </a>
+            </li>
 
-                </a>
-            </li>
-            <li id="movie-type-info">
-                <a href="management/movieTypeInfo">
-                    <i class="fa fa-video-camera"></i> <span>电影类型管理</span>
-                </a>
-            </li>
             <li id="city-info">
                 <a href="management/cityInfo">
                     <i class="fa fa-building-o "></i> <span>城市信息管理</span>
@@ -48,11 +41,7 @@
                     <i class="fa fa-institution "></i> <span>影院信息管理</span>
                 </a>
             </li>
-            <li id="movie-info">
-                <a href="management/movieInfo">
-                    <i class="fa  fa-film"></i> <span>电影信息管理</span>
-                </a>
-            </li>
+
             <li id="order-info">
                 <a href="management/orderInfo">
                     <i class="fa fa-cart-arrow-down"></i> <span>订单信息管理</span>
@@ -64,7 +53,20 @@
                 </a>
             </li>
 
+
         </ul>
     </section>
     <!-- /.sidebar -->
 </aside>
+<!--<li id="admin-info">
+<a href="management/adminInfo">
+<i class="fa  fa-user"></i>
+<span>管理员信息管理</span>
+
+</a>
+</li>-->
+<!--<li id="movie-type-info">
+<a href="management/movieTypeInfo">
+<i class="fa fa-video-camera"></i> <span>电影类型管理</span>
+</a>
+</li>-->

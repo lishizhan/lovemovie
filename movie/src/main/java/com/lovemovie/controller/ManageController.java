@@ -1,9 +1,18 @@
 package com.lovemovie.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lovemovie.domain.User;
+import com.lovemovie.model.Msg;
+import com.lovemovie.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @Author : Alishiz
@@ -14,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/management")
 public class ManageController {
+    @Autowired
+    private IUserService userService;
 
     @RequestMapping(value = "/index")
     public String index(){
@@ -58,6 +69,23 @@ public class ManageController {
         return "redirect:/view/goLogin";
     }
 
+    /**
+     * 分页查询所有的用户信息
+     * @param pageNo 第几页
+     * @param pageSize 每页显示几条
+     * @return
+     */
+    @RequestMapping(value = "getAllUser")
+    @ResponseBody
+    public Msg getAllUser(
+            @RequestParam(value = "pageNo",defaultValue = "1") Integer pageNo,
+            @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize){
+
+        PageHelper.startPage(pageNo,pageSize);
+        List<User> userList = userService.getAllUser();
+        PageInfo<User> pageInfo = new PageInfo<>(userList,pageSize);
+        return Msg.success().add("pageInfo",pageInfo);
+    }
 
 
 

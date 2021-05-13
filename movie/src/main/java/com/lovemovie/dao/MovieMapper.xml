@@ -35,6 +35,12 @@
         from movie
         where movie_state = #{movie_state}
     </select>
+    <select id="findMovieByReleaseDateDesc" resultType="com.lovemovie.domain.Movie">
+        SELECT
+           <include refid="Base_Column_List"/>
+        from movie where movie_state=#{movieState} ORDER BY movie_releaseDate DESC;
+
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie
         where movie_id = #{movieId,jdbcType=BIGINT}

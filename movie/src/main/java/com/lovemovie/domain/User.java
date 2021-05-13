@@ -15,6 +15,20 @@ public class User {
 
     private String userHeadimg;//会员头像
     private String userSex;
+    private String userSexStr;
+
+    public String getUserSexStr() {
+        if ("0".equals(this.userSex)){
+            this.userSexStr="女";
+        }else {
+            this.userSexStr="男";
+        }
+        return userSexStr;
+    }
+
+    public void setUserSexStr(String userSexStr) {
+        this.userSexStr = userSexStr;
+    }
 
     private Date userBirthday;
 

@@ -152,4 +152,25 @@ public class Movie {
     public void setMovieState(Integer movieState) {
         this.movieState = movieState;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movieId=" + movieId +
+                ", movieCnName='" + movieCnName + '\'' +
+                ", movieFgName='" + movieFgName + '\'' +
+                ", movieActor='" + movieActor + '\'' +
+                ", movieDirector='" + movieDirector + '\'' +
+                ", movieDetail='" + movieDetail + '\'' +
+                ", movieDuration='" + movieDuration + '\'' +
+                ", movieType='" + movieType + '\'' +
+                ", movieScore=" + movieScore +
+                ", movieBoxoffice=" + movieBoxoffice +
+                ", movieCommentcount=" + movieCommentcount +
+                ", movieReleasedate=" + movieReleasedate +
+                ", movieCountry='" + movieCountry + '\'' +
+                ", moviePicture='" + moviePicture + '\'' +
+                ", movieState=" + movieState +
+                '}';
+    }
 }

@@ -19,4 +19,6 @@ public interface IMovieService {
      * @return
      */
     List<Movie> findAllMovies(int movie_state);
+
+    Movie findMovieByMovieId(Integer movieId);
 }

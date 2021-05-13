@@ -23,8 +23,8 @@
 
 <body>
 <!--页面头部 开始-->
-<jsp:include page="common/head.jsp"/>
-
+<%--<jsp:include page="common/head.jsp"/>--%>
+<%@include file="common/head.jsp"%>
 <!--页面头部 结束-->
 
 <!--轮播图开始-->
@@ -73,38 +73,59 @@
         <div class="hots-pay-top-l"></div>
         <div class="hots-pay-top-r">
             <span>正在热映</span>
-            <a href="jsp/movie-codepen.jsp">更多</a>
+            <a href="view/movieCodepen">更多</a>
         </div>
-        <div class="hots-movie-content">
-            <ul>
-                <li>
-                    <img src="static/images/movie/1.jpg" alt="">
-                    <a href="#">购票</a>
-                </li>
-                <li><img src="static/images/movie/2.png" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/3.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/4.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/4.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/5.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/6.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/6.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/7.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-                <li><img src="static/images/movie/8.jpg" alt=""><a href="#">购票</a></li>
-            </ul>
+        <div class="hots-movie-content" id="movieList">
+            <ul></ul>
         </div>
     </div>
     <div></div>
 </section>
 <!--正在热映结束-->
+
 <%@ include file="/WEB-INF/views/jsp/common/footer.jsp" %>
 
 <script>
 
+    $(function () {
+        $.ajax({
+            url:"movie/findAllMovies",
+            data:{
+                "pageNum":1,
+                "pageSize":15
+            },
+            type:"get",
+            success:function (res) {
+                $.each(res.extend.movieList.list,function (index,item) {
+                    let li = $("<li></li>").attr('movie_id',item.movieId);
+                    let img = $("<img alt='图片加载失败'>").attr("src",item.moviePicture);
+                    let a = $("<a></a>").text("购票");
+                    let p = $("<p></p>");
+                    let span = $("<span></span>").text(item.movieCnName);
+                    let em = $("<em></em>").text(item.movieScore)
+                    p.append(span).append(em);
+                    li.append(p).append(img).append(a).appendTo("#movieList ul");
+                });
+            }
+        });
+
+        /*$("#movieList ul li").click(function () {
+            window.location.href="view/movieDetails";
+        });*/
+        $(document).on("click","#movieList ul li",function () {
+            window.location.href="movie/movieDetails?"+'movieId='+$(this).attr("movie_id");
+        })
+    })
+    /*
+    * <li>
+        <p>
+            <span>阿凡达</span>
+            <em>9.1</em>
+        </p>
+        <img src="static/images/movie/5.jpg" alt="">
+        <a href="#">购票</a>
+    </li>
+    * */
 
 </script>
 </body>
