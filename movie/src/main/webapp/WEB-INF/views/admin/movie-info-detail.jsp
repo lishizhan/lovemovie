@@ -87,31 +87,72 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="movieDirector" class="col-sm-2 control-label">导演</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" name="movieDirector" value="${movie.movieDirector}" class="form-control"
+                                                <div class="col-sm-3">
+                                                    <input type="text" name="movieDirector"
+                                                           value="${movie.movieDirector}" class="form-control"
                                                            id="movieDirector">
                                                 </div>
-
-                                                    <label for="movieDuration" class="col-sm-2 control-label">时长</label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" name="movieDuration" class="form-control"  value="${movie.movieDuration}"
-                                                               id="movieDuration">
-                                                    </div>
+                                                <div class="col-sm-2">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+                                                </div>
+                                                <label for="movieDuration" class="col-sm-1 control-label">时长</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" name="movieDuration" class="form-control"
+                                                           value="${movie.movieDuration}"
+                                                           id="movieDuration">
+                                                </div>
 
                                             </div>
+
+
                                             <div class="form-group">
-                                                <label for="movieActor" class="col-sm-2 control-label">演员</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="movieActor" value="${movie.movieActor}" class="form-control"
+                                                <label class="col-sm-2 control-label">演员</label>
+                                                <div class="col-sm-2">
+                                                    <button class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
+                                                    <button class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
+
+                                                </div>
+                                                <%--<div class="col-sm-10">
+                                                    <input type="text" name="movieActor" value="${movie.movieActor}"
+                                                           class="form-control"
                                                            id="movieActor">
+                                                </div>--%>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <input type="text" class="form-control" placeholder="饰演角色">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <input type="text" class="form-control" placeholder="饰演角色">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <input type="text" class="form-control" placeholder="饰演角色">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <input type="text" class="form-control" placeholder="饰演角色">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <input type="text" class="form-control" placeholder="饰演角色">
+                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="movieDetail" class="col-sm-2 control-label">详情</label>
                                                 <div class="col-sm-10">
-                                                    <textarea style="resize:none;"  class="form-control" rows="6"
-                                                              name="movieDetail" id="movieDetail">${movie.movieDetail}</textarea>
+                                                    <textarea style="resize:none;" class="form-control" rows="6"
+                                                              name="movieDetail"
+                                                              id="movieDetail">${movie.movieDetail}</textarea>
                                                 </div>
                                             </div>
 
@@ -191,11 +232,15 @@
                                             <div class="form-group">
                                                 <label for="movieScore" class="col-sm-2 control-label">评分</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="movieScore" class="form-control" disabled="disabled" readonly value="${movie.movieScore}" id="movieScore">
+                                                    <input type="text" name="movieScore" class="form-control"
+                                                           disabled="disabled" readonly value="${movie.movieScore}"
+                                                           id="movieScore">
                                                 </div>
                                                 <label for="movieBoxoffice" class="col-sm-2 control-label">票房</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="movieBoxoffice" value="${movie.movieBoxoffice}" class="form-control" disabled="disabled" readonly
+                                                    <input type="text" name="movieBoxoffice"
+                                                           value="${movie.movieBoxoffice}" class="form-control"
+                                                           disabled="disabled" readonly
                                                            id="movieBoxoffice">
                                                 </div>
                                             </div>
@@ -203,29 +248,35 @@
                                                 <label for="movieCommentcount"
                                                        class="col-sm-2 control-label">参评人数</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="movieCommentcount" value="${movie.movieCommentcount}" class="form-control" disabled="disabled" readonly
+                                                    <input type="text" name="movieCommentcount"
+                                                           value="${movie.movieCommentcount}" class="form-control"
+                                                           disabled="disabled" readonly
                                                            id="movieCommentcount">
                                                 </div>
-                                                <label for="movieReleasedate" class="col-sm-2 control-label">上映时间</label>
+                                                <label for="movieReleasedate"
+                                                       class="col-sm-2 control-label">上映时间</label>
                                                 <div class="col-sm-4">
-                                                    <input type="date" name="movieReleasedate" class="form-control" value="${movie.movieReleasedateStr}"
+                                                    <input type="date" name="movieReleasedate" class="form-control"
+                                                           value="${movie.movieReleasedateStr}"
                                                            id="movieReleasedate">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="movieCountry" class="col-sm-2 control-label">制片地区</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="movieCountry" class="form-control" value="${movie.movieCountry}"
+                                                    <input type="text" name="movieCountry" class="form-control"
+                                                           value="${movie.movieCountry}"
                                                            id="movieCountry">
                                                 </div>
                                                 <label class="col-sm-2 control-label">状态</label>
                                                 <div class="col-sm-4">
-<!--                                                    <input type="text" name="movieState" class="form-control" id="movieState">-->
+                                                    <!--<input type="text" name="movieState" class="form-control" id="movieState">-->
                                                     <select class="form-control">
                                                         <option value="0">正在上映</option>
                                                         <option value="1">已经下架</option>
                                                     </select>
                                                 </div>
+
                                             </div>
 
                                         </div>

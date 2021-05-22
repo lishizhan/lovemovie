@@ -123,22 +123,62 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieDirector"
-                                                               class="col-sm-2 control-label">导演</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" name="movieDirector" class="form-control"
-                                                                   id="movieDirector" placeholder="请输入电影导演名字">
+                                                        <label for="movieDirector" class="col-sm-2 control-label">导演</label>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" name="movieDirector"
+                                                                   value="${movie.movieDirector}" class="form-control"
+                                                                   id="movieDirector">
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="movieActor"
-                                                               class="col-sm-2 control-label">演员</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" name="movieActor" class="form-control"
-                                                                   id="movieActor">
+                                                        <div class="col-sm-2">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
                                                         </div>
+
+
                                                     </div>
 
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">演员</label>
+                                                        <div class="col-sm-4">
+                                                            <button class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
+                                                            <button class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
+
+                                                        </div>
+                                                        <%--<div class="col-sm-10">
+                                                            <input type="text" name="movieActor" value="${movie.movieActor}"
+                                                                   class="form-control"
+                                                                   id="movieActor">
+                                                        </div>--%>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label"></label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control" placeholder="演员姓名">
+                                                            <input type="text" class="form-control" placeholder="饰演角色">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control" placeholder="演员姓名">
+                                                            <input type="text" class="form-control" placeholder="饰演角色">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control" placeholder="演员姓名">
+                                                            <input type="text" class="form-control" placeholder="饰演角色">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control" placeholder="演员姓名">
+                                                            <input type="text" class="form-control" placeholder="饰演角色">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control" placeholder="演员姓名">
+                                                            <input type="text" class="form-control" placeholder="饰演角色">
+                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                        </div>
+
+
+                                                    </div>
                                                     <div class="form-group">
                                                         <label for="movieDetail"
                                                                class="col-sm-2 control-label">介绍</label>
