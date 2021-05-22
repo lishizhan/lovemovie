@@ -73,6 +73,30 @@ public class ImageUtils {
 
         return imgPath;
     }
+    public static String uploadMovieImg(HttpServletRequest request,MultipartFile picture) throws Exception {
+        //定义图片路径
+        String imgPath=null;
+
+        if (!picture.isEmpty()&&picture!=null){
+            //使用UUID给图片重命名
+            String name= UUID.randomUUID().toString().replaceAll("-","");
+            //获取文件扩展名
+            String ext= FilenameUtils.getExtension(picture.getOriginalFilename());
+            //设置图片上传路径
+            String url = request.getSession().getServletContext().getRealPath("/upload/movieImg");
+            //判断文件夹是否存在
+            File file = new File(url);
+            if (!file.exists()){
+                file.mkdirs();
+            }
+            //以绝对路径保存图片路径
+            picture.transferTo(new File(url+"/"+ name+"."+ext));
+
+            imgPath="upload/movieImg/"+ name+"."+ext;
+        }
+
+        return imgPath;
+    }
 
 
 }

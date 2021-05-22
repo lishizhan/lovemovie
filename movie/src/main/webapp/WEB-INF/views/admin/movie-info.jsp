@@ -15,6 +15,16 @@
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 
     <%@include file="common/link.jsp" %>
+
+    <script src="static/bootstrap/Jquery/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--    <script src="admin/plugins/fastclick/fastclick.js"></script>-->
+    <!--    <script src="admin/plugins/adminLTE/js/app.min.js"></script>-->
+    <!--    <script src="admin/plugins/adminLTE/js/demo.js"></script>-->
+
+    <link rel="stylesheet" href="static/bootstrap/bootstrap-fileinput/css/fileinput.css">
+
     <style>
         .thumbnail .caption {
             /*padding: 0px;*/
@@ -29,6 +39,10 @@
             white-space: nowrap; /*让文字不换行*/
             overflow: hidden; /*超出要隐藏*/
         }
+        #dataList tbody tr:hover{
+            cursor: pointer;
+        }
+
 
     </style>
 </head>
@@ -95,31 +109,42 @@
                                             <form class="form-horizontal">
                                                 <div class="box-body">
                                                     <div class="form-group">
-                                                        <label for="movieCnName" class="col-sm-2 control-label">电影名称（中文）</label>
+                                                        <label for="movieCnName"
+                                                               class="col-sm-2 control-label">电影名称（中文）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCnName" class="form-control" id="movieCnName">
+                                                            <input type="text" name="movieCnName" class="form-control"
+                                                                   id="movieCnName" placeholder="请输入电影中文名字">
                                                         </div>
-                                                        <label for="movieFgName" class="col-sm-2 control-label">电影名称（外语）</label>
+                                                        <label for="movieFgName"
+                                                               class="col-sm-2 control-label">电影名称（外语）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieFgName" class="form-control" id="movieFgName">
+                                                            <input type="text" name="movieFgName" class="form-control"
+                                                                   id="movieFgName" placeholder="请输入电影英文名字">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieActor" class="col-sm-2 control-label">演员</label>
+                                                        <label for="movieDirector"
+                                                               class="col-sm-2 control-label">导演</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" name="movieActor" class="form-control" id="movieActor">
+                                                            <input type="text" name="movieDirector" class="form-control"
+                                                                   id="movieDirector" placeholder="请输入电影导演名字">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieDirector" class="col-sm-2 control-label">导演</label>
+                                                        <label for="movieActor"
+                                                               class="col-sm-2 control-label">演员</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" name="movieDirector" class="form-control" id="movieDirector">
+                                                            <input type="text" name="movieActor" class="form-control"
+                                                                   id="movieActor">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="movieDetail" class="col-sm-2 control-label">介绍</label>
+                                                        <label for="movieDetail"
+                                                               class="col-sm-2 control-label">介绍</label>
                                                         <div class="col-sm-10">
-                                                            <textarea style="resize:none;" class="form-control" rows="4" name="movieDetail" id="movieDetail"></textarea>
+                                                            <textarea style="resize:none;" class="form-control" rows="4"
+                                                                      name="movieDetail" id="movieDetail"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -134,85 +159,94 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 战争
+                                                                    <input type="checkbox"> 惊悚
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 喜剧
+                                                                    <input type="checkbox"> 悬疑
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">动作
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">武侠
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 其他
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 战争
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 家庭
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
                                                                     <input type="checkbox">动画
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox">冒险
-                                                                </label>
-                                                            </div>
-                                                        </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 爱情
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 pull-right">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox"> 战争
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 pull-right">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox"> 喜剧
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 pull-right">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox">动画
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 pull-right">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox">冒险
+                                                                    <input type="checkbox">犯罪
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieDuration" class="col-sm-2 control-label">时长</label>
+                                                        <label for="movieDuration"
+                                                               class="col-sm-2 control-label">时长</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieDuration" class="form-control" id="movieDuration">
+                                                            <input type="text" name="movieDuration" class="form-control"
+                                                                   id="movieDuration" placeholder="请输入电影时长">
                                                         </div>
                                                         <label for="movieReleasedate" class="col-sm-2 control-label">上映时间</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieReleasedate" class="form-control" id="movieReleasedate">
+                                                            <input type="date" name="movieReleasedate"
+                                                                   class="form-control" id="movieReleasedate"
+                                                                   placeholder="请输入电影上映时间">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieCountry" class="col-sm-2 control-label">制片地区</label>
+                                                        <label for="movieCountry"
+                                                               class="col-sm-2 control-label">制片地区</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCountry" class="form-control" id="movieCountry">
+                                                            <input type="text" name="movieCountry" class="form-control"
+                                                                   id="movieCountry" placeholder="请输入电影制片地区">
                                                         </div>
-                                                        <label for="movieState" class="col-sm-2 control-label">状态</label>
+                                                        <label class="col-sm-2 control-label">状态</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieState" class="form-control" id="movieState">
+                                                            <select class="form-control">
+                                                                <option value="0">正在上映</option>
+                                                                <option value="1">已经下架</option>
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -225,7 +259,8 @@
                                         <div>
                                             <div class="box-body box-profile">
                                                 <img id="headimg" style="width: 187px;height: 255px;border-radius: 0px"
-                                                     class="profile-user-img img-responsive img-circle" src="${user.userHeadimg}"
+                                                     class="profile-user-img img-responsive img-circle"
+                                                     src=""
                                                      alt="User profile picture">
                                                 <p class="text-center" style="color: #000;margin-top: 10px">
                                                     <button id="uploadBtn" class="btn btn-danger">添加电影海报</button>
@@ -240,12 +275,36 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary">保存</button>
+                                <button type="button" id="saveBtn" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!--头像上传-->
+            <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">上传电影海报</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="perForm" class="add_form" enctype="multipart/form-data">
+                                <input type="file" class="file-loading" name="upload" id="upload_img_input" multiple/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" onclick="save()">上传</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+
 
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -261,6 +320,16 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
+
+                                    <button type="button" class="btn btn-default" title="按评分排序"><i
+                                            class="fa  fa-arrows-v"></i> 按评分排序
+                                    </button>
+                                    <button type="button" class="btn btn-default" title="按上映时间排序"><i
+                                            class="fa  fa-arrows-v"></i> 按上映时间排序
+                                    </button>
+                                    <button type="button" class="btn btn-default" title="按电影时长排序"><i
+                                            class="fa  fa-arrows-v"></i> 按电影时长排序
+                                    </button>
                                     <button type="button" class="btn btn-default" title="删除"
                                             onclick='confirm("你确认要删除吗？")'><i class="fa fa-trash-o"></i> 删除
                                     </button>
@@ -342,7 +411,10 @@
 
 <%@include file="common/script.jsp" %>
 
+<script src="static/bootstrap/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script src="static/bootstrap/bootstrap-fileinput/js/locales/zh.js"></script>
 <script>
+
     let pageNum = 1;
     let pageSize = 10;
     //全局定义总记录数,和当前页
@@ -388,13 +460,7 @@
         setSidebarActive("movie-info");
     });
 
-    $(".info-box").click(function () {
-        //显示模态框
-        $('#addMovieModal').modal({
-            //点击背景模态框不消失
-            backdrop: "static"
-        })
-    });
+
 
 
     /*展示电影基本信息*/
@@ -543,21 +609,131 @@
         nav.appendTo("#page_nav");
     }
 
-    //电影详情展示模态窗口
+    //跳转电影详情页面
     $(document).on("click", ".query_btn", function () {
         window.location.href = "management/detailMovie?movieId=" + $(this).attr("query-id");
-        /*$.ajax({
-            url:"management/getMovieByMovieId",
-            data: {
-                "movieId":$(this).attr("query-id")
-            },
-            success:function (res) {
-                console.log(res)
-
-            }
-        });*/
 
     });
+    /*$(document).on("click", "#dataList tbody tr", function () {
+        window.location.href = "management/detailMovie?movieId=" + $(this).children("td").eq(1).text();
+    });*/
+
+
+    /*添加电影*/
+    $(".info-box").click(function () {
+        //显示模态框
+        $('#addMovieModal').modal({
+            //点击背景模态框不消失
+            backdrop: "static"
+        })
+    });
+
+    function saveMovie() {
+        $.ajax({
+            url: "management/saveMovie",
+            type: "POST",
+            data:$("#addMovieModal form").serialize(),
+            success:function (res) {
+                console.log(res)
+            }
+        });
+    }
+    $("#saveBtn").click(function () {
+        console.log($("#addMovieModal form").serialize());
+        saveMovie();
+    });
+
+    //点击头像上传
+    $("#uploadBtn").click(function () {
+        //显示头像上传模态框
+        $('#uploadModal').modal({
+            //点击背景模态框不消失
+            backdrop: "static"
+        })
+    });
+
+    let commId;
+
+    //点击保存按钮
+    function save() {
+        if ($('#upload_img_input').fileinput("getFilesCount") <= 0) {//获取文件个数
+            alert("请上传图片")
+            return false;
+        }
+        let formData = new FormData($('#perForm')[0]);
+        $.ajax({
+            url: 'management/uploadMovieImg',
+            type: 'post',
+            dataType: "json",
+            cache: false,//上传文件不需要缓存
+            data: formData,
+            processData: false,//data是FormData对象，不需要对数据进行处理
+            contentType: false,
+            /* beforeSend: function () {
+                 if (!$('#perForm').check()) {
+                     return false;
+                 }
+             },*/
+            success: function (result) {
+                console.log(result);
+                if (result.code === 100) {
+                    $("#headimg").attr("src", result.extend.movieImg);
+                    $('#uploadModal').modal("hide")
+
+                }
+                //$('#upload_img_input').fileinput('upload');//出发开始上传文件
+                /*if (result.status == 1) {
+                    var id = result.data.id;
+                    commId = id;
+                    $('#upload_img_input').fileinput('upload');//出发开始上传文件
+                } else {
+
+                }*/
+            }
+        });
+    }
+
+    // 初始化
+    $(document).ready(function () {
+        $('#upload_img_input').fileinput({
+            language: 'zh',     //设置语言
+            dropZoneEnabled: true,      //是否显示拖拽区域
+            dropZoneTitle: "上传头像",    //拖拽区域显示文字
+            uploadUrl: '',  //上传路径user/uploadHeadImg
+            showCaption: false,//是否显示标题
+            showUpload: false,//是否显示上传按钮
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],   //指定上传文件类型
+            maxFileSize: 2048,   //上传文件最大值，单位kb
+            uploadAsync: true,  //异步上传
+            maxFileCount: 1,  //上传文件最大个数。
+            autoReplace: true,
+            showRemove: false,
+            fileActionSettings: {
+                showUpload: false,
+            },
+            mainClass: "input-group-lg",
+            /*uploadExtraData: function (previewId, index) {
+                return {
+                    'id': commId
+                };
+            }*///上传时携带的额外的参数
+        }).on("filebatchuploadsuccess", function (event, data) {
+
+            console.log(data);
+
+            /*if (data.response.status == 1) {
+                alert('上传成功');
+            }*/
+        });
+
+
+    });
+
+
+
+
+
+
 
 
 </script>

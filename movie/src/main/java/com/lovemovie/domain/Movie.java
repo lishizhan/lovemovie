@@ -1,5 +1,8 @@
 package com.lovemovie.domain;
 
+import com.lovemovie.utils.DateUtils;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Movie {
@@ -25,7 +28,10 @@ public class Movie {
 
     private Long movieCommentcount;//电影参评人数 默认为0
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date movieReleasedate;//电影上映时间
+
+    private String movieReleasedateStr;//电影上映时间
 
     private String movieCountry;//电影制片地区
 
@@ -34,6 +40,19 @@ public class Movie {
     private Integer movieState;//电影状态 默认为1  1：在线 0：下架
 
     private Integer isDelete;//删除状态 默认为1 表示数据存在，0：表示数据删除
+
+
+    public String getMovieReleasedateStr() {
+
+        return DateUtils.dateToString(movieReleasedate, "yyyy-MM-dd");
+
+    }
+
+    public void setMovieReleasedateStr(String movieReleasedateStr) {
+
+
+        this.movieReleasedateStr = DateUtils.dateToString(movieReleasedate, "yyyy-MM-dd");;
+    }
 
     public Integer getIsDelete() {
         return isDelete;
@@ -178,9 +197,11 @@ public class Movie {
                 ", movieBoxoffice=" + movieBoxoffice +
                 ", movieCommentcount=" + movieCommentcount +
                 ", movieReleasedate=" + movieReleasedate +
+                ", movieReleasedateStr='" + movieReleasedateStr + '\'' +
                 ", movieCountry='" + movieCountry + '\'' +
                 ", moviePicture='" + moviePicture + '\'' +
                 ", movieState=" + movieState +
+                ", isDelete=" + isDelete +
                 '}';
     }
 }

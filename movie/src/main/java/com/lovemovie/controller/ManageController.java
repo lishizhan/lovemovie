@@ -7,14 +7,18 @@ import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.IUserService;
+import com.lovemovie.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -139,6 +143,38 @@ public class ManageController {
         return Msg.success().add("movie",movie);
 
     }
+
+
+    /**
+     * 添加电影
+     * @param movie
+     * @return
+     */
+    @RequestMapping(value = "/saveMovie",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg saveMovie(Movie movie){
+
+        System.out.println("movie = >>>>>>>>>>>>" + movie);
+        return Msg.success();
+    }
+
+
+    /**
+     * 添加电影海报
+     *
+     * @param upload  图片
+     * @param request 请求作用域
+     * @return
+     */
+    @RequestMapping(value = "/uploadMovieImg")
+    @ResponseBody
+    public Msg uploadHeadImg(MultipartFile upload, HttpServletRequest request) throws Exception {
+        String path = ImageUtils.uploadMovieImg(request, upload);
+        System.out.println("path =>>>>>>>>" + path);
+        return Msg.success().add("movieImg",path);
+    }
+
+
 
 
 
