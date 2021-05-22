@@ -257,7 +257,7 @@
 
     $(document).ready(function() {
         // 激活导航位置
-        setSidebarActive("admin-index");
+        setSidebarActive("cinema-info");
     });
 </script>
 </body>

@@ -5,14 +5,17 @@ import com.github.pagehelper.PageInfo;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.model.Msg;
+import com.lovemovie.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -64,6 +67,9 @@ public class MovieController {
 
 
 
+
+
+    
     /**
      * 测试接口
      * @return
@@ -73,4 +79,16 @@ public class MovieController {
     public Msg test(){
         return Msg.success();
     }
+    
+    @RequestMapping(value = "/fileUpload")
+    @ResponseBody
+    public Msg testUpload(HttpServletRequest request, MultipartFile upload) throws Exception {
+        String imgPath = ImageUtils.upload(request,upload);
+        System.out.println("imgPath = " + imgPath);
+        return Msg.success();
+    }
+
+
+
+    
 }

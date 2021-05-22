@@ -68,7 +68,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">登陆成功！！</h4>
+                    <h4 class="modal-title">注册成功！！</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -208,6 +208,8 @@
                             $("#show_msg").text(res.msg);
                         }else {
                             show_msg("#code", "error", "验证码错误");
+                            let date=new Date().getTime();
+                            $(".verify-code img").attr("src","verification?"+date);
                         }
                     }
                 });

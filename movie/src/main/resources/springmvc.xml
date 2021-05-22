@@ -53,14 +53,19 @@
             <mvc:exclude-mapping path="/admin/*"/>
             <bean class="com.lovemovie.interceptor.AdminLoginInterceptor"/>
         </mvc:interceptor>
-       <!-- <mvc:interceptor>
+        <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <mvc:exclude-mapping path="/user/login"/>
             <mvc:exclude-mapping path="/user/register"/>
-            <mvc:exclude-mapping path="/static/*"/>
-            <mvc:exclude-mapping path="/admin/*"/>
+            <!--<mvc:exclude-mapping path="/static/*"/>
+            <mvc:exclude-mapping path="/admin/*"/>-->
             <bean class="com.lovemovie.interceptor.LoginInterceptor"/>
-        </mvc:interceptor>-->
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/comment/**"/>
+            <mvc:exclude-mapping path="/comment/findComment"/>
+            <bean class="com.lovemovie.interceptor.CommentInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 

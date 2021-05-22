@@ -1,6 +1,7 @@
 package com.lovemovie.utils;
 
 import com.lovemovie.exceptions.LoginException;
+import com.lovemovie.exceptions.NotLoginReturnJsonException;
 import com.lovemovie.exceptions.NotUserNameException;
 import com.lovemovie.exceptions.ParamsException;
 
@@ -26,6 +27,11 @@ public class AssertUtil {
     public static void isNotLogin(Boolean flag,String msg){
         if (flag){
             throw  new LoginException(msg);
+        }
+    }
+    public static void isNotLoginToJson(Boolean flag,String msg){
+        if (flag){
+            throw  new NotLoginReturnJsonException(msg);
         }
     }
     public static void isNotUserName(Boolean flag,String msg){

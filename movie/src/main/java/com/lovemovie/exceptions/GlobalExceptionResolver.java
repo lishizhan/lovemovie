@@ -70,6 +70,12 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                     msg.setMsg(e.getMsg());
                 }
 
+                if (ex instanceof NotLoginReturnJsonException){
+                    NotLoginReturnJsonException e = (NotLoginReturnJsonException) ex;
+                    msg.setCode(e.getCode());
+                    msg.setMsg(e.getMsg());
+                }
+
 
                 //将异常信息传递给页面
                 response.setCharacterEncoding("UTF-8");
@@ -82,7 +88,6 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                     String json = gson.toJson(msg);
                     pw.write(json);
                     pw.flush();
-
                 }catch (IOException e){
                     e.printStackTrace();
                 }finally {

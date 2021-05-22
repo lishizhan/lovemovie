@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovemovie.dao.CommentMapper">
+    <resultMap id="BaseResultMap" type="com.lovemovie.domain.Comment">
+        <id column="comment_id" jdbcType="BIGINT" property="commentId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+        <result column="movie_id" jdbcType="BIGINT" property="movieId"/>
+        <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        comment_id, user_id, comment_content, movie_id, comment_time
+    </sql>
+
+    <resultMap id="BaseResultMap2" type="com.lovemovie.domain.Comment">
+        <id column="comment_id" jdbcType="BIGINT" property="commentId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+        <result column="movie_id" jdbcType="BIGINT" property="movieId"/>
+        <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime"/>
+        <association property="user" column="user_id" javaType="User">
+            <result column="user_name" property="userName"/>
+            <result column="user_headImg" property="userHeadimg"/>
+        </association>
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from comment
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </select>
+    <select id="findCommentByMovieId" resultMap="BaseResultMap2">
+        select
+        c.comment_id, c.user_id, c.comment_content, c.movie_id, c.comment_time,u.user_name,u.user_headImg
+        from `comment` c
+        join
+        user u on c.user_id = u.user_id
+        WHERE movie_id=#{movieId}
+        order by comment_time  desc
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from comment
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.lovemovie.domain.Comment">
+        insert into comment (comment_id, user_id, comment_content,
+        movie_id, comment_time)
+        values (#{commentId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{commentContent,jdbcType=VARCHAR},
+        #{movieId,jdbcType=BIGINT}, #{commentTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.lovemovie.domain.Comment">
+        insert into comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                comment_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="commentContent != null">
+                comment_content,
+            </if>
+            <if test="movieId != null">
+                movie_id,
+            </if>
+            <if test="commentTime != null">
+                comment_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                #{commentId,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="commentContent != null">
+                #{commentContent,jdbcType=VARCHAR},
+            </if>
+            <if test="movieId != null">
+                #{movieId,jdbcType=BIGINT},
+            </if>
+            <if test="commentTime != null">
+                #{commentTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lovemovie.domain.Comment">
+        update comment
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="commentContent != null">
+                comment_content = #{commentContent,jdbcType=VARCHAR},
+            </if>
+            <if test="movieId != null">
+                movie_id = #{movieId,jdbcType=BIGINT},
+            </if>
+            <if test="commentTime != null">
+                comment_time = #{commentTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lovemovie.domain.Comment">
+        update comment
+        set user_id = #{userId,jdbcType=BIGINT},
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+        movie_id = #{movieId,jdbcType=BIGINT},
+        comment_time = #{commentTime,jdbcType=TIMESTAMP}
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -13,15 +13,15 @@ public class User {
 
     private Integer userRole;//会员权限（默认为0） 0：普通会员 1：管理员
 
-    private String userHeadimg;//会员头像
+    private String userHeadimg="upload/default/default_userimg.png";//会员头像
     private String userSex;
     private String userSexStr;
 
     public String getUserSexStr() {
-        if ("0".equals(this.userSex)){
-            this.userSexStr="女";
-        }else {
-            this.userSexStr="男";
+        if ("0".equals(this.userSex)) {
+            this.userSexStr = "女";
+        } else {
+            this.userSexStr = "男";
         }
         return userSexStr;
     }
@@ -33,6 +33,7 @@ public class User {
     private Date userBirthday;
 
     private String userHobby;
+
 
     public String getUserSex() {
         return userSex;

@@ -21,4 +21,10 @@ public interface IMovieService {
     List<Movie> findAllMovies(int movie_state);
 
     Movie findMovieByMovieId(Integer movieId);
+
+    /**
+     * 查询所有的电影
+     * @return
+     */
+    List<Movie> findAllMovies();
 }

@@ -2,14 +2,17 @@ package com.lovemovie.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
+import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -25,6 +28,9 @@ import java.util.List;
 public class ManageController {
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IMovieService movieService;
 
     @RequestMapping(value = "/index")
     public String index(){
@@ -69,6 +75,21 @@ public class ManageController {
         return "redirect:/view/goLogin";
     }
 
+
+    /**
+     * 电影页面信息跳转
+     * @return
+     */
+    @RequestMapping(value = "/detailMovie")
+    public ModelAndView goRegister(Integer movieId) {
+        Movie movie = movieService.findMovieByMovieId(movieId);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("movie",movie);
+        modelAndView.setViewName("admin/movie-info-detail");
+        return modelAndView;
+    }
+
+
     /**
      * 分页查询所有的用户信息
      * @param pageNo 第几页
@@ -86,6 +107,42 @@ public class ManageController {
         PageInfo<User> pageInfo = new PageInfo<>(userList,pageSize);
         return Msg.success().add("pageInfo",pageInfo);
     }
+
+
+    /**
+     * 查询所有的电影
+     * @param pageNo 页数
+     * @param pageSize 每页展示条数
+     * @return
+     */
+    @RequestMapping(value = "getAllMovies")
+    @ResponseBody
+    public Msg getAllMovies(@RequestParam(value = "pageNo",defaultValue = "1") Integer pageNo,
+                            @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize){
+        PageHelper.startPage(pageNo,pageSize);
+        List<Movie> allMovies = movieService.findAllMovies();
+        PageInfo<Movie> pageInfo = new PageInfo<>(allMovies,pageSize);
+
+        return Msg.success().add("pageInfo",pageInfo);
+    }
+
+
+    /**
+     * 根据电影ID获取信息
+     * @param movieId
+     * @return
+     */
+    @RequestMapping(value = "/getMovieByMovieId")
+    @ResponseBody
+    public Msg getMovieByMovieId(Integer movieId){
+        Movie movie = movieService.findMovieByMovieId(movieId);
+        return Msg.success().add("movie",movie);
+
+    }
+
+
+
+
 
 
 

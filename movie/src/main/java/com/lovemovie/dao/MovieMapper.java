@@ -25,9 +25,17 @@ public interface MovieMapper {
     List<Movie> findAllMovies(int movie_state);
 
     /**
-     * 查询所有电影并按上映时间排序
+     * 查询所有电影并按上映时间排序，上映状态
      * @param movieState
      * @return
      */
     List<Movie> findMovieByReleaseDateDesc(int movieState);
+
+
+    /**
+     * 查询所有的电影
+     * @return
+     */
+    List<Movie> findMoviesAll();
+
 }

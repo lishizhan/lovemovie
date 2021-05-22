@@ -17,11 +17,12 @@
         <result column="movie_country" jdbcType="VARCHAR" property="movieCountry"/>
         <result column="movie_picture" jdbcType="VARCHAR" property="moviePicture"/>
         <result column="movie_state" jdbcType="INTEGER" property="movieState"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
     </resultMap>
     <sql id="Base_Column_List">
         movie_id, movie_cn_name, movie_fg_name, movie_actor, movie_director, movie_detail,
         movie_duration, movie_type, movie_score, movie_boxOffice, movie_commentCount, movie_releaseDate,
-        movie_country, movie_picture, movie_state
+        movie_country, movie_picture, movie_state, is_delete
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -40,6 +41,11 @@
            <include refid="Base_Column_List"/>
         from movie where movie_state=#{movieState} ORDER BY movie_releaseDate DESC;
 
+    </select>
+    <select id="findMoviesAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from movie where is_delete=1
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie

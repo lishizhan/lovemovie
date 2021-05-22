@@ -32,7 +32,7 @@
     <ul>
         <li>
             <div class="type-item">类型:</div>
-            <ul class="type-movie-item">
+            <ul class="type-movie-item type">
                 <li class="movie-type-active">全部</li>
                 <li>爱情</li>
                 <li>惊悚</li>
@@ -52,7 +52,7 @@
         </li>
         <li>
             <div class="type-item">区域:</div>
-            <ul class="type-movie-item">
+            <ul class="type-movie-item source">
                 <li class="movie-type-active">全部</li>
                 <li>大陆</li>
                 <li>美国</li>
@@ -77,7 +77,7 @@
         </li>
         <li>
             <div class="type-item">时间:</div>
-            <ul class="type-movie-item">
+            <ul class="type-movie-item year">
                 <li class="movie-type-active">全部</li>
                 <li>2021</li>
                 <li>2020</li>
@@ -457,6 +457,27 @@
 
 <script>
 
+    //种类catId=3&区域sourceId=2&年份yearId=16
+    function showMovie(catId,sourceId,yearId){
+
+    }
+
+    $(function () {
+        $(".type li").click(function () {
+            console.log($(this).text())
+        });
+        $(".source li").click(function () {
+            console.log($(this).text())
+        });
+        $(".year li").click(function () {
+            console.log($(this).text())
+        });
+
+
+
+
+
+    })
 
 
 </script>

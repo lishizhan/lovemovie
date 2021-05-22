@@ -26,10 +26,10 @@
             <!--            <p class="text-success">...</p>-->
             <p class="text-danger" id="msg"></p>
             <div>
-                <input type="text" name="userName" class="form-control" id="userName" placeholder="用户名">
+                <input type="text" value="admin" name="userName" class="form-control" id="userName" placeholder="用户名">
             </div>
             <div>
-                <input type="password" name="userPwd" class="form-control" id="userPwd" placeholder="请输入6~12数字字母密码">
+                <input type="password" value="admin" name="userPwd" class="form-control" id="userPwd" placeholder="请输入6~12数字字母密码">
             </div>
             <div class="verify-code">
                 <input type="password" name="code" class="form-control"  placeholder="输入验证码">
@@ -89,7 +89,9 @@
                         return true;
                     }else {
                         //登陆失败
-                        $("#msg").text(res.extend.msg);
+                        $("#msg").text(res.msg);
+                        let date=new Date().getTime();
+                        $(".verify-code img").attr("src","verification?"+date);
                         return false;
                     }
 

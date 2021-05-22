@@ -3,6 +3,7 @@ package com.lovemovie.service;
 import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -20,4 +21,12 @@ public interface IUserService {
     Msg register(String userName, String userEmail, String userPwd);
 
     Msg checkUserName(String userName);
+
+    Msg updateHeadImg(Long userId, String path);
+
+    Msg updatePwd(String oldPwd, String newPwd, String truePwd, User user);
+
+    Msg updateUserInfo(Integer userId, String userEmail, String userSex, String[] userHobby, String userBirthday) throws ParseException;
+
+    Msg getUserByd(Integer userId);
 }

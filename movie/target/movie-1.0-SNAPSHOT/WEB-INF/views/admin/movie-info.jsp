@@ -20,6 +20,16 @@
             /*padding: 0px;*/
 
         }
+
+        #dataList tbody td:nth-child(4) {
+            display: inline-block;
+            padding-left: 10px;
+            width: 100px; /*要显示文字的宽度*/
+            text-overflow: ellipsis; /*让截断的文字显示为点点。还有一个值是clip意截断不显示点点*/
+            white-space: nowrap; /*让文字不换行*/
+            overflow: hidden; /*超出要隐藏*/
+        }
+
     </style>
 </head>
 
@@ -78,21 +88,168 @@
                                 <h4 class="modal-title">添加电影</h4>
                             </div>
                             <div class="modal-body">
-                                <p>One fine body&hellip;</p>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div>
+                                            <!-- form start -->
+                                            <form class="form-horizontal">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="movieCnName" class="col-sm-2 control-label">电影名称（中文）</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieCnName" class="form-control" id="movieCnName">
+                                                        </div>
+                                                        <label for="movieFgName" class="col-sm-2 control-label">电影名称（外语）</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieFgName" class="form-control" id="movieFgName">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movieActor" class="col-sm-2 control-label">演员</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" name="movieActor" class="form-control" id="movieActor">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movieDirector" class="col-sm-2 control-label">导演</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" name="movieDirector" class="form-control" id="movieDirector">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movieDetail" class="col-sm-2 control-label">介绍</label>
+                                                        <div class="col-sm-10">
+                                                            <textarea style="resize:none;" class="form-control" rows="4" name="movieDetail" id="movieDetail"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">类型</label>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 爱情
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 战争
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 喜剧
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">动画
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">冒险
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 爱情
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 战争
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> 喜剧
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">动画
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">冒险
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movieDuration" class="col-sm-2 control-label">时长</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieDuration" class="form-control" id="movieDuration">
+                                                        </div>
+                                                        <label for="movieReleasedate" class="col-sm-2 control-label">上映时间</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieReleasedate" class="form-control" id="movieReleasedate">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movieCountry" class="col-sm-2 control-label">制片地区</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieCountry" class="form-control" id="movieCountry">
+                                                        </div>
+                                                        <label for="movieState" class="col-sm-2 control-label">状态</label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="movieState" class="form-control" id="movieState">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Profile Image -->
+                                        <div>
+                                            <div class="box-body box-profile">
+                                                <img id="headimg" style="width: 187px;height: 255px;border-radius: 0px"
+                                                     class="profile-user-img img-responsive img-circle" src="${user.userHeadimg}"
+                                                     alt="User profile picture">
+                                                <p class="text-center" style="color: #000;margin-top: 10px">
+                                                    <button id="uploadBtn" class="btn btn-danger">添加电影海报</button>
+                                                </p>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                        <!-- /.box -->
+
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--模态窗口/-->
 
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">列表</h3>
+                    <h3 class="box-title">电影信息列表</h3>
                 </div>
 
                 <div class="box-body">
@@ -128,217 +285,22 @@
                                 <th class="" style="padding-right:0px;">
                                     <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_asc">ID</th>
-                                <th class="sorting">订单编号</th>
-                                <th class="sorting">订单名称</th>
-                                <th class="sorting">金额</th>
-                                <th class="sorting">下单时间</th>
-                                <th class="sorting">订单状态</th>
-
+                                <th class="sorting_asc">电影编号</th>
+                                <th class="sorting">电影名称</th>
+                                <th class="sorting">电影导演</th>
+                                <th class="sorting">电影时长</th>
+                                <th class="sorting">电影类型</th>
+                                <th class="sorting">电影评分</th>
+                                <th class="sorting">电影票房</th>
+                                <th class="sorting">上映时间</th>
+                                <th class="sorting">制片地区</th>
+                                <th class="sorting">电影状态</th>
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>
+
                             <tbody>
 
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    1
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    2
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    3
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    4
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    5
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    6
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    7
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td><input name="ids" type="checkbox"></td>
-                                <td>
-                                    8
-                                </td>
-                                <td>71837383</td>
-                                <td>北京一日游</td>
-                                <td>￥1000</td>
-                                <td>2017-03-09 13:51:26</td>
-                                <td>已付款(待出行)</td>
-
-                                <td class="text-center">
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>订单
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>详情
-                                    </button>
-                                    <button type="button" class="btn bg-olive btn-xs"
-                                            onclick='location.href="all-order-manage-edit.html"'>编辑
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                         <!--数据列表/-->
@@ -350,34 +312,12 @@
                 <!-- .box-footer-->
                 <div class="box-footer">
                     <div class="pull-left">
-                        <div class="form-group form-inline">
-                            总共2 页，共14 条数据。 每页
-                            <select class="form-control">
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                                <option>50</option>
-                                <option>80</option>
-                            </select> 条
+                        <div id="page_info" class="form-group form-inline">
                         </div>
                     </div>
 
-                    <div class="box-tools pull-right">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">首页</a>
-                            </li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">尾页</a>
-                            </li>
-                        </ul>
+                    <div class="box-tools pull-right" id="page_nav">
+
                     </div>
 
                 </div>
@@ -386,157 +326,6 @@
 
             </div>
 
-
-            <div class="box box-primary">
-
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-2">
-                        <div class="thumbnail">
-                            <img src="static/images/movie/1.jpg" style="height: 220px; width: 185px; display: block;">
-                            <div class="caption text-center">
-                                <a href="#" class="btn   btn-flat" role="button">修改</a>
-                                <a href="#" class="btn  btn-flat" role="button">下架</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <!-- .box-footer-->
-                <div class="box-footer">
-                    <div class="pull-left">
-                        <div class="form-group form-inline">
-                            总共2 页，共14 条数据。 每页
-                            <select class="form-control">
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                                <option>50</option>
-                                <option>80</option>
-                            </select> 条
-                        </div>
-                    </div>
-
-                    <div class="box-tools pull-right">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">首页</a>
-                            </li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">尾页</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /.box-footer-->
-            </div>
 
         </section>
         <!-- 正文区域 /-->
@@ -554,6 +343,24 @@
 <%@include file="common/script.jsp" %>
 
 <script>
+    let pageNum = 1;
+    let pageSize = 10;
+    //全局定义总记录数,和当前页
+    let totalRecord, thisPageNum;
+    // 重写方法，自定义格式化日期
+    Date.prototype.toLocaleString = function () {
+        // 补0   例如 2018/7/10 14:7:2  补完后为 2018/07/10 14:07:02
+        function addZero(num) {
+            if (num < 10)
+                return "0" + num;
+            return num;
+        }
+
+        // 按自定义拼接格式返回
+        return this.getFullYear() + "-" + addZero(this.getMonth() + 1) + "-" + addZero(this.getDate());
+    };
+
+
     $(document).ready(function () {
         // 选择框
         $(".select2").select2();
@@ -562,6 +369,7 @@
         $(".textarea").wysihtml5({
             locale: 'zh-CN'
         });
+        toPage(1, 10);
     });
 
 
@@ -577,7 +385,7 @@
 
     $(document).ready(function () {
         // 激活导航位置
-        setSidebarActive("admin-index");
+        setSidebarActive("movie-info");
     });
 
     $(".info-box").click(function () {
@@ -587,6 +395,170 @@
             backdrop: "static"
         })
     });
+
+
+    /*展示电影基本信息*/
+    //获取电影信息
+    function toPage(pageNum, pageSize) {
+        $.ajax({
+            url: "management/getAllMovies",
+            data: {
+                "pageNo": pageNum,
+                "pageSize": pageSize
+            },
+            type: "GET",
+            success: function (res) {
+
+                console.log(res);
+                //1，展示电影数据
+                build_movie_info_table(res);
+                //2,解析并显示分页信息
+                build_movie_info_info(res);
+                //3,解析分页条数据
+                build_movie_info_nav(res);
+
+            }
+        });
+    }
+
+    //显示页码，总页码等
+    function build_movie_info_info(res) {
+        $("#page_info").empty();
+        $("<p></p>").append("当前页：" + res.extend.pageInfo.pageNum + "，总页码：" + res.extend.pageInfo.pages + "，总记录数：" + res.extend.pageInfo.total).appendTo("#page_info");
+        totalRecord = res.extend.pageInfo.total;
+        thisPageNum = res.extend.pageInfo.pageNum;
+
+    }
+
+    function build_movie_info_table(res) {
+        //清空表格
+        $("#dataList tbody").empty();
+
+        let users = res.extend.pageInfo.list;
+        console.log(res)
+        $.each(users, function (index, item) {
+            let checkBox = $("<td></td>").append("<input type='checkbox' class='check_item'>");
+            let movieId = $("<td></td>").append(item.movieId);
+            let movieName = $("<td></td>").append(item.movieCnName);
+            let movieDirector = $("<td></td>").append(item.movieDirector);
+            let movieDuration = $("<td></td>").append(item.movieDuration);
+            let movieType = $("<td></td>").append(item.movieType);
+            let movieScore = $("<td></td>").append(item.movieScore);
+            let movieBoxoffice = $("<td></td>").append(item.movieBoxoffice);
+
+            // 根据毫秒数构建 Date 对象
+            let date = new Date(item.movieReleasedate);
+            // 按重写的自定义格式，格式化日期
+            dateTime = date.toLocaleString();
+
+            let movieReleasedate = $("<td></td>").append(dateTime);
+            let movieCountry = $("<td></td>").append(item.movieCountry);
+            let movieState;
+            if (item.movieState === 1) {
+                movieState = $("<td></td>").append("上映中");
+            } else {
+                movieState = $("<td></td>").append("已下架");
+            }
+            /*let editBtn = $("<button></button>")
+                .addClass("btn bg-olive btn-xs edit_btn").text("编辑");
+            //添加自定义属性，方便员工回显获取id
+            editBtn.attr("edit-id", item.movieId);*/
+            var deleteBtn = $("<button></button>")
+                .css("marginLeft", "20px")
+                .addClass("btn bg-red btn-xs delete_btn").text("删除");
+            deleteBtn.attr("del-id", item.movieId);
+            var queryBtn = $("<button></button>")
+                .css("marginLeft", "20px")
+                .addClass("btn bg-aqua btn-xs query_btn").text("详情/编辑");
+            queryBtn.attr("query-id", item.movieId);
+
+            var edit = $("<td></td>").addClass("text-center").append(deleteBtn).append(queryBtn);
+            $("<tr></tr>").append(checkBox)
+                .append(movieId)
+                .append(movieName)
+                .append(movieDirector)
+                .append(movieDuration)
+                .append(movieType)
+                .append(movieScore)
+                .append(movieBoxoffice)
+                .append(movieReleasedate)
+                .append(movieCountry)
+                .append(movieState)
+                .append(edit).appendTo("#dataList tbody");
+        })
+
+    }
+
+    //生成分页按钮
+    function build_movie_info_nav(res) {
+        $("#page_nav").empty();
+
+        let ul = $("<ul></ul>").addClass("pagination");
+        let firstLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "JavaScript:;"));
+        let prePage = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        if (res.extend.pageInfo.hasPreviousPage == false) {
+            firstLi.addClass("disabled");
+            prePage.addClass("disabled");
+        } else {
+            //只有按钮没有禁用的时候才注册事件
+            firstLi.click(function () {
+                toPage(pageNum, pageSize);
+            });
+            prePage.click(function () {
+                toPage(res.extend.pageInfo.pageNum - 1, pageSize);
+            });
+        }
+
+
+        let nextPage = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        let lastLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "JavaScript:;"));
+        if (res.extend.pageInfo.hasNextPage == false) {
+            nextPage.addClass("disabled");
+            lastLi.addClass("disabled");
+        } else {
+            //只有按钮没有禁用的时候才注册事件
+            nextPage.click(function () {
+                toPage(res.extend.pageInfo.pageNum + 1, pageSize);
+            });
+            lastLi.click(function () {
+                toPage(res.extend.pageInfo.pages, pageSize)
+            });
+        }
+
+        ul.append(firstLi).append(prePage);
+
+        //遍历页码
+        $.each(res.extend.pageInfo.navigatepageNums, function (index, item) {
+            let numLi = $("<li></li>").append($("<a></a>").append(item));
+            if (res.extend.pageInfo.pageNum == item) {
+                numLi.addClass("active");
+            }
+            numLi.click(function () {
+                toPage(item, pageSize);
+            });
+            ul.append(numLi);
+        });
+        ul.append(nextPage).append(lastLi);
+        let nav = $("<nav></nav>").append(ul);
+        nav.appendTo("#page_nav");
+    }
+
+    //电影详情展示模态窗口
+    $(document).on("click", ".query_btn", function () {
+        window.location.href = "management/detailMovie?movieId=" + $(this).attr("query-id");
+        /*$.ajax({
+            url:"management/getMovieByMovieId",
+            data: {
+                "movieId":$(this).attr("query-id")
+            },
+            success:function (res) {
+                console.log(res)
+
+            }
+        });*/
+
+    });
+
 
 </script>
 </body>

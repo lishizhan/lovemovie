@@ -33,6 +33,16 @@ public class Movie {
 
     private Integer movieState;//电影状态 默认为1  1：在线 0：下架
 
+    private Integer isDelete;//删除状态 默认为1 表示数据存在，0：表示数据删除
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     public Long getMovieId() {
         return movieId;
     }
