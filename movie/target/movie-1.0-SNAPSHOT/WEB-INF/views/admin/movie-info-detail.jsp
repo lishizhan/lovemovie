@@ -29,6 +29,11 @@
             white-space: nowrap; /*让文字不换行*/
             overflow: hidden; /*超出要隐藏*/
         }
+        #actorList img{
+            width: 75px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
 
     </style>
 </head>
@@ -108,44 +113,25 @@
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">演员</label>
                                                 <div class="col-sm-2">
-                                                    <button class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
-                                                    <button class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
+                                                    <button id="addActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
+                                                    <button id="delActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
 
                                                 </div>
-                                                <%--<div class="col-sm-10">
-                                                    <input type="text" name="movieActor" value="${movie.movieActor}"
-                                                           class="form-control"
-                                                           id="movieActor">
-                                                </div>--%>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-2">
+                                            <div class="form-group" id="actorList">
+<!--                                                <label class="col-sm-2 control-label"></label>-->
+                                                <!--动态生成-->
+                                                <!--<div class="col-sm-3">
                                                     <input type="text" class="form-control" placeholder="演员姓名">
+                                                    <p>饰：</p>
                                                     <input type="text" class="form-control" placeholder="饰演角色">
-                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
+
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <input type="text" class="form-control" placeholder="演员姓名">
-                                                    <input type="text" class="form-control" placeholder="饰演角色">
-                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input type="text" class="form-control" placeholder="演员姓名">
-                                                    <input type="text" class="form-control" placeholder="饰演角色">
-                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input type="text" class="form-control" placeholder="演员姓名">
-                                                    <input type="text" class="form-control" placeholder="饰演角色">
-                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <input type="text" class="form-control" placeholder="演员姓名">
-                                                    <input type="text" class="form-control" placeholder="饰演角色">
-                                                    <img src="upload/actor/addimg.jpg" alt="" style="width: 103px;height: 110px;">
-                                                </div>
+                                                    <img src="upload/actor/addimg.jpg" alt="">
+                                                </div>-->
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label for="movieDetail" class="col-sm-2 control-label">详情</label>
@@ -396,28 +382,50 @@
     });
 
 
-    //电影详情展示模态窗口
+
+    /*动态生成演员节点*/
     /*
-        $(document).on("click", ".query_btn", function () {
-            //展示模态框
-            $('#detailMovieModal').modal({
-                //点击背景模态框不消失
-                backdrop: "static"
-            })
-            $.ajax({
-                url: "management/getMovieByMovieId",
-                data: {
-                    "movieId": $(this).attr("query-id")
-                },
-                success: function (res) {
-                    console.log(res)
+    <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="演员姓名">
+        <p>饰：</p>
+        <input type="text" class="form-control" placeholder="饰演角色">
 
-                }
-            });
+    </div>
+    <div class="col-sm-2">
+        <img src="upload/actor/addimg.jpg" alt="">
+    </div>
+    * */
+    let clickNum = 0;
+    $("#addActorInfoBtn").click(function () {
 
-
-        });
-    */
+        clickNum++;
+        console.log(clickNum)
+        if (clickNum%2!==0){
+            let label = $("<div class='col-sm-2'></div>");
+            let name = $("<div class='col-sm-3'></div>")
+                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
+            let img = $("<div class='col-sm-2'></div>").append("<img src='upload/actor/addimg.jpg' alt=''>")
+            $("#actorList").append(label).append(name).append(img);
+        }else {
+            let name = $("<div class='col-sm-3'></div>")
+                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
+            let img = $("<div class='col-sm-2'></div>").append("<img src='upload/actor/addimg.jpg' alt=''>")
+            $("#actorList").append(name).append(img);
+        }
+    });
+    $("#delActorInfoBtn").click(function () {
+        if (clickNum%2!==0){
+            $("#actorList div").eq(-3).remove();
+            $("#actorList div").eq(-2).remove();
+            $("#actorList div").last().remove();
+        }else {
+            $("#actorList div").eq(-2).remove();
+            $("#actorList div").last().remove();
+        }
+        clickNum--;
+    });
 
 
 </script>

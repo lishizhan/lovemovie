@@ -24,7 +24,7 @@
 
 <div class="jumbotron text-center">
     <h1>${errorMsg}</h1>
-    <a href="index" class="btn btn-danger">返回首页首页</a>
+    <a href="view/index" class="btn btn-danger">返回首页首页</a>
 </div>
 </body>
 </html>

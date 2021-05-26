@@ -66,7 +66,7 @@
                enableUpdateByExample="false"
                enableSelectByExample="false"
                enableDeleteByExample="false"/>-->
-        <table tableName="comment" domainObjectName="Comment"
+        <table tableName="actor" domainObjectName="Actor"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableSelectByExample="false"

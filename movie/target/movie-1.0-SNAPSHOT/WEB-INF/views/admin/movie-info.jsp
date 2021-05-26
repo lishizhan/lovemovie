@@ -42,6 +42,11 @@
         #dataList tbody tr:hover{
             cursor: pointer;
         }
+        #actorList img{
+            width: 75px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
 
 
     </style>
@@ -106,7 +111,7 @@
                                     <div class="col-md-8">
                                         <div>
                                             <!-- form start -->
-                                            <form class="form-horizontal">
+                                            <form class="form-horizontal" id="movieForm">
                                                 <div class="box-body">
                                                     <div class="form-group">
                                                         <label for="movieCnName"
@@ -132,52 +137,20 @@
                                                         <div class="col-sm-2">
                                                             <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
                                                         </div>
-
-
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">演员</label>
+                                                        <input type="hidden" name="movieActor" value="lishiz">
                                                         <div class="col-sm-4">
-                                                            <button class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
-                                                            <button class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
+                                                            <button id="addActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
+                                                            <button id="delActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
 
                                                         </div>
-                                                        <%--<div class="col-sm-10">
-                                                            <input type="text" name="movieActor" value="${movie.movieActor}"
-                                                                   class="form-control"
-                                                                   id="movieActor">
-                                                        </div>--%>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label"></label>
-                                                        <div class="col-sm-2">
-                                                            <input type="text" class="form-control" placeholder="演员姓名">
-                                                            <input type="text" class="form-control" placeholder="饰演角色">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <input type="text" class="form-control" placeholder="演员姓名">
-                                                            <input type="text" class="form-control" placeholder="饰演角色">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <input type="text" class="form-control" placeholder="演员姓名">
-                                                            <input type="text" class="form-control" placeholder="饰演角色">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <input type="text" class="form-control" placeholder="演员姓名">
-                                                            <input type="text" class="form-control" placeholder="饰演角色">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <input type="text" class="form-control" placeholder="演员姓名">
-                                                            <input type="text" class="form-control" placeholder="饰演角色">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
-                                                        </div>
-
-
+                                                    <div class="form-group" id="actorList">
+<!--                                                        <label class="col-sm-2 control-label"></label>-->
+                                                        <!--动态生成-->
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="movieDetail"
@@ -192,70 +165,98 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 爱情
+                                                                    <input type="checkbox" name="movieType" value="0"> 爱情
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 惊悚
+                                                                    <input type="checkbox" name="movieType" value="1"> 惊悚
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 悬疑
+                                                                    <input type="checkbox" name="movieType" value="2"> 科幻
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox">动作
+                                                                    <input type="checkbox" name="movieType" value="3">动作
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox">武侠
+                                                                    <input type="checkbox" name="movieType" value="4">悬疑
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right" >
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" name="movieType" value="5"> 犯罪
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 其他
+                                                                    <input type="checkbox" name="movieType" value="6"> 冒险
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 战争
+                                                                    <input type="checkbox" name="movieType" value="7"> 战争
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox"> 家庭
+                                                                    <input type="checkbox" name="movieType" value="8">奇幻
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox">动画
+                                                                    <input type="checkbox" name="movieType" value="9">运动
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox">犯罪
+                                                                    <input type="checkbox" name="movieType" value="10">家庭
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" name="movieType" value="11">古装
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" name="movieType" value="12">武侠
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 pull-right">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" name="movieType" value="13">其他
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -300,7 +301,7 @@
                                             <div class="box-body box-profile">
                                                 <img id="headimg" style="width: 187px;height: 255px;border-radius: 0px"
                                                      class="profile-user-img img-responsive img-circle"
-                                                     src=""
+                                                     src="upload/actor/addimg.jpg"
                                                      alt="User profile picture">
                                                 <p class="text-center" style="color: #000;margin-top: 10px">
                                                     <button id="uploadBtn" class="btn btn-danger">添加电影海报</button>
@@ -515,7 +516,7 @@
             type: "GET",
             success: function (res) {
 
-                console.log(res);
+                // console.log(res);
                 //1，展示电影数据
                 build_movie_info_table(res);
                 //2,解析并显示分页信息
@@ -541,7 +542,7 @@
         $("#dataList tbody").empty();
 
         let users = res.extend.pageInfo.list;
-        console.log(res)
+        // console.log(res)
         $.each(users, function (index, item) {
             let checkBox = $("<td></td>").append("<input type='checkbox' class='check_item'>");
             let movieId = $("<td></td>").append(item.movieId);
@@ -668,23 +669,44 @@
         })
     });
 
-    function saveMovie() {
+
+    $("#saveBtn").click(function () {
+        console.log($("#addMovieModal form").serialize().split("&"));
         $.ajax({
             url: "management/saveMovie",
             type: "POST",
-            data:$("#addMovieModal form").serialize(),
+            data: $("#addMovieModal form").serialize(),
+                /*{
+                "movie":$("#addMovieModal form").serialize(),
+                "num":123123
+               "movieId":null,
+                "movieCnName":'asdf',
+                "movieFgName":'asdf',
+                "movieActor":'null',
+                "movieDirector":'adf',
+                "movieDetail":'',
+                "movieDuration":'',
+                "movieType":'null',
+                "movieScore":null,
+                "movieBoxoffice":null,
+                "movieCommentcount":null,
+                "movieReleasedate":null,
+                "movieReleasedateStr":'null',
+                "movieCountry":'',
+                "moviePicture":'null',
+                "movieState":null,
+                "isDelete":null
+
+            },*/
             success:function (res) {
                 console.log(res)
             }
         });
-    }
-    $("#saveBtn").click(function () {
-        console.log($("#addMovieModal form").serialize());
-        saveMovie();
     });
 
     //点击头像上传
     $("#uploadBtn").click(function () {
+        $("#perForm")[0].reset();
         //显示头像上传模态框
         $('#uploadModal').modal({
             //点击背景模态框不消失
@@ -709,11 +731,6 @@
             data: formData,
             processData: false,//data是FormData对象，不需要对数据进行处理
             contentType: false,
-            /* beforeSend: function () {
-                 if (!$('#perForm').check()) {
-                     return false;
-                 }
-             },*/
             success: function (result) {
                 console.log(result);
                 if (result.code === 100) {
@@ -721,14 +738,7 @@
                     $('#uploadModal').modal("hide")
 
                 }
-                //$('#upload_img_input').fileinput('upload');//出发开始上传文件
-                /*if (result.status == 1) {
-                    var id = result.data.id;
-                    commId = id;
-                    $('#upload_img_input').fileinput('upload');//出发开始上传文件
-                } else {
 
-                }*/
             }
         });
     }
@@ -770,6 +780,62 @@
     });
 
 
+    /*动态生成演员节点*/
+    /*
+    <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="演员姓名">
+        <p>饰：</p>
+        <input type="text" class="form-control" placeholder="饰演角色">
+
+    </div>
+    <div class="col-sm-2">
+        <img src="upload/actor/addimg.jpg" alt="">
+    </div>
+    * */
+    let clickNum = 0;
+    $("#addActorInfoBtn").click(function () {
+
+        clickNum++;
+        console.log(clickNum)
+        if (clickNum%2!==0){
+            let label = $("<div class='col-sm-2'></div>");
+            let name = $("<div class='col-sm-3'></div>")
+                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
+            let img = $("<div class='col-sm-2' ></div>").append("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>")
+            $("#actorList").append(label).append(name).append(img);
+        }else {
+            let name = $("<div class='col-sm-3'></div>")
+                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
+            let img = $("<div class='col-sm-2'></div>").append("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>")
+            $("#actorList").append(name).append(img);
+        }
+    });
+    $("#delActorInfoBtn").click(function () {
+        if (clickNum%2!==0){
+            $("#actorList div").eq(-3).remove();
+            $("#actorList div").eq(-2).remove();
+            $("#actorList div").last().remove();
+        }else {
+            $("#actorList div").eq(-2).remove();
+            $("#actorList div").last().remove();
+        }
+        clickNum--;
+    });
+
+
+
+    //保存演员信息和图片
+    $(document).on("click",".actor_img",function () {
+        // $(this).attr("src","");
+        $("#perForm")[0].reset();
+        //显示头像上传模态框
+        $('#uploadModal').modal({
+            //点击背景模态框不消失
+            backdrop: "static"
+        })
+    });
 
 
 
