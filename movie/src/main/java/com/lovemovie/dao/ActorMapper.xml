@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovemovie.dao.ActorMapper">
+  <resultMap id="BaseResultMap" type="com.lovemovie.domain.Actor">
+    <id column="actor_id" jdbcType="INTEGER" property="actorId" />
+    <result column="actor_head_img" jdbcType="VARCHAR" property="actorHeadImg" />
+    <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
+    <result column="actor_name" jdbcType="VARCHAR" property="actorName" />
+    <result column="portray" jdbcType="VARCHAR" property="portray" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    actor_id, actor_head_img, is_delete, actor_name, portray
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from actor
+    where actor_id = #{actorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from actor
+    where actor_id = #{actorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovemovie.domain.Actor">
+    insert into actor (actor_id, actor_head_img, is_delete, 
+      actor_name, portray)
+    values (#{actorId,jdbcType=INTEGER}, #{actorHeadImg,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
+      #{actorName,jdbcType=VARCHAR}, #{portray,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovemovie.domain.Actor">
+    insert into actor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="actorId != null">
+        actor_id,
+      </if>
+      <if test="actorHeadImg != null">
+        actor_head_img,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="actorName != null">
+        actor_name,
+      </if>
+      <if test="portray != null">
+        portray,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="actorId != null">
+        #{actorId,jdbcType=INTEGER},
+      </if>
+      <if test="actorHeadImg != null">
+        #{actorHeadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="actorName != null">
+        #{actorName,jdbcType=VARCHAR},
+      </if>
+      <if test="portray != null">
+        #{portray,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovemovie.domain.Actor">
+    update actor
+    <set>
+      <if test="actorHeadImg != null">
+        actor_head_img = #{actorHeadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="actorName != null">
+        actor_name = #{actorName,jdbcType=VARCHAR},
+      </if>
+      <if test="portray != null">
+        portray = #{portray,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where actor_id = #{actorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovemovie.domain.Actor">
+    update actor
+    set actor_head_img = #{actorHeadImg,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=VARCHAR},
+      actor_name = #{actorName,jdbcType=VARCHAR},
+      portray = #{portray,jdbcType=VARCHAR}
+    where actor_id = #{actorId,jdbcType=INTEGER}
+  </update>
+</mapper>
