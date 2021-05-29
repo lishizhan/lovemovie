@@ -7,9 +7,10 @@
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
     <result column="actor_name" jdbcType="VARCHAR" property="actorName" />
     <result column="portray" jdbcType="VARCHAR" property="portray" />
+    <result column="movie_id" jdbcType="INTEGER" property="movieId" />
   </resultMap>
   <sql id="Base_Column_List">
-    actor_id, actor_head_img, is_delete, actor_name, portray
+    actor_id, actor_head_img, is_delete, actor_name, portray, movie_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,9 +24,11 @@
   </delete>
   <insert id="insert" parameterType="com.lovemovie.domain.Actor">
     insert into actor (actor_id, actor_head_img, is_delete, 
-      actor_name, portray)
+      actor_name, portray, movie_id
+      )
     values (#{actorId,jdbcType=INTEGER}, #{actorHeadImg,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
-      #{actorName,jdbcType=VARCHAR}, #{portray,jdbcType=VARCHAR})
+      #{actorName,jdbcType=VARCHAR}, #{portray,jdbcType=VARCHAR}, #{movieId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lovemovie.domain.Actor">
     insert into actor
@@ -45,6 +48,9 @@
       <if test="portray != null">
         portray,
       </if>
+      <if test="movieId != null">
+        movie_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="actorId != null">
@@ -61,6 +67,9 @@
       </if>
       <if test="portray != null">
         #{portray,jdbcType=VARCHAR},
+      </if>
+      <if test="movieId != null">
+        #{movieId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -79,6 +88,9 @@
       <if test="portray != null">
         portray = #{portray,jdbcType=VARCHAR},
       </if>
+      <if test="movieId != null">
+        movie_id = #{movieId,jdbcType=INTEGER},
+      </if>
     </set>
     where actor_id = #{actorId,jdbcType=INTEGER}
   </update>
@@ -87,7 +99,8 @@
     set actor_head_img = #{actorHeadImg,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=VARCHAR},
       actor_name = #{actorName,jdbcType=VARCHAR},
-      portray = #{portray,jdbcType=VARCHAR}
+      portray = #{portray,jdbcType=VARCHAR},
+      movie_id = #{movieId,jdbcType=INTEGER}
     where actor_id = #{actorId,jdbcType=INTEGER}
   </update>
 </mapper>

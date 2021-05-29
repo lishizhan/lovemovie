@@ -17,8 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -192,15 +191,11 @@ public class ManageController {
      * @param
      * @return
      */
-    @RequestMapping(value = "/saveMovie1", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
     @ResponseBody
-    public Msg saveMovie1(MovieInfo movieInfo) {
-        System.out.println("movieInfo =>>>>>>" + movieInfo);
+    public Msg saveMovie(MovieInfo movieInfo) throws ParseException {
         Msg msg=movieService.addMovie(movieInfo);
-
-        String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
-
-        return Msg.success();
+        return msg;
     }
 
     /**

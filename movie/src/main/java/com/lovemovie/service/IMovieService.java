@@ -4,6 +4,7 @@ import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.model.Msg;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -35,5 +36,5 @@ public interface IMovieService {
      * @return
      * @param movieInfo
      */
-    Msg addMovie(MovieInfo movieInfo);
+    Msg addMovie(MovieInfo movieInfo) throws ParseException;
 }

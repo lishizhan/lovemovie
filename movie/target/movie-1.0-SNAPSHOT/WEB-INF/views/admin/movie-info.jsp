@@ -747,7 +747,7 @@
     $("#saveBtn").click(function () {
         // console.log($("#addMovieModal form").serialize().split("&"));
         $.ajax({
-            url: "management/saveMovie1",
+            url: "management/saveMovie",
             type: "POST",
             data: $("#addMovieModal form").serialize(),
             success: function (res) {

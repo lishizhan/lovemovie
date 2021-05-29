@@ -5,11 +5,13 @@ public class Actor {
 
     private String actorHeadImg;
 
-    private String isDelete="1";
+    private String isDelete;
 
     private String actorName;
 
     private String portray;
+
+    private Integer movieId;
 
     public Integer getActorId() {
         return actorId;
@@ -49,5 +51,13 @@ public class Actor {
 
     public void setPortray(String portray) {
         this.portray = portray == null ? null : portray.trim();
+    }
+
+    public Integer getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
     }
 }

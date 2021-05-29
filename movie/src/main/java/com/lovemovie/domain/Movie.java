@@ -54,6 +54,29 @@ public class Movie {
         this.movieReleasedateStr = DateUtils.dateToString(movieReleasedate, "yyyy-MM-dd");;
     }
 
+    public Movie() {
+    }
+
+    public Movie(Long movieId, String movieCnName, String movieFgName, String movieActor, String movieDirector, String movieDetail, String movieDuration, String movieType, Float movieScore, Float movieBoxoffice, Long movieCommentcount, Date movieReleasedate, String movieReleasedateStr, String movieCountry, String moviePicture, Integer movieState, Integer isDelete) {
+        this.movieId = movieId;
+        this.movieCnName = movieCnName;
+        this.movieFgName = movieFgName;
+        this.movieActor = movieActor;
+        this.movieDirector = movieDirector;
+        this.movieDetail = movieDetail;
+        this.movieDuration = movieDuration;
+        this.movieType = movieType;
+        this.movieScore = movieScore;
+        this.movieBoxoffice = movieBoxoffice;
+        this.movieCommentcount = movieCommentcount;
+        this.movieReleasedate = movieReleasedate;
+        this.movieReleasedateStr = movieReleasedateStr;
+        this.movieCountry = movieCountry;
+        this.moviePicture = moviePicture;
+        this.movieState = movieState;
+        this.isDelete = isDelete;
+    }
+
     public Integer getIsDelete() {
         return isDelete;
     }
