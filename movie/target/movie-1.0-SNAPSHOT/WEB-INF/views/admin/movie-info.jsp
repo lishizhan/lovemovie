@@ -39,10 +39,12 @@
             white-space: nowrap; /*让文字不换行*/
             overflow: hidden; /*超出要隐藏*/
         }
-        #dataList tbody tr:hover{
+
+        #dataList tbody tr:hover {
             cursor: pointer;
         }
-        #actorList img{
+
+        #actorList img {
             width: 75px;
             height: 100px;
             margin-bottom: 15px;
@@ -112,44 +114,53 @@
                                         <div>
                                             <!-- form start -->
                                             <form class="form-horizontal" id="movieForm">
+                                                <input type="hidden" id="moviePicture" name="moviePicture">
                                                 <div class="box-body">
                                                     <div class="form-group">
                                                         <label for="movieCnName"
                                                                class="col-sm-2 control-label">电影名称（中文）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCnName" class="form-control"
+                                                            <input type="text" name="movieCnName" value="战狼"
+                                                                   class="form-control"
                                                                    id="movieCnName" placeholder="请输入电影中文名字">
                                                         </div>
                                                         <label for="movieFgName"
                                                                class="col-sm-2 control-label">电影名称（外语）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieFgName" class="form-control"
+                                                            <input type="text" name="movieFgName" value="zhanlang"
+                                                                   class="form-control"
                                                                    id="movieFgName" placeholder="请输入电影英文名字">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="movieDirector" class="col-sm-2 control-label">导演</label>
+                                                        <label for="movieDirector"
+                                                               class="col-sm-2 control-label">导演</label>
                                                         <div class="col-sm-3">
                                                             <input type="text" name="movieDirector"
-                                                                   value="${movie.movieDirector}" class="form-control"
+                                                                   value="吴京" class="form-control"
                                                                    id="movieDirector">
+                                                            <input type="hidden" id="directorImgPath" name="directorImg" value="">
+
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <img src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                            <img id="directorImg" src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">演员</label>
-                                                        <input type="hidden" name="movieActor" value="lishiz">
                                                         <div class="col-sm-4">
-                                                            <button id="addActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
-                                                            <button id="delActorInfoBtn" type="button" class="btn btn-info"><i class="glyphicon glyphicon-minus"></i></button>
+                                                            <button id="addActorInfoBtn" type="button"
+                                                                    class="btn btn-info"><i
+                                                                    class="glyphicon glyphicon-plus"></i></button>
+                                                            <button id="delActorInfoBtn" type="button"
+                                                                    class="btn btn-info"><i
+                                                                    class="glyphicon glyphicon-minus"></i></button>
 
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="actorList">
-<!--                                                        <label class="col-sm-2 control-label"></label>-->
+                                                        <!--                                                        <label class="col-sm-2 control-label"></label>-->
                                                         <!--动态生成-->
                                                     </div>
                                                     <div class="form-group">
@@ -157,7 +168,8 @@
                                                                class="col-sm-2 control-label">介绍</label>
                                                         <div class="col-sm-10">
                                                             <textarea style="resize:none;" class="form-control" rows="4"
-                                                                      name="movieDetail" id="movieDetail"></textarea>
+                                                                      name="movieDetail"
+                                                                      id="movieDetail">123123</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -165,28 +177,32 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="0"> 爱情
+                                                                    <input type="checkbox" checked name="movieType"
+                                                                           value="0"> 爱情
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="1"> 惊悚
+                                                                    <input type="checkbox" name="movieType" value="1">
+                                                                    惊悚
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="2"> 科幻
+                                                                    <input type="checkbox" checked name="movieType"
+                                                                           value="2"> 科幻
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="3">动作
+                                                                    <input type="checkbox" checked name="movieType"
+                                                                           value="3">动作
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -197,24 +213,27 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-2 pull-right" >
+                                                        <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="5"> 犯罪
+                                                                    <input type="checkbox" name="movieType" value="5">
+                                                                    犯罪
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="6"> 冒险
+                                                                    <input type="checkbox" name="movieType" value="6">
+                                                                    冒险
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2 pull-right">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" name="movieType" value="7"> 战争
+                                                                    <input type="checkbox" name="movieType" value="7">
+                                                                    战争
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -265,12 +284,14 @@
                                                         <label for="movieDuration"
                                                                class="col-sm-2 control-label">时长</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieDuration" class="form-control"
-                                                                   id="movieDuration" placeholder="请输入电影时长">
+                                                            <input type="text" name="movieDuration" value="127"
+                                                                   class="form-control" id="movieDuration"
+                                                                   placeholder="请输入电影时长">
                                                         </div>
                                                         <label for="movieReleasedate" class="col-sm-2 control-label">上映时间</label>
                                                         <div class="col-sm-4">
                                                             <input type="date" name="movieReleasedate"
+                                                                   value="2021-12-12"
                                                                    class="form-control" id="movieReleasedate"
                                                                    placeholder="请输入电影上映时间">
                                                         </div>
@@ -279,12 +300,13 @@
                                                         <label for="movieCountry"
                                                                class="col-sm-2 control-label">制片地区</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCountry" class="form-control"
+                                                            <input type="text" name="movieCountry" value="中国"
+                                                                   class="form-control"
                                                                    id="movieCountry" placeholder="请输入电影制片地区">
                                                         </div>
                                                         <label class="col-sm-2 control-label">状态</label>
                                                         <div class="col-sm-4">
-                                                            <select class="form-control">
+                                                            <select class="form-control" name="movieState">
                                                                 <option value="0">正在上映</option>
                                                                 <option value="1">已经下架</option>
                                                             </select>
@@ -304,7 +326,8 @@
                                                      src="upload/actor/addimg.jpg"
                                                      alt="User profile picture">
                                                 <p class="text-center" style="color: #000;margin-top: 10px">
-                                                    <button id="uploadBtn" class="btn btn-danger">添加电影海报</button>
+                                                    <button id="uploadMovieImgBtn" class="btn btn-danger">添加电影海报
+                                                    </button>
                                                 </p>
                                             </div>
                                             <!-- /.box-body -->
@@ -328,7 +351,8 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span>
                             </button>
                             <h4 class="modal-title">上传电影海报</h4>
                         </div>
@@ -339,7 +363,55 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" onclick="save()">上传</button>
+                            <!--                            <button type="button" id="uploadImg" class="btn btn-primary" onclick="save()">上传</button>-->
+                            <button type="button" id="uploadImg" class="btn btn-primary">上传</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <!--头像上传-->
+            <div class="modal fade" id="uploadModalActor" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">上传演员头像</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="perFormActor" class="add_form" enctype="multipart/form-data">
+                                <input type="file" class="file-loading" name="upload" id="upload_img_input_actor" multiple/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <!--                            <button type="button" id="uploadImg" class="btn btn-primary" onclick="save()">上传</button>-->
+                            <button type="button" id="uploadImgActor" class="btn btn-primary">上传</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--导演头像上传-->
+            <div class="modal fade" id="uploadModalDirector" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">上传导演头像</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="perFormDirector" class="add_form" enctype="multipart/form-data">
+                                <input type="file" class="file-loading" name="upload" id="upload_img_input_director" multiple/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <!--                            <button type="button" id="uploadImg" class="btn btn-primary" onclick="save()">上传</button>-->
+                            <button type="button" id="uploadImgDirector" class="btn btn-primary">上传</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -382,7 +454,7 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="搜索">
+                                <input type="text"  class="form-control input-sm" placeholder="搜索">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </div>
@@ -500,8 +572,6 @@
         // 激活导航位置
         setSidebarActive("movie-info");
     });
-
-
 
 
     /*展示电影基本信息*/
@@ -672,59 +742,63 @@
 
     $("#saveBtn").click(function () {
         console.log($("#addMovieModal form").serialize().split("&"));
+        console.log($("#addMovieModal form").serialize().split("&"));
         $.ajax({
-            url: "management/saveMovie",
+            url: "management/saveMovie1",
             type: "POST",
             data: $("#addMovieModal form").serialize(),
-                /*{
-                "movie":$("#addMovieModal form").serialize(),
-                "num":123123
-               "movieId":null,
-                "movieCnName":'asdf',
-                "movieFgName":'asdf',
-                "movieActor":'null',
-                "movieDirector":'adf',
-                "movieDetail":'',
-                "movieDuration":'',
-                "movieType":'null',
-                "movieScore":null,
-                "movieBoxoffice":null,
-                "movieCommentcount":null,
-                "movieReleasedate":null,
-                "movieReleasedateStr":'null',
-                "movieCountry":'',
-                "moviePicture":'null',
-                "movieState":null,
-                "isDelete":null
+            /*{
+            "movie":$("#addMovieModal form").serialize(),
+            "num":123123
+           "movieId":null,
+            "movieCnName":'asdf',
+            "movieFgName":'asdf',
+            "movieActor":'null',
+            "movieDirector":'adf',
+            "movieDetail":'',
+            "movieDuration":'',
+            "movieType":'null',
+            "movieScore":null,
+            "movieBoxoffice":null,
+            "movieCommentcount":null,
+            "movieReleasedate":null,
+            "movieReleasedateStr":'null',
+            "movieCountry":'',
+            "moviePicture":'null',
+            "movieState":null,
+            "isDelete":null
 
-            },*/
-            success:function (res) {
+        },*/
+            success: function (res) {
                 console.log(res)
             }
         });
     });
 
-    //点击头像上传
-    $("#uploadBtn").click(function () {
+    //点击电影上传
+    $("#uploadMovieImgBtn").click(function () {
         $("#perForm")[0].reset();
         //显示头像上传模态框
         $('#uploadModal').modal({
             //点击背景模态框不消失
             backdrop: "static"
         })
+        $("#uploadImg").click(function () {
+            save('management/uploadMovieImg',"#headimg");
+        });
     });
 
     let commId;
 
     //点击保存按钮
-    function save() {
+    function save(urlImg,eleImg) {
         if ($('#upload_img_input').fileinput("getFilesCount") <= 0) {//获取文件个数
             alert("请上传图片")
             return false;
         }
         let formData = new FormData($('#perForm')[0]);
         $.ajax({
-            url: 'management/uploadMovieImg',
+            url: urlImg,
             type: 'post',
             dataType: "json",
             cache: false,//上传文件不需要缓存
@@ -734,11 +808,10 @@
             success: function (result) {
                 console.log(result);
                 if (result.code === 100) {
-                    $("#headimg").attr("src", result.extend.movieImg);
+                    $(eleImg).attr("src", result.extend.movieImg);
+                    $("#moviePicture").attr("value",result.extend.movieImg);
                     $('#uploadModal').modal("hide")
-
                 }
-
             }
         });
     }
@@ -762,18 +835,8 @@
                 showUpload: false,
             },
             mainClass: "input-group-lg",
-            /*uploadExtraData: function (previewId, index) {
-                return {
-                    'id': commId
-                };
-            }*///上传时携带的额外的参数
         }).on("filebatchuploadsuccess", function (event, data) {
-
-            console.log(data);
-
-            /*if (data.response.status == 1) {
-                alert('上传成功');
-            }*/
+            // console.log(data);
         });
 
 
@@ -797,27 +860,29 @@
 
         clickNum++;
         console.log(clickNum)
-        if (clickNum%2!==0){
+        if (clickNum % 2 !== 0) {
             let label = $("<div class='col-sm-2'></div>");
             let name = $("<div class='col-sm-3'></div>")
-                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
-                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
-            let img = $("<div class='col-sm-2' ></div>").append("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>")
-            $("#actorList").append(label).append(name).append(img);
-        }else {
+                .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
+            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img"+clickNum)
+            let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
+            $("#actorList").append(label).append(name).append(div);
+        } else {
             let name = $("<div class='col-sm-3'></div>")
-                .append("<input type='text' class='form-control' placeholder='演员姓名'>")
-                .append("<p>饰：</p>").append("<input type='text' class='form-control' placeholder='饰演角色'>");
-            let img = $("<div class='col-sm-2'></div>").append("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>")
-            $("#actorList").append(name).append(img);
+                .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
+            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img"+clickNum)
+            let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
+            $("#actorList").append(name).append(div);
         }
     });
     $("#delActorInfoBtn").click(function () {
-        if (clickNum%2!==0){
+        if (clickNum % 2 !== 0) {
             $("#actorList div").eq(-3).remove();
             $("#actorList div").eq(-2).remove();
             $("#actorList div").last().remove();
-        }else {
+        } else {
             $("#actorList div").eq(-2).remove();
             $("#actorList div").last().remove();
         }
@@ -825,21 +890,144 @@
     });
 
 
+    //保存演员信息和图片-------------------------------------------------------------------------------------------------
 
-    //保存演员信息和图片
-    $(document).on("click",".actor_img",function () {
+    //点击保存按钮
+    function saveActor(urlImg,eleImg) {
+        // console.log($(eleImg).next().attr("value"));
+        if ($('#upload_img_input_actor').fileinput("getFilesCount") <= 0) {//获取文件个数
+            alert("请上传图片")
+            return false;
+        }
+        let formData = new FormData($('#perFormActor')[0]);
+        $.ajax({
+            url: urlImg,
+            type: 'post',
+            dataType: "json",
+            cache: false,//上传文件不需要缓存
+            data: formData,
+            processData: false,//data是FormData对象，不需要对数据进行处理
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                if (result.code === 100) {
+                    $(eleImg).attr("src", result.extend.movieImg);
+                    $(eleImg).next().attr("value",result.extend.movieImg)
+                    $('#uploadModalActor').modal("hide")
+                }
+            }
+        });
+    }
+
+    // 初始化
+    $(document).ready(function () {
+        $('#upload_img_input_actor').fileinput({
+            language: 'zh',     //设置语言
+            dropZoneEnabled: true,      //是否显示拖拽区域
+            dropZoneTitle: "上传头像",    //拖拽区域显示文字
+            uploadUrl: '',  //上传路径user/uploadHeadImg
+            showCaption: false,//是否显示标题
+            showUpload: false,//是否显示上传按钮
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],   //指定上传文件类型
+            maxFileSize: 2048,   //上传文件最大值，单位kb
+            uploadAsync: true,  //异步上传
+            maxFileCount: 1,  //上传文件最大个数。
+            autoReplace: true,
+            showRemove: false,
+            fileActionSettings: {
+                showUpload: false,
+            },
+            mainClass: "input-group-lg",
+        }).on("filebatchuploadsuccess", function (event, data) {
+            // console.log(data);
+        });
+
+
+    });
+
+    let pathImg="";
+    $(document).on("click", ".actor_img", function () {
         // $(this).attr("src","");
-        $("#perForm")[0].reset();
+        $("#perFormActor")[0].reset();
         //显示头像上传模态框
-        $('#uploadModal').modal({
+        $('#uploadModalActor').modal({
             //点击背景模态框不消失
             backdrop: "static"
         })
+        pathImg = "."+$(this).attr("class").split(" ")[1];
+
+    });
+    $("#uploadImgActor").click(function () {
+        saveActor('management/uploadActorHeadImg', pathImg);
     });
 
 
 
+    /*保存导演头像*/
+    $("#directorImg").click(function () {
+        $("#perFormDirector")[0].reset();
+        //显示头像上传模态框
+        $('#uploadModalDirector').modal({
+            //点击背景模态框不消失
+            backdrop: "static"
+        })
+    });
+    $("#uploadImgDirector").click(function () {
+        saveDirector("management/uploadActorHeadImg","#directorImg")
+    });
 
+    //点击保存按钮
+    function saveDirector(urlImg,eleImg) {
+        // console.log($(eleImg).next().attr("value"));
+        if ($('#upload_img_input_director').fileinput("getFilesCount") <= 0) {//获取文件个数
+            alert("请上传图片")
+            return false;
+        }
+        let formData = new FormData($('#perFormDirector')[0]);
+        $.ajax({
+            url: urlImg,
+            type: 'post',
+            dataType: "json",
+            cache: false,//上传文件不需要缓存
+            data: formData,
+            processData: false,//data是FormData对象，不需要对数据进行处理
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                if (result.code === 100) {
+                    $(eleImg).attr("src", result.extend.movieImg);
+                    $("#directorImgPath").attr("value",result.extend.movieImg)
+                    $('#uploadModalDirector').modal("hide")
+                }
+            }
+        });
+    }
+
+    // 初始化
+    $(document).ready(function () {
+        $('#upload_img_input_director').fileinput({
+            language: 'zh',     //设置语言
+            dropZoneEnabled: true,      //是否显示拖拽区域
+            dropZoneTitle: "上传头像",    //拖拽区域显示文字
+            uploadUrl: '',  //上传路径user/uploadHeadImg
+            showCaption: false,//是否显示标题
+            showUpload: false,//是否显示上传按钮
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],   //指定上传文件类型
+            maxFileSize: 2048,   //上传文件最大值，单位kb
+            uploadAsync: true,  //异步上传
+            maxFileCount: 1,  //上传文件最大个数。
+            autoReplace: true,
+            showRemove: false,
+            fileActionSettings: {
+                showUpload: false,
+            },
+            mainClass: "input-group-lg",
+        }).on("filebatchuploadsuccess", function (event, data) {
+            // console.log(data);
+        });
+
+
+    });
 
 
 </script>

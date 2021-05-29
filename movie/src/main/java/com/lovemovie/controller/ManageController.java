@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
+import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.IMovieService;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -158,15 +160,45 @@ public class ManageController {
     /**
      * 添加电影
      *
-     * @param movie
+     * @param
      * @return
      */
     @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
     @ResponseBody
-    public Msg saveMovie(Movie movie) {
-        System.out.println("movie = >>>>>>>>>>>>" + movie);
+    public Msg saveMovie(String movieCnName, String movieFgName, String movieDirector,String directorImg, String movieDetail, String movieDuration, String movieType, String movieReleasedate, String movieCountry, String moviePicture,String movieState,String movieActor,String movieActorPortray,String movieActorImgPath) {
+        System.out.println("movieCnName = " + movieCnName);
+        System.out.println("movieFgName = " + movieFgName);
+        System.out.println("movieDirector = " + movieDirector);
+        System.out.println("directorImg = " + directorImg);
+        System.out.println("movieDetail = " + movieDetail);
+        System.out.println("movieDuration = " + movieDuration);
+        System.out.println("movieType = " + movieType);
+        System.out.println("movieReleasedate = " + movieReleasedate);
+        System.out.println("movieCountry = " + movieCountry);
+        System.out.println("moviePicture = " + moviePicture);
+        System.out.println("movieState = " + movieState);
+        System.out.println("movieActor = " + movieActor);
+        System.out.println("movieActorPortray = " + movieActorPortray);
+        System.out.println("movieActorImgPath = " + movieActorImgPath);
+
+
         String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
-        System.out.println(movie.getMovieType());
+
+        return Msg.success();
+    }
+    /**
+     * 添加电影
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/saveMovie1", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg saveMovie1(MovieInfo movieInfo) {
+        System.out.println("movieInfo =>>>>>>" + movieInfo);
+
+        String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
+
         return Msg.success();
     }
 
@@ -206,7 +238,7 @@ public class ManageController {
      */
     @RequestMapping(value = "/uploadMovieImg")
     @ResponseBody
-    public Msg uploadHeadImg(MultipartFile upload, HttpServletRequest request) throws Exception {
+    public Msg uploadMovieImg(MultipartFile upload, HttpServletRequest request) throws Exception {
         String path = ImageUtils.uploadMovieImg(request, upload);
         System.out.println("path =>>>>>>>>" + path);
         return Msg.success().add("movieImg", path);
