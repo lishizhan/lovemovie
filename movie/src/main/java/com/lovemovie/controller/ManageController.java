@@ -163,7 +163,7 @@ public class ManageController {
      * @param
      * @return
      */
-    @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveMovie(String movieCnName, String movieFgName, String movieDirector,String directorImg, String movieDetail, String movieDuration, String movieType, String movieReleasedate, String movieCountry, String moviePicture,String movieState,String movieActor,String movieActorPortray,String movieActorImgPath) {
         System.out.println("movieCnName = " + movieCnName);
@@ -185,7 +185,7 @@ public class ManageController {
         String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
 
         return Msg.success();
-    }
+    }*/
     /**
      * 添加电影
      *
@@ -196,6 +196,7 @@ public class ManageController {
     @ResponseBody
     public Msg saveMovie1(MovieInfo movieInfo) {
         System.out.println("movieInfo =>>>>>>" + movieInfo);
+        Msg msg=movieService.addMovie(movieInfo);
 
         String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
 

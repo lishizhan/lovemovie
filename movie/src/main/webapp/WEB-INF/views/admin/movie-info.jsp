@@ -101,7 +101,7 @@
             <!--添加电影模态窗口-->
             <div class="tab-pane" id="tab-model">
                 <div class="modal fade in" id="addMovieModal">
-                    <div class="modal-dialog modal-lg" style="top: 0">
+                    <div class="modal-dialog modal-lg" role="document" style="top: 0">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -732,6 +732,10 @@
 
     /*添加电影*/
     $(".info-box").click(function () {
+        $('#movieForm')[0].reset()
+        $("#actorList").empty();
+        $("#headimg").attr("src","upload/actor/addimg.jpg");
+        $("#directorImg").attr("src","upload/actor/addimg.jpg")
         //显示模态框
         $('#addMovieModal').modal({
             //点击背景模态框不消失
@@ -741,34 +745,11 @@
 
 
     $("#saveBtn").click(function () {
-        console.log($("#addMovieModal form").serialize().split("&"));
-        console.log($("#addMovieModal form").serialize().split("&"));
+        // console.log($("#addMovieModal form").serialize().split("&"));
         $.ajax({
             url: "management/saveMovie1",
             type: "POST",
             data: $("#addMovieModal form").serialize(),
-            /*{
-            "movie":$("#addMovieModal form").serialize(),
-            "num":123123
-           "movieId":null,
-            "movieCnName":'asdf',
-            "movieFgName":'asdf',
-            "movieActor":'null',
-            "movieDirector":'adf',
-            "movieDetail":'',
-            "movieDuration":'',
-            "movieType":'null',
-            "movieScore":null,
-            "movieBoxoffice":null,
-            "movieCommentcount":null,
-            "movieReleasedate":null,
-            "movieReleasedateStr":'null',
-            "movieCountry":'',
-            "moviePicture":'null',
-            "movieState":null,
-            "isDelete":null
-
-        },*/
             success: function (res) {
                 console.log(res)
             }
@@ -777,7 +758,6 @@
 
     //点击电影上传
     $("#uploadMovieImgBtn").click(function () {
-        $("#perForm")[0].reset();
         //显示头像上传模态框
         $('#uploadModal').modal({
             //点击背景模态框不消失

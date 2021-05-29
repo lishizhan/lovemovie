@@ -2,6 +2,8 @@ package com.lovemovie.service.impl;
 
 import com.lovemovie.dao.MovieMapper;
 import com.lovemovie.domain.Movie;
+import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.model.Msg;
 import com.lovemovie.service.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +37,16 @@ public class MovieServiceImpl implements IMovieService {
         List<Movie> allMovies = movieMapper.findMoviesAll();
 
         return allMovies;
+    }
+
+    @Override
+    public Msg addMovie(MovieInfo movieInfo) {
+        //字段校验
+
+
+
+
+
+        return null;
     }
 }

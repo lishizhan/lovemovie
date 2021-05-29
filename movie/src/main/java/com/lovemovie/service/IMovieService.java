@@ -1,6 +1,8 @@
 package com.lovemovie.service;
 
 import com.lovemovie.domain.Movie;
+import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.model.Msg;
 
 import java.util.List;
 
@@ -27,4 +29,11 @@ public interface IMovieService {
      * @return
      */
     List<Movie> findAllMovies();
+
+    /**
+     * 添加电影
+     * @return
+     * @param movieInfo
+     */
+    Msg addMovie(MovieInfo movieInfo);
 }
