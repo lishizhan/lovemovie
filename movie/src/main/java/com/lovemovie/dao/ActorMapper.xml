@@ -2,32 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lovemovie.dao.ActorMapper">
   <resultMap id="BaseResultMap" type="com.lovemovie.domain.Actor">
-    <id column="actor_id" jdbcType="INTEGER" property="actorId" />
+    <id column="actor_id" jdbcType="VARCHAR" property="actorId" />
     <result column="actor_head_img" jdbcType="VARCHAR" property="actorHeadImg" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
     <result column="actor_name" jdbcType="VARCHAR" property="actorName" />
     <result column="portray" jdbcType="VARCHAR" property="portray" />
-    <result column="movie_id" jdbcType="INTEGER" property="movieId" />
+    <result column="movie_name" jdbcType="VARCHAR" property="movieName" />
   </resultMap>
   <sql id="Base_Column_List">
-    actor_id, actor_head_img, is_delete, actor_name, portray, movie_id
+    actor_id, actor_head_img, is_delete, actor_name, portray, movie_name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from actor
-    where actor_id = #{actorId,jdbcType=INTEGER}
+    where actor_id = #{actorId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from actor
-    where actor_id = #{actorId,jdbcType=INTEGER}
+    where actor_id = #{actorId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.lovemovie.domain.Actor">
     insert into actor (actor_id, actor_head_img, is_delete, 
-      actor_name, portray, movie_id
+      actor_name, portray, movie_name
       )
-    values (#{actorId,jdbcType=INTEGER}, #{actorHeadImg,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
-      #{actorName,jdbcType=VARCHAR}, #{portray,jdbcType=VARCHAR}, #{movieId,jdbcType=INTEGER}
+    values (#{actorId,jdbcType=VARCHAR}, #{actorHeadImg,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, 
+      #{actorName,jdbcType=VARCHAR}, #{portray,jdbcType=VARCHAR}, #{movieName,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lovemovie.domain.Actor">
@@ -48,13 +48,13 @@
       <if test="portray != null">
         portray,
       </if>
-      <if test="movieId != null">
-        movie_id,
+      <if test="movieName != null">
+        movie_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="actorId != null">
-        #{actorId,jdbcType=INTEGER},
+        #{actorId,jdbcType=VARCHAR},
       </if>
       <if test="actorHeadImg != null">
         #{actorHeadImg,jdbcType=VARCHAR},
@@ -68,8 +68,8 @@
       <if test="portray != null">
         #{portray,jdbcType=VARCHAR},
       </if>
-      <if test="movieId != null">
-        #{movieId,jdbcType=INTEGER},
+      <if test="movieName != null">
+        #{movieName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -88,11 +88,11 @@
       <if test="portray != null">
         portray = #{portray,jdbcType=VARCHAR},
       </if>
-      <if test="movieId != null">
-        movie_id = #{movieId,jdbcType=INTEGER},
+      <if test="movieName != null">
+        movie_name = #{movieName,jdbcType=VARCHAR},
       </if>
     </set>
-    where actor_id = #{actorId,jdbcType=INTEGER}
+    where actor_id = #{actorId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lovemovie.domain.Actor">
     update actor
@@ -100,7 +100,7 @@
       is_delete = #{isDelete,jdbcType=VARCHAR},
       actor_name = #{actorName,jdbcType=VARCHAR},
       portray = #{portray,jdbcType=VARCHAR},
-      movie_id = #{movieId,jdbcType=INTEGER}
-    where actor_id = #{actorId,jdbcType=INTEGER}
+      movie_name = #{movieName,jdbcType=VARCHAR}
+    where actor_id = #{actorId,jdbcType=VARCHAR}
   </update>
 </mapper>

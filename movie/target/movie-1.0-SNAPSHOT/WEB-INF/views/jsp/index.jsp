@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/index.css">
-
+    <!-- 引入网页图标 -->
+    <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
     <script src="static/bootstrap/Jquery/jquery.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <!--    <script src="static/js/logout.js"></script>-->
-    <title>Title</title>
+    <title>love movie</title>
 </head>
 
 <body>

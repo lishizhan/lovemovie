@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/index.css">
     <link rel="stylesheet" href="static/css/register.css">
-
+    <!-- 引入网页图标 -->
+    <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
     <script src="static/bootstrap/Jquery/jquery.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
 
@@ -56,6 +57,7 @@
                     style="width: 100%;height: 50px;font-size: 18px;">注&nbsp;&nbsp;册
             </button>
             <p class="text-right" style="margin-top: 20px">
+                <a href="view/index" style="margin-right: 220px">返回首页</a>
                 <span>已有账号？</span>
                 <a href="view/goLogin">去登陆</a>
             </p>

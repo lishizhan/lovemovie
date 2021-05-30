@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/index.css">
     <link rel="stylesheet" href="static/css/login.css">
+    <!-- 引入网页图标 -->
+    <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
     <title>登陆</title>
 </head>
 
@@ -22,6 +24,7 @@
     </div>
     <div class="box-r">
         <form method="post">
+
             <h2>欢迎登陆电影售票系统</h2>
             <!--            <p class="text-success">...</p>-->
             <p class="text-danger" id="msg"></p>
@@ -29,18 +32,23 @@
                 <input type="text" value="admin" name="userName" class="form-control" id="userName" placeholder="用户名">
             </div>
             <div>
-                <input type="password" value="admin" name="userPwd" class="form-control" id="userPwd" placeholder="请输入6~12数字字母密码">
+                <input type="password" value="admin" name="userPwd" class="form-control" id="userPwd"
+                       placeholder="请输入6~12数字字母密码">
             </div>
             <div class="verify-code">
-                <input type="password" name="code" class="form-control"  placeholder="输入验证码">
+                <input type="text" name="code" class="form-control" placeholder="输入验证码">
                 <a href="JavaScript:;"><img src="verification" width="100%" alt=""></a>
             </div>
-            <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;font-size: 18px;">登 &nbsp;陆</button>
+            <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;font-size: 18px;">登 &nbsp;陆
+            </button>
+
+
             <p class="text-right" style="margin-top: 20px">
+                <a href="view/index" style="margin-right: 220px">返回首页</a>
                 <span>没有账号？</span>
                 <a href="view/goRegister">去注册</a>
-
             </p>
+
         </form>
     </div>
 
@@ -51,8 +59,8 @@
 <script>
     $(function () {
         $(".verify-code img").click(function () {
-            let date=new Date().getTime();
-            $(".verify-code img").attr("src","verification?"+date);
+            let date = new Date().getTime();
+            $(".verify-code img").attr("src", "verification?" + date);
         });
 
 
@@ -62,36 +70,36 @@
             let code = $("[name=code]").val().trim();
 
             //非空校验
-            if (userName==='' || userPwd==='' ||code ===''){
+            if (userName === '' || userPwd === '' || code === '') {
                 alert("请输入用户名密码进行登陆！！")
                 return false;
             }
             $.ajax({
-                url:"user/login",
-                data:{
-                    "userName":userName,
-                    "userPwd":userPwd,
-                    "code":code
+                url: "user/login",
+                data: {
+                    "userName": userName,
+                    "userPwd": userPwd,
+                    "code": code
                 },
-                type:"POST",
-                success:function (res) {
+                type: "POST",
+                success: function (res) {
                     console.log(res);
                     //判断用户是否是管理员
-                    if (res.code===100 && res.extend.msg==="adminSuccess"){
+                    if (res.code === 100 && res.extend.msg === "adminSuccess") {
                         //登陆成功
                         // console.log("登陆成功！！！");
-                        window.location.href="management/index";
-                        $("#msg").text("");
-                        return true ;
-                    }else if (res.code===100 && res.extend.msg==="userSuccess"){
-                        window.location.href="view/index";
+                        window.location.href = "management/index";
                         $("#msg").text("");
                         return true;
-                    }else {
+                    } else if (res.code === 100 && res.extend.msg === "userSuccess") {
+                        window.location.href = "view/index";
+                        $("#msg").text("");
+                        return true;
+                    } else {
                         //登陆失败
                         $("#msg").text(res.msg);
-                        let date=new Date().getTime();
-                        $(".verify-code img").attr("src","verification?"+date);
+                        let date = new Date().getTime();
+                        $(".verify-code img").attr("src", "verification?" + date);
                         return false;
                     }
 
@@ -103,11 +111,7 @@
     })
 
 
-
-
-
 </script>
-
 
 
 </body>

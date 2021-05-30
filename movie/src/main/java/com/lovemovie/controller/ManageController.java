@@ -155,36 +155,6 @@ public class ManageController {
 
     }
 
-
-    /**
-     * 添加电影
-     *
-     * @param
-     * @return
-     */
-    /*@RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
-    @ResponseBody
-    public Msg saveMovie(String movieCnName, String movieFgName, String movieDirector,String directorImg, String movieDetail, String movieDuration, String movieType, String movieReleasedate, String movieCountry, String moviePicture,String movieState,String movieActor,String movieActorPortray,String movieActorImgPath) {
-        System.out.println("movieCnName = " + movieCnName);
-        System.out.println("movieFgName = " + movieFgName);
-        System.out.println("movieDirector = " + movieDirector);
-        System.out.println("directorImg = " + directorImg);
-        System.out.println("movieDetail = " + movieDetail);
-        System.out.println("movieDuration = " + movieDuration);
-        System.out.println("movieType = " + movieType);
-        System.out.println("movieReleasedate = " + movieReleasedate);
-        System.out.println("movieCountry = " + movieCountry);
-        System.out.println("moviePicture = " + moviePicture);
-        System.out.println("movieState = " + movieState);
-        System.out.println("movieActor = " + movieActor);
-        System.out.println("movieActorPortray = " + movieActorPortray);
-        System.out.println("movieActorImgPath = " + movieActorImgPath);
-
-
-        String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
-
-        return Msg.success();
-    }*/
     /**
      * 添加电影
      *
@@ -194,6 +164,8 @@ public class ManageController {
     @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveMovie(MovieInfo movieInfo) throws ParseException {
+
+        //保存电影
         Msg msg=movieService.addMovie(movieInfo);
         return msg;
     }
@@ -239,6 +211,16 @@ public class ManageController {
         System.out.println("path =>>>>>>>>" + path);
         return Msg.success().add("movieImg", path);
     }
+
+    @RequestMapping(value = "/queryByMovieName")
+    @ResponseBody
+    public Msg isExistMovieByName(String movieName){
+        System.out.println("movieName =>>>> " + movieName);
+        Msg msg = movieService.findMovieNameIsExist(movieName);
+        return msg;
+    }
+
+
 
 
 }

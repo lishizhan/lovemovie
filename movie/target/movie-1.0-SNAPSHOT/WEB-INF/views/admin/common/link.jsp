@@ -32,3 +32,5 @@
 <link rel="stylesheet" href="admin/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <link rel="stylesheet" href="admin/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet" href="admin/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+<!-- 引入网页图标 -->
+<link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">

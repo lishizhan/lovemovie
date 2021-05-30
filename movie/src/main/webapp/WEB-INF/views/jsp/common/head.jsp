@@ -1,11 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <body style="padding-top: 180px">
 <!--页面头部 开始-->
 <header class="navbar-fixed-top">
     <div class="header-body w">
         <div class="logo">
-<!--            <img src="static/images/logo/logo.png" alt="">-->
+            <img src="static/images/logo/logo6.png" alt="" style="height: 72px;width: 210px;">
         </div>
         <div class="search">
             <form action="#">

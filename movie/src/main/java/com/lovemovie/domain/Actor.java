@@ -1,24 +1,24 @@
 package com.lovemovie.domain;
 
 public class Actor {
-    private Integer actorId;
+    private String actorId;
 
     private String actorHeadImg;
 
-    private String isDelete;
+    private String isDelete="1";
 
     private String actorName;
 
     private String portray;
 
-    private Integer movieId;
+    private String movieName;
 
-    public Integer getActorId() {
+    public String getActorId() {
         return actorId;
     }
 
-    public void setActorId(Integer actorId) {
-        this.actorId = actorId;
+    public void setActorId(String actorId) {
+        this.actorId = actorId == null ? null : actorId.trim();
     }
 
     public String getActorHeadImg() {
@@ -53,11 +53,23 @@ public class Actor {
         this.portray = portray == null ? null : portray.trim();
     }
 
-    public Integer getMovieId() {
-        return movieId;
+    public String getMovieName() {
+        return movieName;
     }
 
-    public void setMovieId(Integer movieId) {
-        this.movieId = movieId;
+    public void setMovieName(String movieName) {
+        this.movieName = movieName == null ? null : movieName.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "actorId='" + actorId + '\'' +
+                ", actorHeadImg='" + actorHeadImg + '\'' +
+                ", isDelete='" + isDelete + '\'' +
+                ", actorName='" + actorName + '\'' +
+                ", portray='" + portray + '\'' +
+                ", movieName='" + movieName + '\'' +
+                '}';
     }
 }

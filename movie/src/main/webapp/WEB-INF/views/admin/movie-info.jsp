@@ -50,6 +50,11 @@
             margin-bottom: 15px;
         }
 
+        #addMovieModal .modal-body {
+            height: 575px;
+            overflow: auto
+        }
+
 
     </style>
 </head>
@@ -114,36 +119,41 @@
                                         <div>
                                             <!-- form start -->
                                             <form class="form-horizontal" id="movieForm">
-                                                <input type="hidden" id="moviePicture" name="moviePicture">
+                                                <input movie-input type="hidden" id="moviePicture" name="moviePicture">
                                                 <div class="box-body">
                                                     <div class="form-group">
                                                         <label for="movieCnName"
                                                                class="col-sm-2 control-label">电影名称（中文）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCnName" value="战狼"
+                                                            <input type="text" name="movieCnName"
                                                                    class="form-control"
                                                                    id="movieCnName" placeholder="请输入电影中文名字">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <label for="movieFgName"
                                                                class="col-sm-2 control-label">电影名称（外语）</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieFgName" value="zhanlang"
+                                                            <input movie-input type="text" name="movieFgName"
                                                                    class="form-control"
                                                                    id="movieFgName" placeholder="请输入电影英文名字">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="movieDirector"
                                                                class="col-sm-2 control-label">导演</label>
                                                         <div class="col-sm-3">
-                                                            <input type="text" name="movieDirector"
-                                                                   value="吴京" class="form-control"
+                                                            <input movie-input type="text" name="movieDirector"
+                                                                   class="form-control"
                                                                    id="movieDirector">
-                                                            <input type="hidden" id="directorImgPath" name="directorImg" value="">
+                                                            <span class="help-block"></span>
+                                                            <input movie-input type="hidden" id="directorImgPath" name="directorImg"
+                                                                   value="">
 
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <img id="directorImg" src="upload/actor/addimg.jpg" alt="" style="width: 66px;height: 80px;">
+                                                            <img id="directorImg" src="upload/actor/addimg.jpg" alt=""
+                                                                 style="width: 66px;height: 80px;">
                                                         </div>
                                                     </div>
 
@@ -169,7 +179,7 @@
                                                         <div class="col-sm-10">
                                                             <textarea style="resize:none;" class="form-control" rows="4"
                                                                       name="movieDetail"
-                                                                      id="movieDetail">123123</textarea>
+                                                                      id="movieDetail"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -284,31 +294,33 @@
                                                         <label for="movieDuration"
                                                                class="col-sm-2 control-label">时长</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieDuration" value="127"
+                                                            <input movie-input type="text" name="movieDuration"
                                                                    class="form-control" id="movieDuration"
                                                                    placeholder="请输入电影时长">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <label for="movieReleasedate" class="col-sm-2 control-label">上映时间</label>
                                                         <div class="col-sm-4">
-                                                            <input type="date" name="movieReleasedate"
-                                                                   value="2021-12-12"
+                                                            <input movie-input type="date" name="movieReleasedate"
                                                                    class="form-control" id="movieReleasedate"
                                                                    placeholder="请输入电影上映时间">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="movieCountry"
                                                                class="col-sm-2 control-label">制片地区</label>
                                                         <div class="col-sm-4">
-                                                            <input type="text" name="movieCountry" value="中国"
+                                                            <input movie-input type="text" name="movieCountry"
                                                                    class="form-control"
                                                                    id="movieCountry" placeholder="请输入电影制片地区">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <label class="col-sm-2 control-label">状态</label>
                                                         <div class="col-sm-4">
                                                             <select class="form-control" name="movieState">
-                                                                <option value="0">正在上映</option>
-                                                                <option value="1">已经下架</option>
+                                                                <option value="1">正在上映</option>
+                                                                <option value="0">已经下架</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -382,7 +394,8 @@
                         </div>
                         <div class="modal-body">
                             <form id="perFormActor" class="add_form" enctype="multipart/form-data">
-                                <input type="file" class="file-loading" name="upload" id="upload_img_input_actor" multiple/>
+                                <input type="file" class="file-loading" name="upload" id="upload_img_input_actor"
+                                       multiple/>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -405,7 +418,8 @@
                         </div>
                         <div class="modal-body">
                             <form id="perFormDirector" class="add_form" enctype="multipart/form-data">
-                                <input type="file" class="file-loading" name="upload" id="upload_img_input_director" multiple/>
+                                <input type="file" class="file-loading" name="upload" id="upload_img_input_director"
+                                       multiple/>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -416,7 +430,6 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-
 
 
             <div class="box box-primary">
@@ -454,7 +467,7 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <input type="text"  class="form-control input-sm" placeholder="搜索">
+                                <input type="text" class="form-control input-sm" placeholder="搜索">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </div>
@@ -734,26 +747,120 @@
     $(".info-box").click(function () {
         $('#movieForm')[0].reset()
         $("#actorList").empty();
-        $("#headimg").attr("src","upload/actor/addimg.jpg");
-        $("#directorImg").attr("src","upload/actor/addimg.jpg")
+        $("#headimg").attr("src", "upload/actor/addimg.jpg");
+        $("#directorImg").attr("src", "upload/actor/addimg.jpg")
         //显示模态框
         $('#addMovieModal').modal({
             //点击背景模态框不消失
             backdrop: "static"
         })
     });
+    /*校验添加电影表单的各项数据*/
+
+    //展示错误信息
+    function show_msg(ele, status, msg) {
+        //清除校验状态
+        $(ele).parent().removeClass("has-success has-error")
+        if ("success" == status) {
+            $(ele).parent().addClass("has-success");
+            $(ele).next("span").text(msg);
+            return true;
+        } else if ("error" == status) {
+            $(ele).parent().addClass("has-error");
+            $(ele).next("span").text(msg);
+            return false;
+        }
+    }
+
+    //验证字符长度
+    function checkCharLen(ele) {
+        let charLen = $(ele).val();
+        console.log(charLen)
+        if (charLen.length > 30 || charLen.length == 0) {
+            show_msg(ele, "error", "请输入1~30个字符");
+            return false;
+        } else {
+            show_msg(ele, "success", "");
+            return true;
+        }
+    }
+
+    //判断电影名称是否存在
+    function checkMovieName() {
+        $.ajax({
+            url: "management/queryByMovieName",
+            data: {
+                "movieName": $("#movieCnName").val()
+            },
+            type: "POST",
+            success: function (res) {
+                console.log(res)
+                if (res.code != 100) {
+                    show_msg("#movieCnName", "error", res.msg);
+                    return false;
+                } else {
+                    show_msg("#movieCnName", "success", "");
+                    return true;
+                }
+            }
+        });
+    }
+
+    //校验电影名称是否存在
+    let movieNameExits = false;
+    $("#movieCnName").change(function () {
+        console.log($("#movieCnName").val().length);
+        if (!checkCharLen("#movieCnName")) {
+            movieNameExits = false;
+        } else {
+            //查看电影名称是否存在
+            movieNameExits = checkMovieName();
+        }
+    });
+    /* $(document).on("change", "input", function () {})*/
+
+    $("input[movie-input]").change(function () {
+        console.log($(this).val());
+        let ele = "#" + $(this).attr("id");
+        let charLen = $(this).val();
+        if (charLen.length > 30 || charLen.length == 0) {
+            show_msg(ele, "error", "请输入1~30个字符");
+        } else {
+            show_msg(ele, "success", "");
+        }
+
+    });
 
 
     $("#saveBtn").click(function () {
-        // console.log($("#addMovieModal form").serialize().split("&"));
-        $.ajax({
+
+        /*let paraList = $("#addMovieModal form").serialize().split("&");
+        console.log(paraList)*/
+        //参数校验
+        //电影名称中文校验
+        if (!movieNameExits) return false;
+        //电影名称英文校验
+        // if (!movieFgName) return false;
+
+
+
+
+        console.log("发送ajax!!!")
+        //导演校验
+
+        /*$.ajax({
             url: "management/saveMovie",
             type: "POST",
             data: $("#addMovieModal form").serialize(),
             success: function (res) {
-                console.log(res)
+                console.log(res);
+                if (res.code===100){
+                    $('#addMovieModal').modal("hide")
+                }else {
+                    alert("添加失败："+res.msg);
+                }
             }
-        });
+        });*/
     });
 
     //点击电影上传
@@ -764,14 +871,14 @@
             backdrop: "static"
         })
         $("#uploadImg").click(function () {
-            save('management/uploadMovieImg',"#headimg");
+            save('management/uploadMovieImg', "#headimg");
         });
     });
 
     let commId;
 
     //点击保存按钮
-    function save(urlImg,eleImg) {
+    function save(urlImg, eleImg) {
         if ($('#upload_img_input').fileinput("getFilesCount") <= 0) {//获取文件个数
             alert("请上传图片")
             return false;
@@ -789,7 +896,7 @@
                 console.log(result);
                 if (result.code === 100) {
                     $(eleImg).attr("src", result.extend.movieImg);
-                    $("#moviePicture").attr("value",result.extend.movieImg);
+                    $("#moviePicture").attr("value", result.extend.movieImg);
                     $('#uploadModal').modal("hide")
                 }
             }
@@ -845,14 +952,14 @@
             let name = $("<div class='col-sm-3'></div>")
                 .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
                 .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
-            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img"+clickNum)
+            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img" + clickNum)
             let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
             $("#actorList").append(label).append(name).append(div);
         } else {
             let name = $("<div class='col-sm-3'></div>")
                 .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
                 .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
-            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img"+clickNum)
+            let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img" + clickNum)
             let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
             $("#actorList").append(name).append(div);
         }
@@ -873,7 +980,7 @@
     //保存演员信息和图片-------------------------------------------------------------------------------------------------
 
     //点击保存按钮
-    function saveActor(urlImg,eleImg) {
+    function saveActor(urlImg, eleImg) {
         // console.log($(eleImg).next().attr("value"));
         if ($('#upload_img_input_actor').fileinput("getFilesCount") <= 0) {//获取文件个数
             alert("请上传图片")
@@ -892,7 +999,7 @@
                 console.log(result);
                 if (result.code === 100) {
                     $(eleImg).attr("src", result.extend.movieImg);
-                    $(eleImg).next().attr("value",result.extend.movieImg)
+                    $(eleImg).next().attr("value", result.extend.movieImg)
                     $('#uploadModalActor').modal("hide")
                 }
             }
@@ -925,7 +1032,7 @@
 
     });
 
-    let pathImg="";
+    let pathImg = "";
     $(document).on("click", ".actor_img", function () {
         // $(this).attr("src","");
         $("#perFormActor")[0].reset();
@@ -934,13 +1041,12 @@
             //点击背景模态框不消失
             backdrop: "static"
         })
-        pathImg = "."+$(this).attr("class").split(" ")[1];
+        pathImg = "." + $(this).attr("class").split(" ")[1];
 
     });
     $("#uploadImgActor").click(function () {
         saveActor('management/uploadActorHeadImg', pathImg);
     });
-
 
 
     /*保存导演头像*/
@@ -953,11 +1059,11 @@
         })
     });
     $("#uploadImgDirector").click(function () {
-        saveDirector("management/uploadActorHeadImg","#directorImg")
+        saveDirector("management/uploadActorHeadImg", "#directorImg")
     });
 
     //点击保存按钮
-    function saveDirector(urlImg,eleImg) {
+    function saveDirector(urlImg, eleImg) {
         // console.log($(eleImg).next().attr("value"));
         if ($('#upload_img_input_director').fileinput("getFilesCount") <= 0) {//获取文件个数
             alert("请上传图片")
@@ -976,7 +1082,7 @@
                 console.log(result);
                 if (result.code === 100) {
                     $(eleImg).attr("src", result.extend.movieImg);
-                    $("#directorImgPath").attr("value",result.extend.movieImg)
+                    $("#directorImgPath").attr("value", result.extend.movieImg)
                     $('#uploadModalDirector').modal("hide")
                 }
             }

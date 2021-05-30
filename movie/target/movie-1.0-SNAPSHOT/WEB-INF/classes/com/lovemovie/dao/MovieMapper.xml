@@ -47,6 +47,12 @@
         <include refid="Base_Column_List"/>
         from movie where is_delete=1
     </select>
+    <select id="checkMovieByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from movie
+        where movie_cn_name=#{movieName}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie
         where movie_id = #{movieId,jdbcType=BIGINT}
@@ -56,13 +62,13 @@
         movie_actor, movie_director, movie_detail,
         movie_duration, movie_type, movie_score,
         movie_boxOffice, movie_commentCount, movie_releaseDate,
-        movie_country, movie_picture, movie_state
+        movie_country, movie_picture, movie_state,is_delete
         )
         values (#{movieId,jdbcType=BIGINT}, #{movieCnName,jdbcType=VARCHAR}, #{movieFgName,jdbcType=VARCHAR},
         #{movieActor,jdbcType=VARCHAR}, #{movieDirector,jdbcType=VARCHAR}, #{movieDetail,jdbcType=VARCHAR},
         #{movieDuration,jdbcType=VARCHAR}, #{movieType,jdbcType=VARCHAR}, #{movieScore,jdbcType=REAL},
         #{movieBoxoffice,jdbcType=REAL}, #{movieCommentcount,jdbcType=BIGINT}, #{movieReleasedate,jdbcType=DATE},
-        #{movieCountry,jdbcType=VARCHAR}, #{moviePicture,jdbcType=VARCHAR}, #{movieState,jdbcType=INTEGER}
+        #{movieCountry,jdbcType=VARCHAR}, #{moviePicture,jdbcType=VARCHAR}, #{movieState,jdbcType=INTEGER},#{isDelete}
         )
     </insert>
     <insert id="insertSelective" parameterType="com.lovemovie.domain.Movie">
@@ -113,6 +119,9 @@
             <if test="movieState != null">
                 movie_state,
             </if>
+            <if test="is_delete != null">
+                is_delete,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="movieId != null">
@@ -159,6 +168,9 @@
             </if>
             <if test="movieState != null">
                 #{movieState,jdbcType=INTEGER},
+            </if>
+            <if test="is_delete != null">
+                #{isDelete,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>

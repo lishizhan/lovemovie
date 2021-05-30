@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="admin/plugins/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="admin/plugins/adminLTE/css/AdminLTE.min.css">
     <link rel="stylesheet" href="admin/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <!-- 引入网页图标 -->
+    <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
     <!-- Google Font -->
     <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
@@ -37,7 +39,7 @@
     <script src="static/js/logout.js"></script>
 
 
-    <title>Title</title>
+    <title>love movie</title>
 </head>
 
 <body style="background-color: #ecf0f5;">

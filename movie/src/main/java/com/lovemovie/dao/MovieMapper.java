@@ -38,4 +38,10 @@ public interface MovieMapper {
      */
     List<Movie> findMoviesAll();
 
+    /**
+     * 检查数据库中电影名称是否存在
+     * @param movieName
+     * @return
+     */
+    Movie checkMovieByName(String movieName);
 }

@@ -37,4 +37,11 @@ public interface IMovieService {
      * @param movieInfo
      */
     Msg addMovie(MovieInfo movieInfo) throws ParseException;
+
+    /**
+     * 查询电影名称是否存在
+     * @param movieName
+     * @return
+     */
+    Msg findMovieNameIsExist(String movieName);
 }
