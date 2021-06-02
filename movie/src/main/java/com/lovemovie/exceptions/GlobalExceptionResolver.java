@@ -103,6 +103,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
                 if (ex instanceof ParamsException){
                     ParamsException e = (ParamsException) ex;
+                    ex.printStackTrace();
                     mv.addObject("errorMsg",e.getMsg());
                 }
                 mv.addObject("errorMsg","页面不见啦");

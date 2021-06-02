@@ -29,10 +29,10 @@
             <!--            <p class="text-success">...</p>-->
             <p class="text-danger" id="msg"></p>
             <div>
-                <input type="text" value="admin" name="userName" class="form-control" id="userName" placeholder="用户名">
+                <input type="text"  name="userName" class="form-control" id="userName" placeholder="用户名">
             </div>
             <div>
-                <input type="password" value="admin" name="userPwd" class="form-control" id="userPwd"
+                <input type="password" name="userPwd" class="form-control" id="userPwd"
                        placeholder="请输入6~12数字字母密码">
             </div>
             <div class="verify-code">

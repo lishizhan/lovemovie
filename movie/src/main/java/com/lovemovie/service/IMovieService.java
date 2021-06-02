@@ -1,5 +1,6 @@
 package com.lovemovie.service;
 
+import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.model.Msg;
@@ -44,4 +45,18 @@ public interface IMovieService {
      * @return
      */
     Msg findMovieNameIsExist(String movieName);
+
+    /**
+     * 根据电影id删除电影
+     * @param movieId
+     * @return
+     */
+    Msg deleteMovieById(String movieId);
+
+    /**
+     * 批量删除电影
+     * @param ints
+     */
+    void deleteBatch(int[] ints);
+
 }

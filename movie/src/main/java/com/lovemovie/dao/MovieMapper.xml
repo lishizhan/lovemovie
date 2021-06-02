@@ -34,7 +34,7 @@
         select
         <include refid="Base_Column_List"/>
         from movie
-        where movie_state = #{movie_state}
+        where movie_state = #{movie_state} and is_delete=1
     </select>
     <select id="findMovieByReleaseDateDesc" resultType="com.lovemovie.domain.Movie">
         SELECT
@@ -56,6 +56,12 @@
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie
         where movie_id = #{movieId,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteBatch">
+        delete from movie where movie_id in
+        <foreach collection="array" item="id" open="(" separator="," close=")"  >
+            #{id}
+        </foreach>
     </delete>
     <insert id="insert" parameterType="com.lovemovie.domain.Movie">
         insert into movie (movie_id, movie_cn_name, movie_fg_name,

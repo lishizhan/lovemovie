@@ -147,7 +147,7 @@
                                                                    class="form-control"
                                                                    id="movieDirector">
                                                             <span class="help-block"></span>
-                                                            <input movie-input type="hidden" id="directorImgPath" name="directorImg"
+                                                            <input type="hidden" id="directorImgPath" name="directorImg"
                                                                    value="">
 
                                                         </div>
@@ -159,14 +159,15 @@
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">演员</label>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <button id="addActorInfoBtn" type="button"
                                                                     class="btn btn-info"><i
                                                                     class="glyphicon glyphicon-plus"></i></button>
                                                             <button id="delActorInfoBtn" type="button"
                                                                     class="btn btn-info"><i
                                                                     class="glyphicon glyphicon-minus"></i></button>
-
+                                                            <span id="actorMsg" class="help-block"
+                                                                  style="display: inline-block;color: #a94442"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="actorList">
@@ -187,7 +188,7 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" checked name="movieType"
+                                                                    <input type="checkbox" name="movieType"
                                                                            value="0"> 爱情
                                                                 </label>
                                                             </div>
@@ -203,7 +204,7 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" checked name="movieType"
+                                                                    <input type="checkbox" name="movieType"
                                                                            value="2"> 科幻
                                                                 </label>
                                                             </div>
@@ -211,7 +212,7 @@
                                                         <div class="col-sm-2">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" checked name="movieType"
+                                                                    <input type="checkbox" name="movieType"
                                                                            value="3">动作
                                                                 </label>
                                                             </div>
@@ -294,7 +295,7 @@
                                                         <label for="movieDuration"
                                                                class="col-sm-2 control-label">时长</label>
                                                         <div class="col-sm-4">
-                                                            <input movie-input type="text" name="movieDuration"
+                                                            <input type="text" name="movieDuration"
                                                                    class="form-control" id="movieDuration"
                                                                    placeholder="请输入电影时长">
                                                             <span class="help-block"></span>
@@ -456,8 +457,7 @@
                                     <button type="button" class="btn btn-default" title="按电影时长排序"><i
                                             class="fa  fa-arrows-v"></i> 按电影时长排序
                                     </button>
-                                    <button type="button" class="btn btn-default" title="删除"
-                                            onclick='confirm("你确认要删除吗？")'><i class="fa fa-trash-o"></i> 删除
+                                    <button type="button" id="delBtn" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除
                                     </button>
                                     <button type="button" class="btn btn-default" title="刷新"
                                             onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
@@ -478,7 +478,7 @@
                             <thead>
                             <tr>
                                 <th class="" style="padding-right:0px;">
-                                    <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                                    <input id="check_all" type="checkbox" class="icheckbox_square-blue">
                                 </th>
                                 <th class="sorting_asc">电影编号</th>
                                 <th class="sorting">电影名称</th>
@@ -545,6 +545,8 @@
     let pageSize = 10;
     //全局定义总记录数,和当前页
     let totalRecord, thisPageNum;
+    //最后一页
+    let lastPageNum;
     // 重写方法，自定义格式化日期
     Date.prototype.toLocaleString = function () {
         // 补0   例如 2018/7/10 14:7:2  补完后为 2018/07/10 14:07:02
@@ -617,6 +619,7 @@
         $("<p></p>").append("当前页：" + res.extend.pageInfo.pageNum + "，总页码：" + res.extend.pageInfo.pages + "，总记录数：" + res.extend.pageInfo.total).appendTo("#page_info");
         totalRecord = res.extend.pageInfo.total;
         thisPageNum = res.extend.pageInfo.pageNum;
+        lastPageNum = res.extend.pageInfo.pages;
 
     }
 
@@ -747,8 +750,10 @@
     $(".info-box").click(function () {
         $('#movieForm')[0].reset()
         $("#actorList").empty();
+        $("#perForm")[0].reset();
         $("#headimg").attr("src", "upload/actor/addimg.jpg");
         $("#directorImg").attr("src", "upload/actor/addimg.jpg")
+
         //显示模态框
         $('#addMovieModal').modal({
             //点击背景模态框不消失
@@ -787,23 +792,26 @@
 
     //判断电影名称是否存在
     function checkMovieName() {
+        let trueCheck = false;
         $.ajax({
             url: "management/queryByMovieName",
             data: {
                 "movieName": $("#movieCnName").val()
             },
             type: "POST",
+            async: false,
             success: function (res) {
                 console.log(res)
                 if (res.code != 100) {
                     show_msg("#movieCnName", "error", res.msg);
-                    return false;
+                    trueCheck = false;
                 } else {
                     show_msg("#movieCnName", "success", "");
-                    return true;
+                    trueCheck = true;
                 }
             }
         });
+        return trueCheck;
     }
 
     //校验电影名称是否存在
@@ -814,13 +822,14 @@
             movieNameExits = false;
         } else {
             //查看电影名称是否存在
-            movieNameExits = checkMovieName();
+            if (checkMovieName()) {
+                movieNameExits = true;
+            } else {
+                movieNameExits = false;
+            }
         }
     });
-    /* $(document).on("change", "input", function () {})*/
-
     $("input[movie-input]").change(function () {
-        console.log($(this).val());
         let ele = "#" + $(this).attr("id");
         let charLen = $(this).val();
         if (charLen.length > 30 || charLen.length == 0) {
@@ -830,6 +839,27 @@
         }
 
     });
+    $("form input[type='checkbox']").click(function () {
+        if ($("form input[type='checkbox']:checked").length > 3) {
+            $(this).attr("checked", false);
+            alert("电影类型不能超过3个");
+        }
+    });
+    let timeCheck = false;
+    $("#movieDuration").change(function () {
+        let ele = "#"+$(this).attr("id");
+        let reg = /^\+?[1-9]\d*$/;
+        if (!reg.test($(this).val())) {
+            // 非大于0的正整数，给出提示
+            console.log("不是大于0的整数")
+            show_msg(ele, "error", "时长只能是数字");
+            timeCheck=true;
+        }else {
+            show_msg(ele, "success", "");
+            timeCheck=false;
+        }
+    });
+
 
 
     $("#saveBtn").click(function () {
@@ -838,17 +868,54 @@
         console.log(paraList)*/
         //参数校验
         //电影名称中文校验
-        // if (!movieNameExits) return false;
-        //电影名称英文校验
-        // if (!movieFgName) return false;
+        if (!movieNameExits) return;
+        //电影英文检验
+        if ($("#movieFgName").val().length === 0) return;
+        //导演
+        if ($("#movieDirector").val().length === 0) return;
+        if ($("#directorImgPath").val().length === 0) {
+            alert("请添加导演头像！")
+            return;
+        }
+        //介绍
+        if ($("#movieDetail").val().length === 0) return;
+        //时长
+        if ($("#movieDuration").val().length === 0) return;
+        //制片地区
+        if ($("#movieCountry").val().length === 0) return;
+        //类型
+        if ($("input[type='checkbox']:checked").length ==0){
+            alert("请选择电影类型！！！");
+            return;
+        }
+        //电影海报
+        if ($("#moviePicture").val().length === 0) {
+            alert("请添加电影海报！！")
+            return;
+        }
 
+        //校验演员列表不能为空
+        let actorFlag = false;
+         $("#actorList input").each(function () {
+             let lenActor = $(this).val().trim().length;
+             if (lenActor==0){
+                 actorFlag=true;
+             }
+         });
+         if (actorFlag){
+             alert("演员信息和图片不能为空！！！");
+             return;
+         }
 
+         if (timeCheck)return;
 
+         if ($("#actorList").children().length==0){
+             alert("请至少添加一个演员信息！！！")
+             return;
+         }
 
-        console.log("发送ajax!!!")
-        //导演校验
-
-        /*$.ajax({
+        console.log("发送ajax保存电影信息!!!")
+        $.ajax({
             url: "management/saveMovie",
             type: "POST",
             data: $("#addMovieModal form").serialize(),
@@ -856,12 +923,14 @@
                 console.log(res);
                 if (res.code===100){
                     $('#addMovieModal').modal("hide")
+                    toPage(lastPageNum,pageSize);
                 }else {
                     alert("添加失败："+res.msg);
                 }
             }
-        });*/
+        });
     });
+
 
     //点击电影上传
     $("#uploadMovieImgBtn").click(function () {
@@ -950,17 +1019,17 @@
         if (clickNum % 2 !== 0) {
             let label = $("<div class='col-sm-2'></div>");
             let name = $("<div class='col-sm-3'></div>")
-                .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
-                .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
+                .append("<input  type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input m type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
             let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img" + clickNum)
-            let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
+            let div = $("<div class='col-sm-2'></div>").append(img).append("<input  type='hidden' class='form-control' name='movieActorImgPath'>");
             $("#actorList").append(label).append(name).append(div);
         } else {
             let name = $("<div class='col-sm-3'></div>")
-                .append("<input type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
-                .append("<p>饰：</p>").append("<input type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
+                .append("<input m type='text' class='form-control' name='movieActor' placeholder='演员姓名'>")
+                .append("<p>饰：</p>").append("<input m type='text' class='form-control' name='movieActorPortray' placeholder='饰演角色'>");
             let img = $("<img class='actor_img' src='upload/actor/addimg.jpg' alt=''>").addClass("img" + clickNum)
-            let div = $("<div class='col-sm-2'></div>").append(img).append("<input type='hidden' class='form-control' name='movieActorImgPath'>");
+            let div = $("<div class='col-sm-2'></div>").append(img).append("<input  type='hidden' class='form-control' name='movieActorImgPath'>");
             $("#actorList").append(name).append(div);
         }
     });
@@ -1111,9 +1180,80 @@
         }).on("filebatchuploadsuccess", function (event, data) {
             // console.log(data);
         });
+    });
 
+
+
+    /*点击删除按钮*/
+    $(document).on("click",".delete_btn",function () {
+        let name = $(this).parents("tr").find("td:eq(2)").text();
+        let movieId = $(this).attr("del-id");
+        if (confirm("是否删除电影《"+name+"》？")){
+            //请求后台删除
+            $.ajax({
+                url:"management/deleteMovie/"+movieId,
+                type:"delete",
+                success:function (res) {
+                    console.log(res);
+                    if (res.code===100){
+                        toPage(thisPageNum,pageSize);
+                    }else {
+                        alert("删除失败："+res.msg);
+                    }
+                }
+            });
+        }
+    })
+    //删除按钮全选与全不选
+    $("#check_all").click(function () {
+        //我们这些dom原生的属性; attr获取自定义属性的值;
+        // prop修改和读取dom原生属性的值
+        $(this).prop("checked");
+        $(".check_item").prop("checked",$(this).prop("checked"));
+    });
+    //为每个checked绑定点击事件
+    $(document).on("click",".check_item",function () {
+        //判断选中的个数是否等于item的个数
+        let flag=$(".check_item:checked").length==$(".check_item").length;
+        $("#check_all").prop("checked",flag);
 
     });
+
+    //点击批量删除
+    $("#delBtn").click(function () {
+        if ($(".check_item:checked").length==0){
+            alert("请选中要删除的电影！！")
+            return false;
+        }
+        let empNames = "";
+        let movieId="";
+        $.each($(".check_item:checked"),function () {
+            //获取批量删除的员工姓名
+            // console.log($(this).parents("tr").find("td:eq(2)").text());
+            empNames+=$(this).parents("tr").find("td:eq(2)").text()+",";
+            movieId+=$(this).parents("tr").find("td:eq(1)").text()+"-"
+        });
+        empNames=empNames.substring(0,empNames.length-1);
+        movieId=movieId.substring(0,movieId.length-1);
+        if (confirm("是否删除【"+empNames+"】等电影？")){
+            /*console.log(empNames);
+            console.log(del_idstr);*/
+            //执行Ajax请求删除员工
+            $.ajax({
+                url:"management/deleteMovie/"+movieId,
+                type:"DELETE",
+                success:function (res) {
+                    // console.log(res);
+                    //回到当前页面
+                    $("#check_all").prop("checked",false);
+                    toPage(thisPageNum,pageSize);
+                }
+            });
+        }else {
+            return false;
+        }
+    });
+
 
 
 </script>

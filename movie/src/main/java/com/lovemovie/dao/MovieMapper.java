@@ -44,4 +44,6 @@ public interface MovieMapper {
      * @return
      */
     Movie checkMovieByName(String movieName);
+
+    void deleteBatch(int[] ints);
 }

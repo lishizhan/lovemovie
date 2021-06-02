@@ -9,8 +9,8 @@
             <img src="static/images/logo/logo6.png" alt="" style="height: 72px;width: 210px;">
         </div>
         <div class="search">
-            <form action="#">
-                <input type="text" placeholder="搜索您喜欢的电影">
+            <form action="movie/search" method="post">
+                <input type="text" name="searchName" placeholder="搜索您喜欢的电影">
                 <button type="submit"></button>
             </form>
         </div>
@@ -76,8 +76,6 @@
             });
         }
     });
-
-
 
 
 </script>

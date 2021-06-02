@@ -7,8 +7,10 @@ import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.domain.User;
 import com.lovemovie.model.Msg;
+import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.IUserService;
+import com.lovemovie.utils.AssertUtil;
 import com.lovemovie.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,6 +37,9 @@ public class ManageController {
 
     @Autowired
     private IMovieService movieService;
+
+    @Autowired
+    private IActorService actorService;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -94,9 +100,19 @@ public class ManageController {
      */
     @RequestMapping(value = "/detailMovie")
     public ModelAndView goRegister(Integer movieId) {
-        Movie movie = movieService.findMovieByMovieId(movieId);
         ModelAndView modelAndView = new ModelAndView();
+        //返回电影基本信息
+        Movie movie = movieService.findMovieByMovieId(movieId);
         modelAndView.addObject("movie", movie);
+
+        //返回导演信息
+        Actor director = actorService.getDirectorByName(movie.getMovieDirector());
+        modelAndView.addObject("director",director);
+
+        //返回演员信息
+        Actor actors =actorService.getDirectorById(movie.getMovieActor());
+        modelAndView.addObject("actors",actors);
+
         modelAndView.setViewName("admin/movie-info-detail");
         return modelAndView;
     }
@@ -164,7 +180,6 @@ public class ManageController {
     @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
     @ResponseBody
     public Msg saveMovie(MovieInfo movieInfo) throws ParseException {
-
         //保存电影
         Msg msg=movieService.addMovie(movieInfo);
         return msg;
@@ -212,6 +227,11 @@ public class ManageController {
         return Msg.success().add("movieImg", path);
     }
 
+    /**
+     * 验证电影名称是否重复
+     * @param movieName
+     * @return
+     */
     @RequestMapping(value = "/queryByMovieName")
     @ResponseBody
     public Msg isExistMovieByName(String movieName){
@@ -221,6 +241,25 @@ public class ManageController {
     }
 
 
-
+    //根据电影id删除，单个删除和批量删除二合一，1-2-3-4，1
+    @RequestMapping(value = "deleteMovie/{movieId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Msg deleteEmp(@PathVariable("movieId") String movieId) {
+        System.out.println("ids = " + movieId);
+        if (movieId.contains("-")) {
+            //批量删除
+            String[] arrId = movieId.split("-");
+            int[] ints = new int[arrId.length];
+            for (int i = 0; i < arrId.length; i++) {
+                ints[i] = Integer.parseInt(arrId[i]);
+            }
+            // System.out.println("int[]:"+ Arrays.toString(ints));
+            movieService.deleteBatch(ints);
+            return Msg.success();
+        } else {
+            //单个删除
+            return movieService.deleteMovieById(movieId);
+        }
+    }
 
 }

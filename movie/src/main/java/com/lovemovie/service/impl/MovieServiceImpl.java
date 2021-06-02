@@ -10,13 +10,13 @@ import com.lovemovie.service.IMovieService;
 import com.lovemovie.utils.AssertUtil;
 import com.lovemovie.utils.DateUtils;
 import com.lovemovie.utils.UUIDUtil;
+import org.apache.commons.lang.text.StrBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.transform.Source;
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @Author : Alishiz
@@ -40,7 +40,19 @@ public class MovieServiceImpl implements IMovieService {
 
     @Override
     public Movie findMovieByMovieId(Integer movieId) {
-        return movieMapper.selectByPrimaryKey(new Long(movieId));
+
+        Movie movie = movieMapper.selectByPrimaryKey(new Long(movieId));
+
+        String[] movieType = movie.getMovieType().split(",");
+        String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
+        List<String> strings = Arrays.asList(movieTypeSrr);
+        StrBuilder strBuilder = new StrBuilder();
+        for (int i = 0; i < movieType.length; i++) {
+            strBuilder.append(strings.indexOf(movieType[i])).append(",");
+        }
+        movie.setMovieType(strBuilder.toString());
+
+        return movie;
     }
 
     @Override
@@ -57,6 +69,14 @@ public class MovieServiceImpl implements IMovieService {
         System.out.println("------------------------------------------------");
         //字段校验
         //。。。。
+        //保存导演信息，查询时根据导演名字查询
+        Actor director = new Actor();
+        director.setActorId(UUIDUtil.getUUID());
+        director.setActorHeadImg(movieInfo.getDirectorImg());
+        director.setIsDelete("1");
+        director.setActorName(movieInfo.getMovieDirector());
+        int insert1 = actorMapper.insert(director);
+        System.out.println("导演信息插入去情况 =>>>>" + insert1);
         //保存演员信息
         Actor actor = new Actor();
         actor.setActorId(UUIDUtil.getUUID());
@@ -108,5 +128,21 @@ public class MovieServiceImpl implements IMovieService {
         System.out.println("movie和情况： " + movie);
         AssertUtil.isTrue(movie!=null, "电影名称已经存在");
         return Msg.success();
+    }
+
+    @Override
+    public Msg deleteMovieById(String movieId) {
+        AssertUtil.isTrue(movieId==null,"电影id不能为空");
+        int i = movieMapper.deleteByPrimaryKey(new Long(movieId));
+        if (i>0){
+            return Msg.success();
+        }else {
+            return Msg.fail();
+        }
+    }
+
+    @Override
+    public void deleteBatch(int[] ints) {
+        movieMapper.deleteBatch(ints);
     }
 }
