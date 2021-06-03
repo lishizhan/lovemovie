@@ -145,4 +145,14 @@ public class MovieServiceImpl implements IMovieService {
     public void deleteBatch(int[] ints) {
         movieMapper.deleteBatch(ints);
     }
+
+    @Override
+    public List<Movie> findMovies(Integer sortId, Integer typeId, Integer sourceId, Integer yearId) {
+        String[] sorts = {"按评分","按上映时间"};
+        String[] types = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};;
+
+
+
+        return null;
+    }
 }

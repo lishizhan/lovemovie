@@ -2,6 +2,7 @@ package com.lovemovie.test;
 
 import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
+import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.impl.ActorServiceImpl;
@@ -9,6 +10,10 @@ import com.lovemovie.service.impl.MovieServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author : Alishiz
@@ -25,6 +30,7 @@ public class MyServiceTest {
         System.out.println("movie = " + movie);
 
     }
+
     @Test
     public void test02() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -34,4 +40,32 @@ public class MyServiceTest {
 
 
     }
+
+    @Test
+    public void test03() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        IActorService actorService = ac.getBean(ActorServiceImpl.class);
+        Map<String, Object> actorMap = actorService.getActorById("邱礼涛", "ea08de10c5da4839a95aa2c94060f237");
+        Set<Map.Entry<String, Object>> entries = actorMap.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            System.out.println(key + " = " + value);
+        }
+
+
+    }
+
+    @Test
+    public void testFindMovies() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        IMovieService movieService = ac.getBean(MovieServiceImpl.class);
+        List<Movie> movies = movieService.findMovies(1, 1, 1, 1);
+        for (Movie movie : movies) {
+            System.out.println("movie = " + movie);
+        }
+
+
+    }
+
 }

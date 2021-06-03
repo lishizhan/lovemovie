@@ -19,6 +19,25 @@
     <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
     <script src="static/bootstrap/Jquery/jquery.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        #listActor ul li{
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        #listActor ul li img{
+            width: 128px;
+            height: 170px;
+        }
+        .gopinlum {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+
+        }
+    </style>
     <title>love movie</title>
 </head>
 
@@ -79,25 +98,24 @@
     </div>
     <div class="movie-yanyuan">
         <div class="movie-contro-title">演职人员</div>
-        <div>
+        <div id="listActor">
             <ul>
                 <li>
-                    <img src="" alt="演员">
+                    <img src="${listActor.director.actorHeadImg}" alt="演员">
+                    <p class="h5">导演：${listActor.director.actorName}</p>
                 </li>
+                <c:forEach items="${listActor.actorList}" var="entry">
+                    <li>
+                        <img src="${entry.actorHeadImg}" alt="演员">
+                        <p class="h5">${entry.actorName}</p>
+                        <span>饰演：${entry.portray}</span>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
     </div>
 
 </div>
-<style>
-    .gopinlum {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: inline-block;
-
-    }
-</style>
 <div class="container movie-pinlun">
     <div class="movie-contro-title">热门评论
         <button id="addCommentBtn" style="float: right" class="btn btn-info right">发表评论</button>
@@ -305,6 +323,8 @@
             return false;
         }
     }
+
+
 </script>
 </body>
 

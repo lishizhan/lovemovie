@@ -2,6 +2,8 @@ package com.lovemovie.service;
 
 import com.lovemovie.domain.Actor;
 
+import java.util.Map;
+
 /**
  * @Author : Alishiz
  * @Date : 2021/6/1/0001 17:04
@@ -22,4 +24,12 @@ public interface IActorService {
      * @return
      */
     Actor getDirectorById(String movieActor);
+
+    /**
+     * 获取演职人员信息
+     * @param movieDirector
+     * @param movieActor
+     * @return
+     */
+    Map<String, Object> getActorById(String movieDirector, String movieActor);
 }

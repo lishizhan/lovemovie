@@ -59,4 +59,13 @@ public interface IMovieService {
      */
     void deleteBatch(int[] ints);
 
+    /**
+     * 电影模块搜索
+     * @param sortId:排序
+     * @param typeId:类型
+     * @param sourceId:区域
+     * @param yearId:上映年份
+     * @return
+     */
+    List<Movie> findMovies(Integer sortId, Integer typeId, Integer sourceId, Integer yearId);
 }

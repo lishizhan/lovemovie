@@ -22,14 +22,17 @@
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <title>love movie</title>
     <style>
-        .pagination>li:first-child>a, .pagination>li:first-child>span,
-        .pagination>li:last-child>a, .pagination>li:last-child>span
-        {
+        .pagination > li:first-child > a, .pagination > li:first-child > span,
+        .pagination > li:last-child > a, .pagination > li:last-child > span {
             margin-left: 0;
-            border-radius:25px;
+            border-radius: 25px;
         }
-        .pagination>li>a, .pagination>li>span {
+
+        .pagination > li > a, .pagination > li > span {
             border-radius: 50%;
+        }
+        .movie-type [type=radio]{
+            display: none;
         }
     </style>
 </head>
@@ -37,430 +40,121 @@
 <body>
 <!--页面头部 开始-->
 <%--<jsp:include page="common/head.jsp"/>--%>
-<%@include file="common/head.jsp"%>
+<%@include file="common/head.jsp" %>
 <!--页面头部 结束-->
+<form id="classdiy">
+    <section class="movie-type w">
+        <ul>
+            <li>
+                <div class="type-item">类型:</div>
+                <ul class="type-movie-item type">
+                    <li class="movie-type-active">
+                        <input type="radio" checked name="typeId" value="-1">全部
+                    </li>
+                    <li><input type="radio" name="typeId" value="0">爱情</li>
+                    <li><input type="radio" name="typeId" value="1">惊悚</li>
+                    <li><input type="radio" name="typeId" value="2">科幻</li>
+                    <li><input type="radio" name="typeId" value="3">动作</li>
+                    <li><input type="radio" name="typeId" value="4">悬疑</li>
+                    <li><input type="radio" name="typeId" value="5">犯罪</li>
+                    <li><input type="radio" name="typeId" value="6">冒险</li>
+                    <li><input type="radio" name="typeId" value="7">战争</li>
+                    <li><input type="radio" name="typeId" value="8">奇幻</li>
+                    <li><input type="radio" name="typeId" value="9">运动</li>
+                    <li><input type="radio" name="typeId" value="10">家庭</li>
+                    <li><input type="radio" name="typeId" value="11">古装</li>
+                    <li><input type="radio" name="typeId" value="12">武侠</li>
+                    <li><input type="radio" name="typeId" value="13">其他</li>
+                </ul>
+            </li>
+            <li>
+                <div class="type-item">区域:</div>
+                <ul class="type-movie-item source">
+                    <li class="movie-type-active">
+                        <input type="radio" name="sourceId" checked value="-1">全部
+                    </li>
+                    <li><input type="radio" name="sourceId" value="0">大陆</li>
+                    <li><input type="radio" name="sourceId" value="1">美国</li>
+                    <li><input type="radio" name="sourceId" value="2">韩国</li>
+                    <li><input type="radio" name="sourceId" value="3">日本</li>
+                    <li><input type="radio" name="sourceId" value="4">中国香港</li>
+                    <li><input type="radio" name="sourceId" value="5">中国台湾</li>
+                    <li><input type="radio" name="sourceId" value="6">泰国</li>
+                    <li><input type="radio" name="sourceId" value="7">印度</li>
+                    <li><input type="radio" name="sourceId" value="8">法国</li>
+                    <li><input type="radio" name="sourceId" value="9">英国</li>
+                    <li><input type="radio" name="sourceId" value="10">俄罗斯</li>
+                    <li><input type="radio" name="sourceId" value="11">意大利</li>
+                    <li><input type="radio" name="sourceId" value="12">西班牙</li>
+                    <li><input type="radio" name="sourceId" value="13">德国</li>
+                    <li><input type="radio" name="sourceId" value="14">波兰</li>
+                    <li><input type="radio" name="sourceId" value="15">澳大利亚</li>
+                    <li><input type="radio" name="sourceId" value="16">伊朗</li>
+                    <li><input type="radio" name="sourceId" value="17">其他</li>
 
-<section class="movie-type w">
-    <ul>
-        <li>
-            <div class="type-item">类型:</div>
-            <ul class="type-movie-item type">
-                <li class="movie-type-active">全部</li>
-                <li>爱情</li>
-                <li>惊悚</li>
-                <li>科幻</li>
-                <li>动作</li>
-                <li>悬疑</li>
-                <li>犯罪</li>
-                <li>冒险</li>
-                <li>战争</li>
-                <li>奇幻</li>
-                <li>运动</li>
-                <li>家庭</li>
-                <li>古装</li>
-                <li>武侠</li>
-                <li>其他</li>
-            </ul>
-        </li>
-        <li>
-            <div class="type-item">区域:</div>
-            <ul class="type-movie-item source">
-                <li class="movie-type-active">全部</li>
-                <li>大陆</li>
-                <li>美国</li>
-                <li>韩国</li>
-                <li>日本</li>
-                <li>中国香港</li>
-                <li>中国台湾</li>
-                <li>泰国</li>
-                <li>印度</li>
-                <li>法国</li>
-                <li>英国</li>
-                <li>俄罗斯</li>
-                <li>意大利</li>
-                <li>西班牙</li>
-                <li>德国</li>
-                <li>波兰</li>
-                <li>澳大利亚</li>
-                <li>伊朗</li>
-                <li>其他</li>
+                </ul>
+            </li>
+            <li>
+                <div class="type-item">时间:</div>
+                <ul class="type-movie-item year">
+                    <li class="movie-type-active">
+                        <input type="radio" name="yearId" value="-1" checked>全部
+                    </li>
+                    <li><input type="radio" name="yearId" value="0">2021</li>
+                    <li><input type="radio" name="yearId" value="1">2020</li>
+                    <li><input type="radio" name="yearId" value="2">2019</li>
+                    <li><input type="radio" name="yearId" value="3">2018</li>
+                    <li><input type="radio" name="yearId" value="4">2017</li>
+                    <li><input type="radio" name="yearId" value="5">2016</li>
+                    <li><input type="radio" name="yearId" value="6">2015</li>
+                    <li><input type="radio" name="yearId" value="7">2014</li>
+                    <li><input type="radio" name="yearId" value="8">2013</li>
+                    <li><input type="radio" name="yearId" value="9">2012</li>
+                    <li><input type="radio" name="yearId" value="10">2011</li>
+                    <li><input type="radio" name="yearId" value="11">2000-2010</li>
+                    <li><input type="radio" name="yearId" value="12">90年代</li>
+                    <li><input type="radio" name="yearId" value="13">80年代</li>
+                    <li><input type="radio" name="yearId" value="14">70年代</li>
+                    <li><input type="radio" name="yearId" value="15">更早</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
 
-            </ul>
-        </li>
-        <li>
-            <div class="type-item">时间:</div>
-            <ul class="type-movie-item year">
-                <li class="movie-type-active">全部</li>
-                <li>2021</li>
-                <li>2020</li>
-                <li>2019</li>
-                <li>2018</li>
-                <li>2017</li>
-                <li>2016</li>
-                <li>2015</li>
-                <li>2014</li>
-                <li>2013</li>
-                <li>2012</li>
-                <li>2011</li>
-                <li>2000-2010</li>
-                <li>90年代</li>
-                <li>80年代</li>
-                <li>70年代</li>
-                <li>更早</li>
-
-            </ul>
-        </li>
-    </ul>
-</section>
 
 <section class="movie-list w">
     <div class="movie-check">
-        <form action="#">
+<!--        <form action="#" id="sort">-->
             <ul>
                 <li>
 
-                    <input style="outline: none" class="radio_type" type="radio" name="type" id="radio1"
+                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="1" id="radio1"
                            checked="checked"/>
                     <label for="radio1">按评分排序</label>
                 </li>
                 <li>
-                    <input style="outline: none" class="radio_type" type="radio" name="type" id="radio2"/>
-                    <label for="radio2">按时间排序</label>
+                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="2" id="radio2"/>
+                    <label for="radio2">按上映时间排序</label>
                 </li>
-                <li>
-                    <input style="outline: none" class="radio_type" type="radio" name="type" id="radio3"/>
-                    <label for="radio3">按热度排序</label>
-                </li>
-
-
+                <!-- <li>
+                     <input style="outline: none" class="radio_type" type="radio" name="typeId" value="3" id="radio3"/>
+                     <label for="radio3">按热度排序</label>
+                 </li>-->
             </ul>
-        </form>
+<!--        </form>-->
     </div>
     <hr style="border-color: #999">
     <div class="movie-box clearfix">
         <ul></ul>
-        <!--<ul>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021-04-12
-                    </p>
-                    <img src="static/images/movie/1.jpg" alt="">
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/2.png" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/3.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/4.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/5.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/1.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/2.png" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/3.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/4.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/5.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/1.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/2.png" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/3.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/4.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-            <li>
-                <a href="#">
-                    <p>
-                        <span>哥斯拉大战金刚</span>
-                        <br>
-                        <br>
-                        类型: 爱情/喜剧
-                        <br>
-                        主演: 哥斯拉/金刚
-                        <br>
-                        上映时间: 2021
-                        <br>
-                    </p>
-                    <img src="static/images/movie/5.jpg" alt="">
-
-                    &lt;!&ndash;                    <span>9.1</span>&ndash;&gt;
-                </a>
-                <p class="text-center">哥斯拉大战金刚</p>
-                <p class="text-center">9.1</p>
-            </li>
-        </ul>-->
     </div>
     <div class="movie-page" id="page_nav" style="text-align: center">
-        <!--<ul class="paging modal-page">
-            <li><a href="#" class="prev">&laquo</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">6</a></li>
-            <li><a href="#">7</a></li>
-            <li><a href="#">8</a></li>
-            <li><a href="#">9</a></li>
-            <li><a href="#" class="next">&raquo;</a></li>
-        </ul>-->
-
     </div>
 
 </section>
-
+</form>
 
 <!--底部 开始-->
-<%@ include file="/WEB-INF/views/jsp/common/footer.jsp"%>
+<%@ include file="/WEB-INF/views/jsp/common/footer.jsp" %>
 <!--底部 结束-->
 
 
@@ -482,23 +176,71 @@
 
 
     //种类catId=3&区域sourceId=2&年份yearId=16
-    function showMovie(catId,sourceId,yearId){
+    function showMovie(catId, sourceId, yearId) {
 
     }
 
     //电影分类查询
     $(function () {
         $(".type li").click(function () {
-            console.log($(this).text())
+            $(this).addClass("movie-type-active");
+            $(this).siblings("li").removeClass("movie-type-active");
+            console.log("typeId>>"+$(this).children().val())
+            $(this).children().attr("checked",true);
+            $(this).children().siblings("[name=typeId]").attr("checked",false);
+
+            //获取表单信息
+            let formdata=$("#classdiy").serialize();
+            console.log("发送Ajax>>>>"+formdata)
+            toPage(1);
         });
         $(".source li").click(function () {
-            console.log($(this).text())
+            $(this).addClass("movie-type-active");
+            $(this).siblings("li").removeClass("movie-type-active");
+            console.log("sourceId>>"+$(this).children().val())
+            $(this).children().attr("checked",true);
+            $(this).children().siblings("[name=sourceId]").attr("checked",false);
+            //获取表单信息
+            let formdata=$("#classdiy").serialize();
+            console.log("发送Ajax>>>>"+formdata)
+            toPage(10);
         });
         $(".year li").click(function () {
-            console.log($(this).text())
+            $(this).addClass("movie-type-active");
+            $(this).siblings("li").removeClass("movie-type-active");
+            console.log("yearId>>"+$(this).children().val())
+            $(this).children().attr("checked",true);
+            $(this).children().siblings("[name=yearId]").attr("checked",false);
+            //获取表单信息
+            let formdata=$("#classdiy").serialize();
+            console.log("发送Ajax>>>>"+formdata)
+            toPage(1);
+        });
+        $(".movie-check li").click(function () {
+            console.log("sortId>>"+$(this).children("input").val())
+            //获取表单信息
+            let formdata=$("#classdiy").serialize();
+            console.log("发送Ajax>>>>"+formdata)
+            toPage(1);
         });
 
     })
+
+    //电影排序
+    $(function () {
+        $("#sort input").click(function () {
+            console.log($(this).val())
+            $.ajax({
+                url: "",
+                type: "GET",
+                success: function (res) {
+                    console.log(res)
+                }
+            });
+        });
+    })
+
+
     //电影信息全部展示
     /*
             <li>
@@ -529,17 +271,17 @@
         let moviesList = res.extend.movieList.list;
         $.each(moviesList, function (index, item) {
             let li = $("<li></li>")
-            let a = $("<a href='movie/movieDetails?movieId="+item.movieId+"'></a>")
+            let a = $("<a href='movie/movieDetails?movieId=" + item.movieId + "'></a>")
             let ap = $("<p></p>")
-                .append("<span>"+item.movieCnName+"</span>")
+                .append("<span>" + item.movieCnName + "</span>")
                 .append("<br>")
                 .append("<br>")
-                .append("类型: "+item.movieType)
+                .append("类型: " + item.movieType)
                 .append("<br>")
-                .append("上映时间: "+item.movieReleasedateStr);
-            let img = $("<img src='"+item.moviePicture+"' alt=\"\">")
-            let pname = $("<p class=\"text-center\" style=\"overflow: hidden;text-overflow:ellipsis;white-space: nowrap;\">"+item.movieCnName+"</p>");
-            let pscore = $("<p class=\"text-center\">"+item.movieScore+"</p>");
+                .append("上映时间: " + item.movieReleasedateStr);
+            let img = $("<img src='" + item.moviePicture + "' alt=\"\">")
+            let pname = $("<p class=\"text-center\" style=\"overflow: hidden;text-overflow:ellipsis;white-space: nowrap;\">" + item.movieCnName + "</p>");
+            let pscore = $("<p class=\"text-center\">" + item.movieScore + "</p>");
             a.append(ap).append(img);
             li.append(a).append(pname).append(pscore);
             li.appendTo($(".movie-box ul"));
@@ -548,9 +290,11 @@
 
 
     }
+
     function build_movie_info(res) {
 
     }
+
     //生成分页按钮
     function build_movie_nav(res) {
         $("#page_nav").empty();
@@ -604,37 +348,42 @@
         var nav = $("<nav></nav>").append(ul);
         nav.appendTo("#page_nav");
     }
+
     //获取电影信息
+    //pageNum:页码、sortId：排序、typeId：类型、sourceId：区域、yearId：上映年份
     function toPage(pageNum) {
-        $('html, body').animate({scrollTop:0}, 'slow');
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        console.log($("#classdiy").serialize())
+        let filmParam = $("#classdiy").serialize()+"&"+"pageNum="+pageNum;
+        console.log(filmParam);
         $.ajax({
-            url: "movie/findAllTypeMovies",
-            data: {
-                "pageNum": pageNum
-            },
+            // url: "movie/findAllTypeMovies",
+            url: "movie/movies",
+            /*data: {
+                "pageNum": pageNum,
+                "filmParam":filmParam
+            },*/
+            // data:$("#classdiy").serialize(),
+            data:filmParam,
             type: "get",
             success: function (res) {
                 console.log(res)
-                if (res.code===100){
-
+                /*if (res.code === 100) {
                     //1，展示电影数据
                     build_movie_table(res);
                     //2,解析并显示分页信息
                     build_movie_info(res);
                     //3,解析分页条数据
                     build_movie_nav(res);
-                }
+                }*/
             }
         });
     }
 
 
-
     $(function () {
         toPage(1);
     })
-
-
 
 
 </script>

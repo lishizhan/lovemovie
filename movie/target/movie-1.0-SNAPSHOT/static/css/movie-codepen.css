@@ -133,12 +133,13 @@ body {
     color: #ffffff;
     font-size: 16px;
     padding: 3px 25px;
+    cursor: pointer;
 }
 
-.movie-type .type-movie-item li:hover{
+/*.movie-type .type-movie-item li:hover{
     border-radius: 5px;
     background-color: #ef4238;
-}
+}*/
 /*默认选中*/
 .movie-type-active{
     border-radius: 5px;
