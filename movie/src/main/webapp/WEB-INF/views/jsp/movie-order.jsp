@@ -19,21 +19,23 @@
 
     <script src="static/bootstrap/Jquery/jquery.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
-<!--    <script src="static/js/logout.js"></script>-->
+    <!--    <script src="static/js/logout.js"></script>-->
     <style>
-        .left-box{
+        .left-box {
             position: absolute;
             left: 25%;
             width: 25%;
         }
-        .right-box{
+
+        .right-box {
             position: absolute;
-            left:54%;
-            margin-left:10px;
+            left: 54%;
+            margin-left: 10px;
             padding: 15px;
-            width:20%;
+            width: 20%;
             background-color: #DCDCDC;
         }
+
         input[type="checkbox"] {
             margin-bottom: -8px;
             width: 30px;
@@ -43,12 +45,13 @@
             border-radius: 2px;
             outline: none;
         }
+
         input[type="checkbox"]:checked {
-            background: url("static/images/order/seat-green.png")
-            no-repeat center;
+            background: url("static/images/order/seat-green.png") no-repeat center;
             background-size: 100% 100%;
         }
-        button{
+
+        button {
             border: none;
             color: white;
             text-align: center;
@@ -60,14 +63,17 @@
             padding: 10px;
             background-color: darkgrey;
         }
-        li{
+
+        li {
             margin-bottom: 20px;
             list-style: none;
         }
-        img{
+
+        img {
             width: 100%;
         }
-        .center{
+
+        .center {
             text-align: center;
         }
     </style>
@@ -77,8 +83,9 @@
 <body>
 <!--页面头部 开始-->
 <%--<jsp:include page="common/head.jsp"/>--%>
-<%@include file="common/head.jsp"%>
+<%@include file="common/head.jsp" %>
 <!--页面头部 结束-->
+
 <div class="box">
     <div class="left-box">
         <div class="top" class="center">
@@ -89,40 +96,40 @@
             <p>荧幕中央</p>
         </div>
         <ul>
-            <li>1    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>1 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>2    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>2 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>3    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>3 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>4    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>4 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>5    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>5 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>6    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>6 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
-            <li>7    <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" ><input type="checkbox" ><input type="checkbox" >
-                <input type="checkbox" >
+            <li>7 <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox"><input type="checkbox"><input type="checkbox">
+                <input type="checkbox">
             </li>
         </ul>
     </div>
@@ -150,8 +157,8 @@
             <p>———————————————————————</p>
         </div>
         <div class="center">
-            <p >手机号：</p>
-            <button >确认选择</button>
+            <p>手机号：</p>
+            <button>确认选择</button>
         </div>
     </div>
 </div>

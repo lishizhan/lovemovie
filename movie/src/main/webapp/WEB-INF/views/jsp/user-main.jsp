@@ -104,15 +104,10 @@
             <div class="col-md-9">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a  href="#cart" data-toggle="tab">购票车</a></li>
-                        <li><a href="#order" data-toggle="tab">我的订单</a></li>
+                        <li class="active"><a href="#order" data-toggle="tab">我的订单</a></li>
                         <li><a href="#settings" data-toggle="tab">修改密码</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="active tab-pane" id="cart">
-                            购票车
-
-                        </div>
                         <div class="tab-pane" id="order">
                             我的订单
 

@@ -31,6 +31,7 @@
         <mvc:resources mapping="/static/**" location="/static/"/>
         <mvc:resources mapping="/upload/**" location="/upload/"/>
         <mvc:resources mapping="/admin/**" location="/admin/"/>
+
     <!--    <mvc:resources mapping="/uploads/**" location="/uploads/"/>-->
 
     <!-- 配置文件上传解析器
@@ -65,6 +66,10 @@
             <mvc:mapping path="/comment/**"/>
             <mvc:exclude-mapping path="/comment/findComment"/>
             <bean class="com.lovemovie.interceptor.CommentInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/order/**"/>
+            <bean class="com.lovemovie.interceptor.OrderInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

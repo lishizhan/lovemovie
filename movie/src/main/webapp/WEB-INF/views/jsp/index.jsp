@@ -79,6 +79,7 @@
         <div class="hots-movie-content" id="movieList">
             <ul></ul>
         </div>
+
     </div>
     <div></div>
 </section>
@@ -98,9 +99,10 @@
             type:"get",
             success:function (res) {
                 $.each(res.extend.movieList.list,function (index,item) {
-                    let li = $("<li></li>").attr('movie_id',item.movieId);
+                    let li = $("<li></li>");
                     let img = $("<img alt='图片加载失败'>").attr("src",item.moviePicture);
-                    let a = $("<a></a>").text("购票");
+                    img.attr('movie_id',item.movieId);
+                    let a = $("<a href='order/buyTicketDetails?movieId="+item.movieId+"'></a>").text("购票");
                     let p = $("<p></p>");
                     let span = $("<span></span>").text(item.movieCnName);
                     let em = $("<em></em>").text(item.movieScore)
@@ -113,9 +115,11 @@
         /*$("#movieList ul li").click(function () {
             window.location.href="view/movieDetails";
         });*/
-        $(document).on("click","#movieList ul li",function () {
+        $(document).on("click","#movieList ul li img",function () {
             window.location.href="movie/movieDetails?"+'movieId='+$(this).attr("movie_id");
         })
+
+
     })
     /*
     * <li>

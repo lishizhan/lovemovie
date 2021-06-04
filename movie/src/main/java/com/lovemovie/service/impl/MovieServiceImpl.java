@@ -43,9 +43,10 @@ public class MovieServiceImpl implements IMovieService {
     public Movie findMovieByMovieId(Integer movieId) {
 
         Movie movie = movieMapper.selectByPrimaryKey(new Long(movieId));
-
+        String type = movie.getMovieType();
+        movie.setMovieTypeStr(type);
         String[] movieType = movie.getMovieType().split(",");
-        String[] movieTypeSrr = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
+        String[] movieTypeSrr = {"全部","爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
         List<String> strings = Arrays.asList(movieTypeSrr);
         StrBuilder strBuilder = new StrBuilder();
         for (int i = 0; i < movieType.length; i++) {
@@ -189,5 +190,12 @@ public class MovieServiceImpl implements IMovieService {
                 break;
         }
         return moviesAll;
+    }
+
+    @Override
+    public List<Movie> findMovieByNameLike(String searchName) {
+
+        List<Movie> movieList = movieMapper.findMovieByNameLike(searchName);
+        return movieList;
     }
 }

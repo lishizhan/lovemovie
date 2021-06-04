@@ -67,4 +67,11 @@ public interface IMovieService {
      * @return
      */
     List<Movie> findMovies(FilmParam filmParam);
+
+    /**
+     * 按电影名字魔法查询
+     * @param searchName
+     * @return
+     */
+    List<Movie> findMovieByNameLike(String searchName);
 }

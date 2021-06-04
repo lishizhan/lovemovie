@@ -9,8 +9,8 @@
             <img src="static/images/logo/logo6.png" alt="" style="height: 72px;width: 210px;">
         </div>
         <div class="search">
-            <form action="movie/search" method="post">
-                <input type="text" name="searchName" placeholder="搜索您喜欢的电影">
+            <form action="movie/search" method="post" id="search">
+                <input type="text" name="searchName" value="${searchName}" placeholder="搜索您喜欢的电影">
                 <button type="submit"></button>
             </form>
         </div>
@@ -76,6 +76,13 @@
             });
         }
     });
+    $("form").on("click",function(){
+        if ($("[name=searchName]").val()===""){
+            return false;
+        }
+        return true;
+    })
+
 
 
 </script>

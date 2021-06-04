@@ -35,15 +35,15 @@
             <div class="type-item">品牌:</div>
             <ul class="type-movie-item">
                 <li class="movie-type-active">全部</li>
-                <li>金逸影城</li>
-                <li>大地影院</li>
-                <li>万达影城</li>
+                <li>金逸影城    </li>
+                <li>大地影院    </li>
+                <li>万达影城    </li>
                 <li>中影国际影城</li>
                 <li>完美世界影城</li>
-                <li>烽禾影城</li>
-                <li>比高电影城</li>
-                <li>横店影视</li>
-                <li>星美国际影城</li>
+                <li>烽禾影城    </li>
+                <li>比高电影城   </li>
+                <li>横店影视    </li>
+                <li>星美国际影城  </li>
                 <li>中影星美国际影城</li>
 
 <!--                <li>CGV影城</li>-->

@@ -55,15 +55,15 @@
             <h3 style="margin-top: 0px">${movie.movieCnName}</h3>
             <h5>${movie.movieFgName}</h5>
             <h5>地区：${movie.movieCountry}</h5>
-            <h5>类型：${movie.movieType}</h5>
-            <h5>上映时间：${movie.movieReleasedate}</h5>
+            <h5>类型：${movie.movieTypeStr}</h5>
+            <h5>上映时间：${movie.movieReleasedateStr}</h5>
             <br>
             <div>
                 <button class="btn btn-info"><span class="glyphicon glyphicon-heart"></span> 想看</button>
                 <button class="btn btn-info"><span class="glyphicon glyphicon-star"></span> 评分</button>
             </div>
             <c:if test="${movie.movieState==1}">
-                <button class="btn btn-info" style="background-color: #df2d2d;padding: 6px 100px;margin-top: 10px">购&nbsp;&nbsp;票</button>
+                <a href="order/buyTicketDetails?movieId=${movie.movieId}" class="btn btn-info" style="background-color: #df2d2d;padding: 6px 100px;margin-top: 10px">购&nbsp;&nbsp;票</a>
             </c:if>
 
         </div>

@@ -21,6 +21,7 @@ public class Movie {
     private String movieDuration;//电影时长
 
     private String movieType;//电影类型
+    private String movieTypeStr;//电影类型
 
     private Float movieScore;//电影评分默认为0
 
@@ -41,6 +42,13 @@ public class Movie {
 
     private Integer isDelete=1;//删除状态 默认为1 表示数据存在，0：表示数据删除
 
+    public String getMovieTypeStr() {
+        return movieTypeStr;
+    }
+
+    public void setMovieTypeStr(String movieTypeStr) {
+        this.movieTypeStr = movieTypeStr;
+    }
 
     public String getMovieReleasedateStr() {
 

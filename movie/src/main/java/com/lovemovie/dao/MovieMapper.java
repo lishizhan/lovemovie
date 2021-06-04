@@ -67,4 +67,11 @@ public interface MovieMapper {
      * @return
      */
     List<Movie> findMoviesAllByYear(@Param("typeId") String typeId, @Param("sourceId") String sourceId, @Param("yearId") String yearId);
+
+    /**
+     * 按电影名字模糊查询
+     * @param searchName
+     * @return
+     */
+    List<Movie> findMovieByNameLike(String searchName);
 }

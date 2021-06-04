@@ -137,44 +137,20 @@ public class MovieController {
     }
 
 
+    /**
+     * 电影查询
+     * @param searchName
+     * @return
+     */
     @RequestMapping(value = "/search")
-    public String search(String searchName) {
+    public ModelAndView search(String searchName) {
         System.out.println("searchName = " + searchName);
-        return "jsp/movie-search";
-    }
-
-
-    /**
-     * 根据电影类型搜索
-     *
-     * @return
-     */
-    @RequestMapping(value = "/findMoviesByType")
-    public Msg findMoviesByType() {
-
-        return null;
-    }
-
-    /**
-     * 根据评分、上映时间、热度进行排序
-     *
-     * @return
-     */
-    @RequestMapping(value = "/sortAllMovies")
-    public Msg sortAllMovies(String sortId) {
-        switch (sortId) {
-            case "1":
-                break;
-            case "2":
-                break;
-            case "3":
-                break;
-            default:
-                break;
-        }
-
-
-        return null;
+        List<Movie> movieList = movieService.findMovieByNameLike(searchName);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("searchName",searchName);
+        mv.addObject("movieList",movieList);
+        mv.setViewName("jsp/movie-search");
+        return mv;
     }
 
 

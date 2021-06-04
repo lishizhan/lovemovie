@@ -34,6 +34,24 @@
         .movie-type [type=radio]{
             display: none;
         }
+        .movie-type label{
+            color: #fff;
+            cursor: pointer;
+        }
+        label {
+            line-height: 20px;
+            display: inline-block;
+            margin-left: 15px;
+            margin-right: 15px;
+            color: #777;
+        }
+        label {
+            display: inline-block;
+            max-width: 100%;
+            /* margin-bottom: 5px; */
+            font-weight: 700;
+        }
+
     </style>
 </head>
 
@@ -49,48 +67,92 @@
                 <div class="type-item">类型:</div>
                 <ul class="type-movie-item type">
                     <li class="movie-type-active">
-                        <input type="radio" checked name="typeId" value="0">全部
+                        <label for="type0">全部</label>
+                        <input type="radio" checked id="type0" name="typeId" value="0">
                     </li>
-                    <li><input type="radio" name="typeId" value="1">爱情</li>
-                    <li><input type="radio" name="typeId" value="2">惊悚</li>
-                    <li><input type="radio" name="typeId" value="3">科幻</li>
-                    <li><input type="radio" name="typeId" value="4">动作</li>
-                    <li><input type="radio" name="typeId" value="5">悬疑</li>
-                    <li><input type="radio" name="typeId" value="6">犯罪</li>
-                    <li><input type="radio" name="typeId" value="7">冒险</li>
-                    <li><input type="radio" name="typeId" value="8">战争</li>
-                    <li><input type="radio" name="typeId" value="9">奇幻</li>
-                    <li><input type="radio" name="typeId" value="10">运动</li>
-                    <li><input type="radio" name="typeId" value="11">家庭</li>
-                    <li><input type="radio" name="typeId" value="12">古装</li>
-                    <li><input type="radio" name="typeId" value="13">武侠</li>
-                    <li><input type="radio" name="typeId" value="14">其他</li>
+                    <li>
+                        <label for="type1">爱情</label>
+                        <input type="radio" id="type1" name="typeId" value="1">
+                    </li>
+                    <li>
+                        <label for="type2">惊悚</label>
+                        <input type="radio" id="type2" name="typeId" value="2">
+                    </li>
+                    <li>
+                        <label for="type3">科幻</label>
+                        <input type="radio" id="type3" name="typeId" value="3">
+                    </li>
+                    <li>
+                        <label for="type4">动作</label>
+                        <input type="radio" id="type4" name="typeId" value="4">
+                    </li>
+                    <li>
+                        <label for="type5">悬疑</label>
+                        <input type="radio" id="type5" name="typeId" value="5">
+                    </li>
+                    <li>
+                        <label for="type6">犯罪</label>
+                        <input type="radio" id="type6" name="typeId" value="6">
+                    </li>
+                    <li>
+                        <label for="type7">冒险</label>
+                        <input type="radio" id="type7" name="typeId" value="7">
+                    </li>
+                    <li>
+                        <label for="type8">战争</label>
+                        <input type="radio" id="type8" name="typeId" value="8">
+                    </li>
+                    <li>
+                        <label for="type9">奇幻</label>
+                        <input type="radio" id="type9" name="typeId" value="9">
+                    </li>
+                    <li>
+                        <label for="type10">运动</label>
+                        <input type="radio" id="type10" name="typeId" value="10">
+                    </li>
+                    <li>
+                        <label for="type11">家庭</label>
+                        <input type="radio" id="type11" name="typeId" value="11">
+                    </li>
+                    <li>
+                        <label for="type12">古装</label>
+                        <input type="radio" id="type12" name="typeId" value="12">
+                    </li>
+                    <li>
+                        <label for="type13">武侠</label>
+                        <input type="radio" id="type13" name="typeId" value="13">
+                    </li>
+                    <li>
+                        <label for="type14">其他</label>
+                        <input type="radio" id="type14" name="typeId" value="14">
+                    </li>
                 </ul>
             </li>
             <li>
                 <div class="type-item">区域:</div>
                 <ul class="type-movie-item source">
                     <li class="movie-type-active">
-                        <input type="radio" name="sourceId" checked value="0">全部
+                        <label for="source0">全部</label>
+                        <input type="radio" id="source0" name="sourceId" checked value="0">
                     </li>
-                    <li><input type="radio" name="sourceId" value="1">大陆</li>
-                    <li><input type="radio" name="sourceId" value="2">美国</li>
-                    <li><input type="radio" name="sourceId" value="3">韩国</li>
-                    <li><input type="radio" name="sourceId" value="4">日本</li>
-                    <li><input type="radio" name="sourceId" value="5">中国香港</li>
-                    <li><input type="radio" name="sourceId" value="6">中国台湾</li>
-                    <li><input type="radio" name="sourceId" value="7">泰国</li>
-                    <li><input type="radio" name="sourceId" value="8">印度</li>
-                    <li><input type="radio" name="sourceId" value="9">法国</li>
-                    <li><input type="radio" name="sourceId" value="10">英国</li>
-                    <li><input type="radio" name="sourceId" value="11">俄罗斯</li>
-                    <li><input type="radio" name="sourceId" value="12">意大利</li>
-                    <li><input type="radio" name="sourceId" value="13">西班牙</li>
-                    <li><input type="radio" name="sourceId" value="14">德国</li>
-                    <li><input type="radio" name="sourceId" value="15">波兰</li>
-                    <li><input type="radio" name="sourceId" value="16">澳大利亚</li>
-                    <li><input type="radio" name="sourceId" value="17">伊朗</li>
-                    <li><input type="radio" name="sourceId" value="18">其他</li>
+                    <li><label for="source1">大陆</label><input type="radio" id="source1" name="sourceId" value="1"></li>
+                    <li><label for="source2">美国</label><input type="radio" id="source2" name="sourceId" value="2"></li>
+                    <li><label for="source3">韩国</label><input type="radio" id="source3" name="sourceId" value="3"></li>
+                    <li><label for="source4">日本</label><input type="radio" id="source4" name="sourceId" value="4"></li>
+                    <li><label for="source5">中国香港</label><input type="radio" id="source5" name="sourceId" value="5"></li>
+                    <li><label for="source6">中国台湾</label><input type="radio" id="source6" name="sourceId" value="6"></li>
+                    <li><label for="source7">泰国</label><input type="radio" id="source7" name="sourceId" value="7"></li>
+                    <li><label for="source8">印度</label><input type="radio" id="source8" name="sourceId" value="8"></li>
+                    <li><label for="source9">法国</label><input type="radio" id="source9" name="sourceId" value="9"></li>
+                    <li><label for="source10">英国</label><input type="radio" id="source10" name="sourceId" value="10"></li>
+                    <li><label for="source11">俄罗斯</label><input type="radio" id="source11" name="sourceId" value="11"></li>
+                    <li><label for="source12">意大利</label><input type="radio" id="source12" name="sourceId" value="12"></li>
+                    <li><label for="source13">西班牙</label><input type="radio" id="source13" name="sourceId" value="13"></li>
+                    <li><label for="source14">德国</label><input type="radio" id="source14" name="sourceId" value="14"></li>
+                    <li><label for="source15">波兰</label><input type="radio" id="source15" name="sourceId" value="15"></li>
+                    <li><label for="source16">澳大利亚</label><input type="radio" id="source16" name="sourceId" value="16"></li>
+                    <li><label for="source17">伊朗</label><input type="radio" id="source17" name="sourceId" value="17"></li>
+                    <li><label for="source18">其他</label><input type="radio" id="source18" name="sourceId" value="18"></li>
 
                 </ul>
             </li>
@@ -98,24 +160,25 @@
                 <div class="type-item">时间:</div>
                 <ul class="type-movie-item year">
                     <li class="movie-type-active">
-                        <input type="radio" name="yearId" value="0" checked>全部
+                        <label for="year0">全部</label>
+                        <input type="radio" id="year0" name="yearId" value="0" checked>
                     </li>
-                    <li><input type="radio" name="yearId" value="1">2021</li>
-                    <li><input type="radio" name="yearId" value="2">2020</li>
-                    <li><input type="radio" name="yearId" value="3">2019</li>
-                    <li><input type="radio" name="yearId" value="4">2018</li>
-                    <li><input type="radio" name="yearId" value="5">2017</li>
-                    <li><input type="radio" name="yearId" value="6">2016</li>
-                    <li><input type="radio" name="yearId" value="7">2015</li>
-                    <li><input type="radio" name="yearId" value="8">2014</li>
-                    <li><input type="radio" name="yearId" value="9">2013</li>
-                    <li><input type="radio" name="yearId" value="10">2012</li>
-                    <li><input type="radio" name="yearId" value="11">2011</li>
-                    <li><input type="radio" name="yearId" value="12">2000-2010</li>
-                    <li><input type="radio" name="yearId" value="13">90年代</li>
-                    <li><input type="radio" name="yearId" value="14">80年代</li>
-                    <li><input type="radio" name="yearId" value="15">70年代</li>
-                    <li><input type="radio" name="yearId" value="16">更早</li>
+                    <li><label for="year1">2021</label><input type="radio" id="year1" name="yearId" value="1"></li>
+                    <li><label for="year2">2020</label><input type="radio" id="year2" name="yearId" value="2"></li>
+                    <li><label for="year3">2019</label><input type="radio" id="year3" name="yearId" value="3"></li>
+                    <li><label for="year4">2018</label><input type="radio" id="year4" name="yearId" value="4"></li>
+                    <li><label for="year5">2017</label><input type="radio" id="year5" name="yearId" value="5"></li>
+                    <li><label for="year6">2016</label><input type="radio" id="year6" name="yearId" value="6"></li>
+                    <li><label for="year7">2015</label><input type="radio" id="year7" name="yearId" value="7"></li>
+                    <li><label for="year8">2014</label><input type="radio" id="year8" name="yearId" value="8"></li>
+                    <li><label for="year9">2013</label><input type="radio" id="year9" name="yearId" value="9"></li>
+                    <li><label for="year10">2012</label><input type="radio" id="year10" name="yearId" value="10"></li>
+                    <li><label for="year11">2011</label><input type="radio" id="year11" name="yearId" value="11"></li>
+                    <li><label for="year12">2000-2010</label><input type="radio" id="year12" name="yearId" value="12"></li>
+                    <li><label for="year13">90年代</label><input type="radio" id="year13" name="yearId" value="13"></li>
+                    <li><label for="year14">80年代</label><input type="radio" id="year14" name="yearId" value="14"></li>
+                    <li><label for="year15">70年代</label><input type="radio" id="year15" name="yearId" value="15"></li>
+                    <li><label for="year16">更早</label><input type="radio" id="year16" name="yearId" value="16"></li>
                 </ul>
             </li>
         </ul>
@@ -175,65 +238,50 @@
     };
 
 
-    //种类catId=3&区域sourceId=2&年份yearId=16
-    function showMovie(catId, sourceId, yearId) {
-
-    }
-
     //电影分类查询
     $(function () {
-        $(".type li").click(function () {
-            $(this).addClass("movie-type-active");
-            $(this).siblings("li").removeClass("movie-type-active");
+        $(".type li label").click(function () {
+            $(this).siblings("input").attr("checked",true);
+            $(this).parent().siblings("li").children("[name=typeId]").attr("checked",false);
+
+            $(this).parent().addClass("movie-type-active");
+            $(this).parent().siblings("li").removeClass("movie-type-active");
             console.log("typeId>>"+$(this).children().val())
-            $(this).children().attr("checked",true);
-            $(this).children().siblings("[name=typeId]").attr("checked",false);
 
             //获取表单信息
             console.log("发送Ajax>>>>")
             toPage(1);
         });
-        $(".source li").click(function () {
-            $(this).addClass("movie-type-active");
-            $(this).siblings("li").removeClass("movie-type-active");
+        $(".source li label").click(function () {
+            $(this).siblings("input").attr("checked",true);
+            $(this).parent().siblings("li").children("[name=sourceId]").attr("checked",false);
+
+            $(this).parent().addClass("movie-type-active");
+            $(this).parent().siblings("li").removeClass("movie-type-active");
             console.log("sourceId>>"+$(this).children().val())
-            $(this).children().attr("checked",true);
-            $(this).children().siblings("[name=sourceId]").attr("checked",false);
             //获取表单信息
             console.log("发送Ajax>>>>")
             toPage(1);
         });
-        $(".year li").click(function () {
-            $(this).addClass("movie-type-active");
-            $(this).siblings("li").removeClass("movie-type-active");
-            console.log("yearId>>"+$(this).children().val())
-            $(this).children().attr("checked",true);
-            $(this).children().siblings("[name=yearId]").attr("checked",false);
+        $(".year li label").click(function () {
+
+
+            $(this).siblings("input").attr("checked",true);
+            $(this).parent().siblings("li").children("[name=yearId]").attr("checked",false);
+
+            $(this).parent().addClass("movie-type-active");
+            $(this).parent().siblings("li").removeClass("movie-type-active");
             //获取表单信息
             console.log("发送Ajax>>>>")
             toPage(1);
         });
         $(".movie-check li").click(function () {
             console.log("sortId>>"+$(this).children("input").val())
-            //获取表单信息
+            // 获取表单信息
             console.log("发送Ajax>>>>")
             toPage(1);
         });
 
-    })
-
-    //电影排序
-    $(function () {
-        $("#sort input").click(function () {
-            console.log($(this).val())
-            $.ajax({
-                url: "",
-                type: "GET",
-                success: function (res) {
-                    console.log(res)
-                }
-            });
-        });
     })
 
 
@@ -287,9 +335,6 @@
 
     }
 
-    function build_movie_info(res) {
-
-    }
 
     //生成分页按钮
     function build_movie_nav(res) {
@@ -364,14 +409,12 @@
             type: "get",
             success: function (res) {
                 console.log(res)
-                /*if (res.code === 100) {
+                if (res.code === 100) {
                     //1，展示电影数据
                     build_movie_table(res);
-                    //2,解析并显示分页信息
-                    build_movie_info(res);
-                    //3,解析分页条数据
+                    //2,解析分页条数据
                     build_movie_nav(res);
-                }*/
+                }
             }
         });
     }
