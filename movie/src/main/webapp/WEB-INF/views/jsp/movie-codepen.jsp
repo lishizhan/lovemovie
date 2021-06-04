@@ -49,48 +49,48 @@
                 <div class="type-item">类型:</div>
                 <ul class="type-movie-item type">
                     <li class="movie-type-active">
-                        <input type="radio" checked name="typeId" value="-1">全部
+                        <input type="radio" checked name="typeId" value="0">全部
                     </li>
-                    <li><input type="radio" name="typeId" value="0">爱情</li>
-                    <li><input type="radio" name="typeId" value="1">惊悚</li>
-                    <li><input type="radio" name="typeId" value="2">科幻</li>
-                    <li><input type="radio" name="typeId" value="3">动作</li>
-                    <li><input type="radio" name="typeId" value="4">悬疑</li>
-                    <li><input type="radio" name="typeId" value="5">犯罪</li>
-                    <li><input type="radio" name="typeId" value="6">冒险</li>
-                    <li><input type="radio" name="typeId" value="7">战争</li>
-                    <li><input type="radio" name="typeId" value="8">奇幻</li>
-                    <li><input type="radio" name="typeId" value="9">运动</li>
-                    <li><input type="radio" name="typeId" value="10">家庭</li>
-                    <li><input type="radio" name="typeId" value="11">古装</li>
-                    <li><input type="radio" name="typeId" value="12">武侠</li>
-                    <li><input type="radio" name="typeId" value="13">其他</li>
+                    <li><input type="radio" name="typeId" value="1">爱情</li>
+                    <li><input type="radio" name="typeId" value="2">惊悚</li>
+                    <li><input type="radio" name="typeId" value="3">科幻</li>
+                    <li><input type="radio" name="typeId" value="4">动作</li>
+                    <li><input type="radio" name="typeId" value="5">悬疑</li>
+                    <li><input type="radio" name="typeId" value="6">犯罪</li>
+                    <li><input type="radio" name="typeId" value="7">冒险</li>
+                    <li><input type="radio" name="typeId" value="8">战争</li>
+                    <li><input type="radio" name="typeId" value="9">奇幻</li>
+                    <li><input type="radio" name="typeId" value="10">运动</li>
+                    <li><input type="radio" name="typeId" value="11">家庭</li>
+                    <li><input type="radio" name="typeId" value="12">古装</li>
+                    <li><input type="radio" name="typeId" value="13">武侠</li>
+                    <li><input type="radio" name="typeId" value="14">其他</li>
                 </ul>
             </li>
             <li>
                 <div class="type-item">区域:</div>
                 <ul class="type-movie-item source">
                     <li class="movie-type-active">
-                        <input type="radio" name="sourceId" checked value="-1">全部
+                        <input type="radio" name="sourceId" checked value="0">全部
                     </li>
-                    <li><input type="radio" name="sourceId" value="0">大陆</li>
-                    <li><input type="radio" name="sourceId" value="1">美国</li>
-                    <li><input type="radio" name="sourceId" value="2">韩国</li>
-                    <li><input type="radio" name="sourceId" value="3">日本</li>
-                    <li><input type="radio" name="sourceId" value="4">中国香港</li>
-                    <li><input type="radio" name="sourceId" value="5">中国台湾</li>
-                    <li><input type="radio" name="sourceId" value="6">泰国</li>
-                    <li><input type="radio" name="sourceId" value="7">印度</li>
-                    <li><input type="radio" name="sourceId" value="8">法国</li>
-                    <li><input type="radio" name="sourceId" value="9">英国</li>
-                    <li><input type="radio" name="sourceId" value="10">俄罗斯</li>
-                    <li><input type="radio" name="sourceId" value="11">意大利</li>
-                    <li><input type="radio" name="sourceId" value="12">西班牙</li>
-                    <li><input type="radio" name="sourceId" value="13">德国</li>
-                    <li><input type="radio" name="sourceId" value="14">波兰</li>
-                    <li><input type="radio" name="sourceId" value="15">澳大利亚</li>
-                    <li><input type="radio" name="sourceId" value="16">伊朗</li>
-                    <li><input type="radio" name="sourceId" value="17">其他</li>
+                    <li><input type="radio" name="sourceId" value="1">大陆</li>
+                    <li><input type="radio" name="sourceId" value="2">美国</li>
+                    <li><input type="radio" name="sourceId" value="3">韩国</li>
+                    <li><input type="radio" name="sourceId" value="4">日本</li>
+                    <li><input type="radio" name="sourceId" value="5">中国香港</li>
+                    <li><input type="radio" name="sourceId" value="6">中国台湾</li>
+                    <li><input type="radio" name="sourceId" value="7">泰国</li>
+                    <li><input type="radio" name="sourceId" value="8">印度</li>
+                    <li><input type="radio" name="sourceId" value="9">法国</li>
+                    <li><input type="radio" name="sourceId" value="10">英国</li>
+                    <li><input type="radio" name="sourceId" value="11">俄罗斯</li>
+                    <li><input type="radio" name="sourceId" value="12">意大利</li>
+                    <li><input type="radio" name="sourceId" value="13">西班牙</li>
+                    <li><input type="radio" name="sourceId" value="14">德国</li>
+                    <li><input type="radio" name="sourceId" value="15">波兰</li>
+                    <li><input type="radio" name="sourceId" value="16">澳大利亚</li>
+                    <li><input type="radio" name="sourceId" value="17">伊朗</li>
+                    <li><input type="radio" name="sourceId" value="18">其他</li>
 
                 </ul>
             </li>
@@ -98,24 +98,24 @@
                 <div class="type-item">时间:</div>
                 <ul class="type-movie-item year">
                     <li class="movie-type-active">
-                        <input type="radio" name="yearId" value="-1" checked>全部
+                        <input type="radio" name="yearId" value="0" checked>全部
                     </li>
-                    <li><input type="radio" name="yearId" value="0">2021</li>
-                    <li><input type="radio" name="yearId" value="1">2020</li>
-                    <li><input type="radio" name="yearId" value="2">2019</li>
-                    <li><input type="radio" name="yearId" value="3">2018</li>
-                    <li><input type="radio" name="yearId" value="4">2017</li>
-                    <li><input type="radio" name="yearId" value="5">2016</li>
-                    <li><input type="radio" name="yearId" value="6">2015</li>
-                    <li><input type="radio" name="yearId" value="7">2014</li>
-                    <li><input type="radio" name="yearId" value="8">2013</li>
-                    <li><input type="radio" name="yearId" value="9">2012</li>
-                    <li><input type="radio" name="yearId" value="10">2011</li>
-                    <li><input type="radio" name="yearId" value="11">2000-2010</li>
-                    <li><input type="radio" name="yearId" value="12">90年代</li>
-                    <li><input type="radio" name="yearId" value="13">80年代</li>
-                    <li><input type="radio" name="yearId" value="14">70年代</li>
-                    <li><input type="radio" name="yearId" value="15">更早</li>
+                    <li><input type="radio" name="yearId" value="1">2021</li>
+                    <li><input type="radio" name="yearId" value="2">2020</li>
+                    <li><input type="radio" name="yearId" value="3">2019</li>
+                    <li><input type="radio" name="yearId" value="4">2018</li>
+                    <li><input type="radio" name="yearId" value="5">2017</li>
+                    <li><input type="radio" name="yearId" value="6">2016</li>
+                    <li><input type="radio" name="yearId" value="7">2015</li>
+                    <li><input type="radio" name="yearId" value="8">2014</li>
+                    <li><input type="radio" name="yearId" value="9">2013</li>
+                    <li><input type="radio" name="yearId" value="10">2012</li>
+                    <li><input type="radio" name="yearId" value="11">2011</li>
+                    <li><input type="radio" name="yearId" value="12">2000-2010</li>
+                    <li><input type="radio" name="yearId" value="13">90年代</li>
+                    <li><input type="radio" name="yearId" value="14">80年代</li>
+                    <li><input type="radio" name="yearId" value="15">70年代</li>
+                    <li><input type="radio" name="yearId" value="16">更早</li>
                 </ul>
             </li>
         </ul>
@@ -128,12 +128,12 @@
             <ul>
                 <li>
 
-                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="1" id="radio1"
+                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="0" id="radio1"
                            checked="checked"/>
                     <label for="radio1">按评分排序</label>
                 </li>
                 <li>
-                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="2" id="radio2"/>
+                    <input style="outline: none" class="radio_type" type="radio" name="sortId" value="1" id="radio2"/>
                     <label for="radio2">按上映时间排序</label>
                 </li>
                 <!-- <li>
@@ -190,8 +190,7 @@
             $(this).children().siblings("[name=typeId]").attr("checked",false);
 
             //获取表单信息
-            let formdata=$("#classdiy").serialize();
-            console.log("发送Ajax>>>>"+formdata)
+            console.log("发送Ajax>>>>")
             toPage(1);
         });
         $(".source li").click(function () {
@@ -201,8 +200,7 @@
             $(this).children().attr("checked",true);
             $(this).children().siblings("[name=sourceId]").attr("checked",false);
             //获取表单信息
-            let formdata=$("#classdiy").serialize();
-            console.log("发送Ajax>>>>"+formdata)
+            console.log("发送Ajax>>>>")
             toPage(1);
         });
         $(".year li").click(function () {
@@ -212,15 +210,13 @@
             $(this).children().attr("checked",true);
             $(this).children().siblings("[name=yearId]").attr("checked",false);
             //获取表单信息
-            let formdata=$("#classdiy").serialize();
-            console.log("发送Ajax>>>>"+formdata)
+            console.log("发送Ajax>>>>")
             toPage(1);
         });
         $(".movie-check li").click(function () {
             console.log("sortId>>"+$(this).children("input").val())
             //获取表单信息
-            let formdata=$("#classdiy").serialize();
-            console.log("发送Ajax>>>>"+formdata)
+            console.log("发送Ajax>>>>")
             toPage(1);
         });
 

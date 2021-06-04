@@ -53,6 +53,46 @@
         from movie
         where movie_cn_name=#{movieName}
     </select>
+
+    <select id="findMoviesAllByScore" resultMap="BaseResultMap">
+
+        select <include refid="Base_Column_List"/>
+        from
+        movie
+        <where>
+            <if test="typeId !=null">
+                and movie_type like concat('%',#{typeId},'%')
+            </if>
+            <if test="sourceId !=null">
+                and movie_country like concat('%',#{sourceId},'%')
+            </if>
+            <if test="yearId !=null">
+                and movie_releaseDate LIKE concat('%',#{yearId},'%')
+            </if>
+            and is_delete=1
+        </where>
+
+        ORDER BY movie_score desc
+
+    </select>
+    <select id="findMoviesAllByYear" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from
+        movie
+        <where>
+            <if test="typeId !=null">
+                and movie_type like concat('%',#{typeId},'%')
+            </if>
+            <if test="sourceId !=null">
+                and movie_country like concat('%',#{sourceId},'%')
+            </if>
+            <if test="yearId !=null">
+                and movie_releaseDate LIKE concat('%',#{yearId},'%')
+            </if>
+            and is_delete=1
+        </where>
+        ORDER BY movie_releaseDate desc
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie
         where movie_id = #{movieId,jdbcType=BIGINT}

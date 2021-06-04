@@ -110,14 +110,12 @@ public class MovieController {
     @ResponseBody
     public Msg findMovies(FilmParam filmParam) {
         System.out.println("filmParam = " + filmParam);
-        /*//分页插件,传入页面的，每页几条
-        PageHelper.startPage(pageNum, 15);
-        List<Movie> allMovies = movieService.findMovies(sortId,typeId,sourceId,yearId);
+        //分页插件,传入页面的，每页几条
+        PageHelper.startPage(Integer.parseInt(filmParam.getPageNum()), 15);
+        List<Movie> allMovies = movieService.findMovies(filmParam);
         //使用pageInfo包装查询后的结果,包括我们查询出来的数据。传入连续显示的页数
         PageInfo<Movie> pageInfo = new PageInfo<>(allMovies, 15);
-        return Msg.success().add("movieList", pageInfo);*/
-        return Msg.success();
-
+        return Msg.success().add("movieList", pageInfo);
     }
 
     /**

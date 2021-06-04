@@ -5,6 +5,7 @@ import com.lovemovie.dao.MovieMapper;
 import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.model.FilmParam;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.utils.AssertUtil;
@@ -123,20 +124,20 @@ public class MovieServiceImpl implements IMovieService {
     @Override
     public Msg findMovieNameIsExist(String movieName) {
 
-        AssertUtil.isTrue(movieName==null, "参数不能为空！！");
-        Movie movie=movieMapper.checkMovieByName(movieName);
+        AssertUtil.isTrue(movieName == null, "参数不能为空！！");
+        Movie movie = movieMapper.checkMovieByName(movieName);
         System.out.println("movie和情况： " + movie);
-        AssertUtil.isTrue(movie!=null, "电影名称已经存在");
+        AssertUtil.isTrue(movie != null, "电影名称已经存在");
         return Msg.success();
     }
 
     @Override
     public Msg deleteMovieById(String movieId) {
-        AssertUtil.isTrue(movieId==null,"电影id不能为空");
+        AssertUtil.isTrue(movieId == null, "电影id不能为空");
         int i = movieMapper.deleteByPrimaryKey(new Long(movieId));
-        if (i>0){
+        if (i > 0) {
             return Msg.success();
-        }else {
+        } else {
             return Msg.fail();
         }
     }
@@ -147,12 +148,46 @@ public class MovieServiceImpl implements IMovieService {
     }
 
     @Override
-    public List<Movie> findMovies(Integer sortId, Integer typeId, Integer sourceId, Integer yearId) {
-        String[] sorts = {"按评分","按上映时间"};
-        String[] types = {"爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};;
+    public List<Movie> findMovies(FilmParam filmParam) {
+        String[] sorts = {"按评分", "按上映时间"};
+        String[] types = {"全部","爱情", "惊悚", "科幻", "动作", "悬疑", "犯罪", "冒险", "战争", "奇幻", "运动", "家庭", "古装", "武侠", "其他"};
+        String[] source = {"全部","中国", "美国", "韩国", "日本", "中国香港", "中国台湾", "泰国", "印度", "法国", "英国", "俄罗斯", "意大利", "西班牙", "德国", "波兰", "澳大利亚", "伊朗", "其他",
+        };
+        String[] years = {"全部","2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2000-2010", "90年代", "80年代", "70年代", "更早"};
 
-
-
-        return null;
+        FilmParam param = new FilmParam();
+        if (filmParam.getTypeId().equals("0")){
+            param.setTypeId(null);
+        }else {
+            param.setTypeId(types[Integer.parseInt(filmParam.getTypeId())]);
+        }
+        if (filmParam.getSourceId().equals("0")){
+            param.setSourceId(null);
+        }else {
+            param.setSourceId(source[Integer.parseInt(filmParam.getSourceId())]);
+        }
+        if (filmParam.getYearId().equals("0")){
+            param.setYearId(null);
+        }else {
+            param.setYearId(years[Integer.parseInt(filmParam.getYearId())]);
+        }
+        param.setSortId(sorts[Integer.parseInt(filmParam.getSortId())]);
+        param.setPageNum(filmParam.getPageNum());
+        System.out.println("param = " + param);
+        List<Movie> moviesAll =null;
+        switch (param.getSortId()){
+            case "按评分":
+                // typeId,sourceId,yearId
+                moviesAll = movieMapper.findMoviesAllByScore(param.getTypeId(),param.getSourceId(),param.getYearId());
+                System.out.println("moviesAll = " + moviesAll);
+                break;
+            case "按上映时间":
+                moviesAll = movieMapper.findMoviesAllByYear(param.getTypeId(),param.getSourceId(),param.getYearId());
+                System.out.println("moviesAll = " + moviesAll);
+                break;
+            default:
+                break;
+        }
+        return moviesAll;
     }
 }

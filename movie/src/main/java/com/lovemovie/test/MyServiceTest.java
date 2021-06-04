@@ -3,6 +3,7 @@ package com.lovemovie.test;
 import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.model.FilmParam;
 import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.impl.ActorServiceImpl;
@@ -60,10 +61,14 @@ public class MyServiceTest {
     public void testFindMovies() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         IMovieService movieService = ac.getBean(MovieServiceImpl.class);
-        List<Movie> movies = movieService.findMovies(1, 1, 1, 1);
-        for (Movie movie : movies) {
-            System.out.println("movie = " + movie);
+        List<Movie> movies = movieService.findMovies(new FilmParam("0","0","0","0","1"));
+        if (movies!=null){
+            for (Movie movie : movies) {
+                // System.out.println("year = " + movie.getMovieReleasedateStr());
+                System.out.println("score ="+movie.getMovieScore());
+            }
         }
+
 
 
     }

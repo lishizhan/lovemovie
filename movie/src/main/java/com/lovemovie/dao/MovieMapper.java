@@ -1,6 +1,8 @@
 package com.lovemovie.dao;
 
 import com.lovemovie.domain.Movie;
+import com.lovemovie.model.FilmParam;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -46,4 +48,23 @@ public interface MovieMapper {
     Movie checkMovieByName(String movieName);
 
     void deleteBatch(int[] ints);
+
+
+    /**
+     * 多条件查询按评分
+     * @param typeId
+     * @param sourceId
+     * @param yearId
+     * @return
+     */
+    List<Movie> findMoviesAllByScore(@Param("typeId") String typeId, @Param("sourceId") String sourceId, @Param("yearId") String yearId);
+
+    /**
+     * 多条件查询按上映日期
+     * @param typeId
+     * @param sourceId
+     * @param yearId
+     * @return
+     */
+    List<Movie> findMoviesAllByYear(@Param("typeId") String typeId, @Param("sourceId") String sourceId, @Param("yearId") String yearId);
 }

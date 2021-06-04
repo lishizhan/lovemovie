@@ -3,7 +3,9 @@ package com.lovemovie.service;
 import com.lovemovie.domain.Actor;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.model.FilmParam;
 import com.lovemovie.model.Msg;
+import org.apache.commons.io.FilenameUtils;
 
 import java.text.ParseException;
 import java.util.List;
@@ -61,11 +63,8 @@ public interface IMovieService {
 
     /**
      * 电影模块搜索
-     * @param sortId:排序
-     * @param typeId:类型
-     * @param sourceId:区域
-     * @param yearId:上映年份
+     * @param filmParam
      * @return
      */
-    List<Movie> findMovies(Integer sortId, Integer typeId, Integer sourceId, Integer yearId);
+    List<Movie> findMovies(FilmParam filmParam);
 }
