@@ -6,5 +6,5 @@ package com.lovemovie.service;
  * @email : 1575234570@qq.com
  * @Description :
  */
-public interface ICinema {
+public interface ICinemaService {
 }

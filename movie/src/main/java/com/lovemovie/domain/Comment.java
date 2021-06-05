@@ -15,6 +15,7 @@ public class Comment {
 
     private User user;
 
+
     public User getUser() {
         return user;
     }

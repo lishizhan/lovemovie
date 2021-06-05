@@ -8,6 +8,7 @@
         <result column="movie_id" jdbcType="BIGINT" property="movieId"/>
         <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime"/>
     </resultMap>
+
     <sql id="Base_Column_List">
         comment_id, user_id, comment_content, movie_id, comment_time
     </sql>
@@ -38,11 +39,29 @@
         join
         user u on c.user_id = u.user_id
         WHERE movie_id=#{movieId}
-        order by comment_time  desc
+        order by comment_time desc
+    </select>
+    <select id="selectAllComment" resultMap="BaseResultMap2">
+        select
+        c.comment_id,comment_time,comment_content,u.user_name
+        from `comment` c
+        JOIN `user` u
+        on c.user_id=u.user_id
+        <where>
+            <if test="_parameter !=null and _parameter!=''">
+                u.user_name like concat('%',#{_parameter},'%')
+            </if>
+        </where>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from comment
         where comment_id = #{commentId,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteBatch">
+        delete from comment where comment_id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
     </delete>
     <insert id="insert" parameterType="com.lovemovie.domain.Comment">
         insert into comment (comment_id, user_id, comment_content,

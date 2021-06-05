@@ -18,5 +18,7 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
     User queryUserByName(String userName);
 
-    List<User> queryAllUser();
+    List<User> queryAllUser(String userName);
+
+    void deleteBatch(int[] ints);
 }

@@ -66,6 +66,11 @@ public class ManageController {
         return "admin/city-info";
     }
 
+    @RequestMapping(value = "/scheduleInfo")
+    public String scheduleInfo() {
+        return "admin/schedule-info";
+    }
+
     @RequestMapping(value = "/cinemaInfo")
     public String cinemaInfo() {
         return "admin/cinema-info";
@@ -129,10 +134,11 @@ public class ManageController {
     @ResponseBody
     public Msg getAllUser(
             @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
-            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            String userName) {
 
         PageHelper.startPage(pageNo, pageSize);
-        List<User> userList = userService.getAllUser();
+        List<User> userList = userService.getAllUser(userName);
         PageInfo<User> pageInfo = new PageInfo<>(userList, pageSize);
         return Msg.success().add("pageInfo", pageInfo);
     }
@@ -260,6 +266,37 @@ public class ManageController {
             //单个删除
             return movieService.deleteMovieById(movieId);
         }
+    }
+
+
+    //根据用户id删除用户，单个删除和批量删除二合一，1-2-3-4，1
+    @RequestMapping(value = "/deleteUser/{userId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Msg deleteComment(@PathVariable("userId") String userId) {
+        System.out.println("ids = " + userId);
+        if (userId.contains("-")) {
+            //批量删除
+            String[] arrId = userId.split("-");
+            int[] ints = new int[arrId.length];
+            for (int i = 0; i < arrId.length; i++) {
+                ints[i] = Integer.parseInt(arrId[i]);
+            }
+            // System.out.println("int[]:"+ Arrays.toString(ints));
+            userService.deleteBatch(ints);
+            return Msg.success();
+        } else {
+            //单个删除
+            return userService.deleteMovieById(userId);
+        }
+    }
+
+
+    @RequestMapping(value = "/addUser")
+    @ResponseBody
+    public Msg addUser(User user){
+        System.out.println("user >>>>>>>>>>>>>>>>>" + user);
+        Msg msg = userService.addUser(user);
+        return msg;
     }
 
 }

@@ -45,8 +45,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> getAllUser() {
-        return userMapper.queryAllUser();
+    public List<User> getAllUser(String userName) {
+        return userMapper.queryAllUser(userName);
     }
 
     @Override
@@ -127,6 +127,29 @@ public class UserServiceImpl implements IUserService {
         User user = userMapper.selectByPrimaryKey(new Long(userId));
         user.setUserPwd(null);
         return Msg.success().add("user",user);
+    }
+
+    @Override
+    public void deleteBatch(int[] ints) {
+        userMapper.deleteBatch(ints);
+    }
+
+    @Override
+    public Msg deleteMovieById(String userId) {
+        AssertUtil.isTrue(userId == null, "用户id不能为空");
+        int i = userMapper.deleteByPrimaryKey(new Long(userId));
+        if (i > 0) {
+            return Msg.success();
+        } else {
+            return Msg.fail();
+        }
+    }
+
+    @Override
+    public Msg addUser(User user) {
+        int i = userMapper.insertSelective(user);
+        if (i>0)return Msg.success();
+        return Msg.fail();
     }
 
 

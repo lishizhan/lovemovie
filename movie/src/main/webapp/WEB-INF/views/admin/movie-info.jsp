@@ -64,7 +64,7 @@
 <div class="wrapper">
 
     <!-- 页面头部 -->
-    <%@ include file="common/pageHead.jsp" %>
+    <%@include file="common/pageHead.jsp" %>
     <!-- 页面头部 /-->
 
     <!-- 导航侧栏 -->

@@ -15,4 +15,14 @@ public interface ICommentService {
     Msg findCommentByMovieId(Integer movieId,Integer pageNum,Integer pageSize);
 
     Msg addComment(String comment, Integer movieId, Long userId);
+
+    /**
+     * 查询所有评论
+     * @return
+     */
+    List<Comment> findAllComment(String userName);
+
+    void deleteBatch(int[] ints);
+
+    Msg deleteMovieById(String commentId);
 }

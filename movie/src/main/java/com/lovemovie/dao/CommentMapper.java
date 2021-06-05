@@ -19,4 +19,8 @@ public interface CommentMapper {
 
 
     List<Comment> findCommentByMovieId(Long movieId);
+
+    List<Comment> selectAllComment(String userName);
+
+    void deleteBatch(int[] ints);
 }

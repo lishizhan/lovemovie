@@ -7,7 +7,6 @@ import com.lovemovie.domain.Comment;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.ICommentService;
 import com.lovemovie.utils.AssertUtil;
-import com.lovemovie.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +50,28 @@ public class CommentServiceImpl implements ICommentService {
         comment1.setUserId(userId);
         commentMapper.insertSelective(comment1);
         return Msg.success();
+    }
+
+    @Override
+    public List<Comment> findAllComment(String userName) {
+         List<Comment> commentList = commentMapper.selectAllComment(userName);
+         return commentList;
+
+    }
+
+    @Override
+    public void deleteBatch(int[] ints) {
+        commentMapper.deleteBatch(ints);
+    }
+
+    @Override
+    public Msg deleteMovieById(String commentId) {
+        AssertUtil.isTrue(commentId == null, "电影id不能为空");
+        int i = commentMapper.deleteByPrimaryKey(new Long(commentId));
+        if (i > 0) {
+            return Msg.success();
+        } else {
+            return Msg.fail();
+        }
     }
 }

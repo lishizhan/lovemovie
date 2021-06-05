@@ -1,12 +1,14 @@
 package com.lovemovie.test;
 
 import com.lovemovie.domain.Actor;
+import com.lovemovie.domain.Comment;
 import com.lovemovie.domain.Movie;
 import com.lovemovie.domain.MovieInfo;
 import com.lovemovie.model.FilmParam;
 import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.impl.ActorServiceImpl;
+import com.lovemovie.service.impl.CommentServiceImpl;
 import com.lovemovie.service.impl.MovieServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -68,9 +70,19 @@ public class MyServiceTest {
                 System.out.println("score ="+movie.getMovieScore());
             }
         }
+    }
 
-
-
+    @Test
+    public void findAllComment() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CommentServiceImpl commentService = ac.getBean(CommentServiceImpl.class);
+        List<Comment> allComment = commentService.findAllComment("user");
+        for (Comment comment : allComment) {
+            System.out.println("CommentId = " + comment.getCommentId());
+            System.out.println("UserName = " + comment.getUser().getUserName());
+            System.out.println("CommentContent = " + comment.getCommentContent());
+            System.out.println("CommentTime = " + comment.getCommentTime());
+        }
     }
 
 }

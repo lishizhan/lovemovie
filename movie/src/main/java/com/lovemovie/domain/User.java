@@ -1,5 +1,7 @@
 package com.lovemovie.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class User {
@@ -30,6 +32,7 @@ public class User {
         this.userSexStr = userSexStr;
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date userBirthday;
 
     private String userHobby;

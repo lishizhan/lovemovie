@@ -26,6 +26,12 @@
         delete from user
         where user_id = #{userId,jdbcType=BIGINT}
     </delete>
+    <delete id="deleteBatch">
+        delete from user where user_id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
     <insert id="insert" parameterType="com.lovemovie.domain.User">
         insert into user (user_id, user_name, user_pwd,
         user_email, user_role, user_headImg,
@@ -145,8 +151,19 @@
         from user where user_name=#{userName};
     </select>
     <select id="queryAllUser" resultMap="BaseResultMap">
+        <!--select
+        <include refid="Base_Column_List"/>
+        from user where user_role !=1-->
         select
         <include refid="Base_Column_List"/>
-        from user where user_role !=1
+        from
+        user
+        <where>
+            user_role !=1
+            <if test="_parameter !=null and _parameter!=''">
+                and user_name like concat('%',#{_parameter},'%')
+            </if>
+
+        </where>
     </select>
 </mapper>

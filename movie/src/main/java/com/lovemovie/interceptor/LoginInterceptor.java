@@ -22,6 +22,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
         User user = (User) request.getSession().getAttribute("user");
 
+        User admin = (User) request.getSession().getAttribute("admin");
+        if (user!=null){
+            return true;
+        }
+        if (admin!=null){
+            return true;
+        }
+
         AssertUtil.isNotLogin(user==null,"用户未登录");
         return true;
     }

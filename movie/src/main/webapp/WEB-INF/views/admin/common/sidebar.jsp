@@ -31,7 +31,12 @@
                 </a>
             </li>
 
-            <li id="city-info">
+            <li id="schedule-info">
+                <a href="management/scheduleInfo">
+                    <i class="fa fa-building-o "></i> <span>电影场次管理</span>
+                </a>
+            </li>
+            <!--<li id="city-info">
                 <a href="management/cityInfo">
                     <i class="fa fa-building-o "></i> <span>城市信息管理</span>
                 </a>
@@ -40,7 +45,7 @@
                 <a href="management/cinemaInfo">
                     <i class="fa fa-institution "></i> <span>影院信息管理</span>
                 </a>
-            </li>
+            </li>-->
 
             <li id="order-info">
                 <a href="management/orderInfo">

@@ -16,7 +16,7 @@ public interface IUserService {
 
     public Msg login(String userName, String userPwd);
 
-    List<User> getAllUser();
+    List<User> getAllUser(String userName);
 
     Msg register(String userName, String userEmail, String userPwd);
 
@@ -29,4 +29,10 @@ public interface IUserService {
     Msg updateUserInfo(Integer userId, String userEmail, String userSex, String[] userHobby, String userBirthday) throws ParseException;
 
     Msg getUserByd(Integer userId);
+
+    void deleteBatch(int[] ints);
+
+    Msg deleteMovieById(String userId);
+
+    Msg addUser(User user);
 }

@@ -22,7 +22,7 @@
 <div class="wrapper">
 
     <!-- 页面头部 -->
-    <%@ include file="common/pageHead.jsp"%>
+    <%@include file="common/pageHead.jsp"%>
     <!-- 页面头部 /-->
 
     <!-- 导航侧栏 -->
@@ -30,7 +30,7 @@
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" >
 
         <!-- 内容头部 -->
         <section class="content-header">
@@ -46,11 +46,10 @@
 
         <!-- 正文区域 -->
         <section class="content">
-
-
+            
             <!-- 统计数值 -->
             <div class="row">
-                <div class="col-md-3 col-xs-6">
+                <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
@@ -65,7 +64,22 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-md-3 col-xs-6">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                            <p>转化率</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
@@ -79,14 +93,30 @@
                         <a href="all-member-manage-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>日PV</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
             </div>
             <!-- /.row -->
 
-
             <!-- 待处理订单 -->
-            <div class="box box-primary">
+            <div class="box box-primary" >
 
-                <h1>爱电影·电影售票系统管理平台</h1>
+                <h1 style="color: #fff">电影售票系统管理平台</h1>
+                <img width="100%" src="" alt="">
 
             </div>
             <!-- 待处理订单 /-->
