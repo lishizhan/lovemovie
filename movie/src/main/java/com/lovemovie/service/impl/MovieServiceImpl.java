@@ -58,9 +58,9 @@ public class MovieServiceImpl implements IMovieService {
     }
 
     @Override
-    public List<Movie> findAllMovies() {
+    public List<Movie> findAllMovies(String movieName) {
 
-        List<Movie> allMovies = movieMapper.findMoviesAll();
+        List<Movie> allMovies = movieMapper.findMoviesAllLikeMovieName(movieName);
 
         return allMovies;
     }

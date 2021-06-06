@@ -448,7 +448,7 @@
                             <div class="form-group form-inline">
                                 <div class="btn-group">
 
-                                    <button type="button" class="btn btn-default" title="按评分排序"><i
+                                    <!--<button type="button" class="btn btn-default" title="按评分排序"><i
                                             class="fa  fa-arrows-v"></i> 按评分排序
                                     </button>
                                     <button type="button" class="btn btn-default" title="按上映时间排序"><i
@@ -456,19 +456,18 @@
                                     </button>
                                     <button type="button" class="btn btn-default" title="按电影时长排序"><i
                                             class="fa  fa-arrows-v"></i> 按电影时长排序
+                                    </button>-->
+                                    <button type="button" id="delBtn" class="btn btn-danger" title="删除"><i class="fa fa-trash-o"></i> 删除
                                     </button>
-                                    <button type="button" id="delBtn" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除
-                                    </button>
-                                    <button type="button" class="btn btn-default" title="刷新"
+                                    <button type="button" class="btn btn-primary" title="刷新"
                                             onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
                                     </button>
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="box-tools pull-right">
-                            <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="搜索">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <div class="input-group input-group-sm">
+                                    <input id="searchMsg" type="text" class="form-control">
+                                    <span class="input-group-btn"><button id="searchBtn" type="button" class="btn btn-info btn-flat">搜索</button></span>
+                                </div>
                             </div>
                         </div>
                         <!--工具栏/-->
@@ -480,16 +479,16 @@
                                 <th class="" style="padding-right:0px;">
                                     <input id="check_all" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_asc">电影编号</th>
-                                <th class="sorting">电影名称</th>
-                                <th class="sorting">电影导演</th>
-                                <th class="sorting">电影时长</th>
-                                <th class="sorting">电影类型</th>
-                                <th class="sorting">电影评分</th>
-                                <th class="sorting">电影票房</th>
-                                <th class="sorting">上映时间</th>
-                                <th class="sorting">制片地区</th>
-                                <th class="sorting">电影状态</th>
+                                <th>电影编号</th>
+                                <th>电影名称</th>
+                                <th>电影导演</th>
+                                <th>电影时长</th>
+                                <th>电影类型</th>
+                                <th>电影评分</th>
+                                <th>电影票房</th>
+                                <th>上映时间</th>
+                                <th>制片地区</th>
+                                <th>电影状态</th>
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>
@@ -547,6 +546,10 @@
     let totalRecord, thisPageNum;
     //最后一页
     let lastPageNum;
+
+    //搜索名字
+    let movieName = "";
+
     // 重写方法，自定义格式化日期
     Date.prototype.toLocaleString = function () {
         // 补0   例如 2018/7/10 14:7:2  补完后为 2018/07/10 14:07:02
@@ -569,7 +572,7 @@
         $(".textarea").wysihtml5({
             locale: 'zh-CN'
         });
-        toPage(1, 10);
+        toPage(1, 10,movieName);
     });
 
 
@@ -591,12 +594,13 @@
 
     /*展示电影基本信息*/
     //获取电影信息
-    function toPage(pageNum, pageSize) {
+    function toPage(pageNum, pageSize,movieName) {
         $.ajax({
             url: "management/getAllMovies",
             data: {
                 "pageNo": pageNum,
-                "pageSize": pageSize
+                "pageSize": pageSize,
+                "movieName":movieName
             },
             type: "GET",
             success: function (res) {
@@ -628,6 +632,14 @@
         $("#dataList tbody").empty();
 
         let users = res.extend.pageInfo.list;
+
+        if (users.length===0){
+            let msg = $("<td colspan='12'></td>").append("<h4>查询不到指定的数据，请点击刷新~</h4>");
+            $("<tr></tr>").append("<d>").append(msg).appendTo($("#dataList tbody"));
+            return;
+        }
+
+
         // console.log(res)
         $.each(users, function (index, item) {
             let checkBox = $("<td></td>").append("<input type='checkbox' class='check_item'>");
@@ -695,10 +707,10 @@
         } else {
             //只有按钮没有禁用的时候才注册事件
             firstLi.click(function () {
-                toPage(pageNum, pageSize);
+                toPage(pageNum, pageSize,movieName);
             });
             prePage.click(function () {
-                toPage(res.extend.pageInfo.pageNum - 1, pageSize);
+                toPage(res.extend.pageInfo.pageNum - 1, pageSize,movieName);
             });
         }
 
@@ -711,10 +723,10 @@
         } else {
             //只有按钮没有禁用的时候才注册事件
             nextPage.click(function () {
-                toPage(res.extend.pageInfo.pageNum + 1, pageSize);
+                toPage(res.extend.pageInfo.pageNum + 1, pageSize,movieName);
             });
             lastLi.click(function () {
-                toPage(res.extend.pageInfo.pages, pageSize)
+                toPage(res.extend.pageInfo.pages, pageSize,movieName)
             });
         }
 
@@ -727,7 +739,7 @@
                 numLi.addClass("active");
             }
             numLi.click(function () {
-                toPage(item, pageSize);
+                toPage(item, pageSize,movieName);
             });
             ul.append(numLi);
         });
@@ -923,7 +935,7 @@
                 console.log(res);
                 if (res.code===100){
                     $('#addMovieModal').modal("hide")
-                    toPage(lastPageNum,pageSize);
+                    toPage(lastPageNum,pageSize,movieName);
                 }else {
                     alert("添加失败："+res.msg);
                 }
@@ -1196,7 +1208,7 @@
                 success:function (res) {
                     console.log(res);
                     if (res.code===100){
-                        toPage(thisPageNum,pageSize);
+                        toPage(thisPageNum,pageSize,movieName);
                     }else {
                         alert("删除失败："+res.msg);
                     }
@@ -1246,12 +1258,21 @@
                     // console.log(res);
                     //回到当前页面
                     $("#check_all").prop("checked",false);
-                    toPage(thisPageNum,pageSize);
+                    toPage(thisPageNum,pageSize,movieName);
                 }
             });
         }else {
             return false;
         }
+    });
+
+    /*电影搜索*/
+    $("#searchBtn").click(function () {
+
+        if ($("#searchMsg").val().trim() === '') return false;
+        movieName = $("#searchMsg").val().trim();
+        console.log(movieName)
+        toPage(1, 10, movieName);
     });
 
 

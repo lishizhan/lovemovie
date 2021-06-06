@@ -13,33 +13,35 @@
     <link rel="stylesheet" href="static/css/login.css">
     <!-- 引入网页图标 -->
     <link rel="shortcut icon" href="static/images/logo/bitbug_favicon.ico" type="image/x-icon">
-    <title>登陆</title>
+    <title>登录</title>
 </head>
 
 <body>
 <div class="lr-box w">
     <div class="box-l">
-        <h3 style="padding-top: 180px; font-size: 54px; color: #fff; font-weight: 800;">爱电影</h3>
+        <h3 style="padding-top: 70px; font-size: 54px; color: #fff; font-weight: 800;">
+            <img style="width: 200px;" src="static/images/logo/logo6.png" alt="">
+        </h3>
         <p style=" font-size: 32px; color: #fff; ">让生活充满乐趣！！！</p>
     </div>
     <div class="box-r">
         <form method="post">
 
-            <h2>欢迎登陆电影售票系统</h2>
+            <h2>欢迎登录电影售票系统</h2>
             <!--            <p class="text-success">...</p>-->
             <p class="text-danger" id="msg"></p>
             <div>
-                <input type="text"  name="userName" class="form-control" id="userName" placeholder="用户名">
+                <input type="text" value="admin"  name="userName" class="form-control" id="userName" placeholder="用户名">
             </div>
             <div>
-                <input type="password" name="userPwd" class="form-control" id="userPwd"
+                <input type="password" value="admin" name="userPwd" class="form-control" id="userPwd"
                        placeholder="请输入6~12数字字母密码">
             </div>
             <div class="verify-code">
                 <input type="text" name="code" class="form-control" placeholder="输入验证码">
                 <a href="JavaScript:;"><img src="verification" width="100%" alt=""></a>
             </div>
-            <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;font-size: 18px;">登 &nbsp;陆
+            <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;font-size: 18px;">登 &nbsp;录
             </button>
 
 
@@ -71,7 +73,7 @@
 
             //非空校验
             if (userName === '' || userPwd === '' || code === '') {
-                alert("请输入用户名密码进行登陆！！")
+                alert("请输入用户名密码进行登录！！")
                 return false;
             }
             $.ajax({

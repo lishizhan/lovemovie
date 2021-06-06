@@ -33,16 +33,19 @@
         }
 
         .cinema {
-            height:260px;
+            height: 260px;
             border: 1px solid #999;
             margin-top: 50px;
         }
-        table tr td{
+
+        table tr td {
             font-size: 16px;
         }
+
         table input {
             display: none;
         }
+
         .cinema-cell .cinema-name {
             display: inline-block;
             font-size: 16px;
@@ -99,8 +102,8 @@
     </div>
 </div>
 
-<div class="cinema w">
-    <form action="">
+<div class="w" style="margin-top: 100px">
+    <!--<form action="">
         <table class="table">
             <tr class="movie-time">
                 <th scope="row" class="h4">日期：</th>
@@ -150,7 +153,12 @@
                 <td><input type="radio" id="hallType1" name="hallType" value="2"><label for="hallType1">IMAX厅</label></td>
             </tr>
         </table>
-    </form>
+    </form>-->
+    <c:if test="${not empty cinemaList}">
+        <span class="h3">日期：</span>
+        <button class="btn btn-danger">今天：6月6号</button>
+        <button class="btn btn-default">明天：6月7号</button>
+    </c:if>
 </div>
 
 <!--影院列表开始-->
@@ -158,8 +166,34 @@
     <div class="movie-theatre-top">
         <span style="color: #1a2226">影院列表</span>
     </div>
+    <c:if test="${empty cinemaList}">
+        <h4>暂无排片信息~~</h4>
+    </c:if>
+    <c:forEach items="${cinemaList}" var="item">
+        <div class="cinema-cell">
+            <div class="cinema-info">
+                <a href="#" class="cinema-name">${item.cinemaName}</a>
+                <p class="cinema-address">地址：${item.cinemaAddress}</p>
+                    <%--<div class="cinema-tags">
+                        <span class="cinema-tags-item">退票</span>
+                        <span class="cinema-tags-item">改签</span>
+                    </div>--%>
+            </div>
 
-    <div class="cinema-cell">
+            <div class="buy-btn">
+                <a href="order/chooseSeat?movieId=${movie.movieId}&cinemaId=${item.cinemaId}" class="buy-btn-click">选座购票</a>
+            </div>
+
+            <div class="price">
+                <span class="price-red">￥</span>
+                <span class="price-red">38元</span>
+                <span>起</span>
+            </div>
+        </div>
+    </c:forEach>
+
+
+    <!--<div class="cinema-cell">
         <div class="cinema-info">
             <a href="#" class="cinema-name">金逸影城（普君店）</a>
             <p class="cinema-address">地址：禅城区南庄南庄二马路89号吉利购物广场4楼403室</p>
@@ -170,7 +204,7 @@
         </div>
 
         <div class="buy-btn">
-            <a href="order/chooseSeat" class="buy-btn-click" >选座购票</a>
+            <a href="order/chooseSeat" class="buy-btn-click">选座购票</a>
         </div>
 
         <div class="price">
@@ -178,27 +212,7 @@
             <span class="price-red">49.90</span>
             <span>起</span>
         </div>
-    </div>
-    <div class="cinema-cell">
-        <div class="cinema-info">
-            <a href="#" class="cinema-name">金逸影城（普君店）</a>
-            <p class="cinema-address">地址：禅城区南庄南庄二马路89号吉利购物广场4楼403室</p>
-            <div class="cinema-tags">
-                <span class="cinema-tags-item">退票</span>
-                <span class="cinema-tags-item">改签</span>
-            </div>
-        </div>
-
-        <div class="buy-btn">
-            <a href="order/chooseSeat" class="buy-btn-click" >选座购票</a>
-        </div>
-
-        <div class="price">
-            <span class="price-red">￥</span>
-            <span class="price-red">49.90</span>
-            <span>起</span>
-        </div>
-    </div>
+    </div>-->
 </section>
 
 <!--影院列表结束-->

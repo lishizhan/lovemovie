@@ -29,7 +29,7 @@
 <%@include file="common/head.jsp"%>
 <!--页面头部 结束-->
 
-<section class="movie-type w">
+<!--<section class="movie-type w">
     <ul>
         <li>
             <div class="type-item">品牌:</div>
@@ -46,28 +46,28 @@
                 <li>星美国际影城  </li>
                 <li>中影星美国际影城</li>
 
-<!--                <li>CGV影城</li>-->
-<!--                <li>英皇ua电影城</li>-->
-<!--                <li>保利国际影城</li>-->
-<!--                <li>中影佰纳国际影城</li>-->
-<!--                <li>新天地影城</li>-->
-<!--                <li>唯亚影城</li>-->
-<!--                <li>中环影城</li>-->
-<!--                <li>卢米埃影城</li>-->
-<!--                <li>星光影城</li>-->
-<!--                <li>星汇电影城</li>-->
-<!--                <li>中影UL城市影院</li>-->
-<!--                <li>百老汇影城</li>-->
-<!--                <li>中影星美影城</li>-->
-<!--                <li>万星国际影城</li>-->
-<!--                <li>左岸国际影城</li>-->
-<!--                <li>自由人影城</li>-->
-<!--                <li>橙天嘉禾影城</li>-->
-<!--                <li>中瑞国际影城</li>-->
-<!--                <li>环球国际影城</li>-->
-<!--                <li>中影数字国际影城</li>-->
-<!--                <li>太平洋电影城</li>-->
-<!--                <li>星空影城</li>-->
+&lt;!&ndash;                <li>CGV影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>英皇ua电影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>保利国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中影佰纳国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>新天地影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>唯亚影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中环影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>卢米埃影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>星光影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>星汇电影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中影UL城市影院</li>&ndash;&gt;
+&lt;!&ndash;                <li>百老汇影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中影星美影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>万星国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>左岸国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>自由人影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>橙天嘉禾影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中瑞国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>环球国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>中影数字国际影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>太平洋电影城</li>&ndash;&gt;
+&lt;!&ndash;                <li>星空影城</li>&ndash;&gt;
                 <li>中影南方国际影城</li>
                 <li>其他</li>
             </ul>
@@ -92,7 +92,7 @@
 
     </ul>
 
-</section>
+</section>-->
 
 <!--影院列表开始-->
 <section class="movie-theatre-list w">

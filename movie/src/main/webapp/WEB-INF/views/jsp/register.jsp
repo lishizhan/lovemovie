@@ -20,9 +20,14 @@
 </head>
 
 <body>
+
 <div class="lr-box w">
+
     <div class="box-l">
-        <h3 style="padding-top: 180px; font-size: 54px; color: #fff; font-weight: 800;">爱电影</h3>
+        <h3 style="padding-top: 180px; font-size: 54px; color: #fff; font-weight: 800;">
+            <img style="width: 200px;" src="static/images/logo/logo6.png" alt="">
+        </h3>
+
         <p style=" font-size: 32px; color: #fff; ">让生活充满乐趣！！！</p>
     </div>
     <div class="box-r">
@@ -59,7 +64,7 @@
             <p class="text-right" style="margin-top: 20px">
                 <a href="view/index" style="margin-right: 220px">返回首页</a>
                 <span>已有账号？</span>
-                <a href="view/goLogin">去登陆</a>
+                <a href="view/goLogin">去登录</a>
             </p>
         </form>
 
@@ -74,155 +79,162 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <a href="view/goLogin" type="button" class="btn btn-primary">登陆</a>
+                    <a href="view/goLogin" type="button" class="btn btn-primary">登录</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        var falg = true;
-        function queryUserName() {
-            let userName = $("#userName").val();
-            $.ajax({
-                url: "user/checkUserName",
-                data: {
-                    "userName": userName
-                },
-                type: "POST",
-                success: function (res) {
-                    if (res.code !== 100) {
-                        // $("#show_msg").text(res.msg);
-                        show_msg("#userName", "error", res.msg);
-                        falg=false;
-                        return false;
-                    }
-                    falg=true;
-                    show_msg("#userName", "success", "");
-                    return true;
-                }
-            });
-        }
-
-        function checkEmail() {
-            let userMail = $("#userEmail").val();
-            let regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-            if (!regEmail.test(userMail)) {
-                show_msg("#userEmail", "error", "邮箱格式错误");
-                falg=false;
-                return false;
-            }
-            falg=true;
-            show_msg("#userEmail", "success", "");
-            return true;
-        }
-
-        function checkPwd() {
-            let userPwd = $("#userPwd").val();
-
-            let patrn = /^(\w){6,12}$/;
-            if (!patrn.exec(userPwd)) {
-                show_msg("#userPwd", "error", "密码只能是6-12个字母、数字、下划线");
-                falg=false;
-                return false
-            }
-            falg=true;
-            show_msg("#userPwd", "success", "");
-            return true
-        }
-
-        function checkPwdTrue() {
-            let userPwd = $("#userPwd").val();
-            let userPwdTrue = $("#userPwdTrue").val();
-            if (userPwd !== userPwdTrue) {
-                show_msg("#userPwdTrue", "error", "两次密码输入不一致");
-                falg=false;
-                return false;
-
-            }
-            show_msg("#userPwdTrue", "success", "");
-            falg=true;
-            return true;
-        }
-
-        //展示错误信息
-        function show_msg(ele, status, msg) {
-            //清除校验状态
-            $(ele).parent().removeClass("has-success has-error")
-            if ("success" == status) {
-                $(ele).parent().addClass("has-success");
-                $(ele).next("span").text(msg);
-                return true;
-            } else if ("error" == status) {
-                $(ele).parent().addClass("has-error");
-                $(ele).next("span").text(msg);
-                return false;
-            }
-        }
-
-        $(function () {
-            $(".verify-code img").click(function () {
-                let date = new Date().getTime();
-                $(".verify-code img").attr("src", "verification?" + date);
-            });
-            //鼠标离开判断用户名是否唯一
-            $("#userName").change(function () {
-                //判断用户名是否唯一
-                queryUserName();
-            });
-            //鼠标离开判断邮箱格式是否合法
-            $("#userEmail").change(function () {
-                checkEmail();
-            })
-            $("#userPwd").change(function () {
-                checkPwd();
-            })
-            $("#userPwdTrue").change(function () {
-                checkPwdTrue();
-            })
-
-            $("#btnSubmit").click(function () {
-                console.log("表单校验")
-                let userName = $("#userName").val();
-                let userMail = $("#userEmail").val();
-                let userPwd = $("#userPwd").val();
-                let userPwdTrue = $("#userPwdTrue").val();
-                let code = $("#code").val();
-                if (userName === "" || userMail === "" || userPwd === '' || userPwdTrue === "" || code === '') {
-                    alert("请将信息填写完整！！！");
-                    return false;
-                }
-
-                if (!falg){
-                    return false;
-                }
-                //发送Ajax请求
-                $.ajax({
-                    url: "user/register",
-                    data: $(".box-r form").serialize(),
-                    type: "POST",
-                    success: function (res) {
-                        if (res.code===100){
-                            show_msg("#code", "success", "");
-                            $("form")[0].reset();
-                            $("#toLogin").modal("show");
-                        }else if(res.code===300){
-                            $("#show_msg").text(res.msg);
-                        }else {
-                            show_msg("#code", "error", "验证码错误");
-                            let date=new Date().getTime();
-                            $(".verify-code img").attr("src","verification?"+date);
-                        }
-                    }
-                });
-
-            });
-        });
-
-    </script>
+    
 
 </div>
+<script >
+    // ------------------------------------------点击注册-----------------------------------------------------------------------
+    function queryUserName() {
+        let flag = false;
+        let userName = $("[name=userName]").val();
+        $.ajax({
+            url: "user/checkUserName",
+            data: {
+                "userName": userName
+            },
+            type: "POST",
+            async: false,
+            success: function (res) {
+                console.log(res)
+                if (res.code !== 100) {
+                    // $("#show_msg").text(res.msg);
+                    show_msg("[name=userName]", "error", res.msg);
+                    flag = false;
+                } else {
+                    show_msg("[name=userName]", "success", "");
+                    flag = true;
+                }
+            }
+        });
+        return flag;
+    }
 
+    function checkEmail(ele) {
+        let userMail = $(ele).val();
+        let regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        if (!regEmail.test(userMail)) {
+            show_msg(ele, "error", "邮箱格式错误");
+            return false;
+        }
+        show_msg(ele, "success", "");
+        return true;
+    }
+
+    function checkPwd(ele) {
+        let userPwd = $(ele).val();
+
+        let patrn = /^(\w){6,12}$/;
+        if (!patrn.exec(userPwd)) {
+            show_msg(ele, "error", "密码只能是6-12个字母、数字、下划线");
+            return false
+        }
+        show_msg(ele, "success", "");
+        return true
+    }
+
+    function checkPwdTrue(oldPwd, newPwd) {
+        let userPwd = $(oldPwd).val();
+        let userPwdTrue = $(newPwd).val();
+        if (userPwd !== userPwdTrue) {
+            show_msg(newPwd, "error", "两次密码输入不一致");
+            return false;
+
+        }
+        show_msg(newPwd, "success", "");
+        return true;
+    }
+
+    //展示错误信息
+    function show_msg(ele, status, msg) {
+        //清除校验状态
+        $(ele).parent().removeClass("has-success has-error")
+        if ("success" == status) {
+            $(ele).parent().addClass("has-success");
+            $(ele).next("span").text(msg);
+            return true;
+        } else if ("error" == status) {
+            $(ele).parent().addClass("has-error");
+            $(ele).next("span").text(msg);
+            return false;
+        }
+    }
+
+
+    $("[name=userName]").change(function () {
+        console.log($(this).val());
+        //判断用户名是否已经存在
+        let flag = queryUserName();
+        console.log("用户名是否存在？" + flag);
+
+    });
+    $("[name=userPwd]").change(function () {
+        console.log($(this).val());
+        let flag = checkPwd("[name=userPwd]");
+        console.log("密码" + flag);
+
+    });
+    $("[name=userPwdTrue]").change(function () {
+        console.log($(this).val());
+        let flag = checkPwd("[name=userPwdTrue]");
+        console.log("确认密码" + flag);
+    });
+    $("[name=userEmail]").change(function () {
+        console.log($(this).val());
+        let flag = checkEmail("[name=userEmail]");
+        console.log("验证邮箱" + flag);
+    });
+
+    //点击注册用户
+    $("#btnSubmit").click(function () {
+        //验证用户名
+        if (!queryUserName()) return false;
+
+        if (!checkPwd("[name=userPwd]")) return false;
+        if (!checkPwd("[name=userPwdTrue]")) return false;
+
+        //验证两次密码是否相同
+        if (!checkPwdTrue("[name=userPwd]", "[name=userPwdTrue]")) return false;
+
+        //验证邮箱
+        if (!checkEmail("[name=userEmail]")) return false;
+
+        //验证码
+        if ($("#code").val().trim()===''){
+            alert("请输入验证码！！！");
+            return false;
+        }
+
+        console.log($(".box-r form").serialize());
+
+        $.ajax({
+            url: "user/register",
+            data: $(".box-r form").serialize(),
+            type: "POST",
+            success: function (res) {
+                if (res.code===100){
+                    show_msg("#code", "success", "");
+                    $("form")[0].reset();
+                    $("#toLogin").modal("show");
+                }else if(res.code===300){
+                    $("#show_msg").text(res.msg);
+                }else {
+                    show_msg("#code", "error", "验证码错误");
+                    let date=new Date().getTime();
+                    $(".verify-code img").attr("src","verification?"+date);
+                }
+            }
+        });
+
+    });
+
+
+
+</script>
 
 </body>
 

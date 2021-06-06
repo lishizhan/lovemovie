@@ -15,7 +15,7 @@ import java.util.List;
 public class TestMD5 {
     @Test
     public void test01() {
-        String user = MD5Util.getMD5("123123");
+        String user = MD5Util.getMD5("1");
         System.out.println("12312 = " + user);
     }
 }

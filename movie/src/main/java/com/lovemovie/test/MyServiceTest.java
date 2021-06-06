@@ -1,15 +1,11 @@
 package com.lovemovie.test;
 
-import com.lovemovie.domain.Actor;
-import com.lovemovie.domain.Comment;
-import com.lovemovie.domain.Movie;
-import com.lovemovie.domain.MovieInfo;
+import com.lovemovie.domain.*;
 import com.lovemovie.model.FilmParam;
 import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
-import com.lovemovie.service.impl.ActorServiceImpl;
-import com.lovemovie.service.impl.CommentServiceImpl;
-import com.lovemovie.service.impl.MovieServiceImpl;
+import com.lovemovie.service.IScheduleService;
+import com.lovemovie.service.impl.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -82,6 +78,47 @@ public class MyServiceTest {
             System.out.println("UserName = " + comment.getUser().getUserName());
             System.out.println("CommentContent = " + comment.getCommentContent());
             System.out.println("CommentTime = " + comment.getCommentTime());
+        }
+    }
+    @Test
+    public void testFindAllSchedule() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ScheduleServiceImpl scheduleService = ac.getBean(ScheduleServiceImpl.class);
+        List<Schedule> allSchedule = (List<Schedule>) scheduleService.findAllSchedule("");
+
+        for (Schedule schedule : allSchedule) {
+            System.out.println("schedule = " + schedule);
+            System.out.println("场次编号 = " + schedule.getScheduleId());
+            System.out.println("影院 = " + schedule.getScheduleHall().getHallCinema().getCinemaName());
+            System.out.println("影院地址 = " + schedule.getScheduleHall().getHallCinema().getCinemaAddress());
+            System.out.println("影厅 = " + schedule.getScheduleHall().getHallName());
+            System.out.println("电影 = " + schedule.getScheduleMovie().getMovieCnName());
+            System.out.println("放映时间 = " + schedule.getScheduleStarttime());
+            System.out.println("价格 = " + schedule.getSchedulePrice());
+            System.out.println("剩余票数 = " + schedule.getScheduleRemain());
+            System.out.println("-------------------------------->>>>>");
+        }
+    }
+
+    @Test
+    public void testFindCinemasByMovieId() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CinemaServiceImpl cinemaService = ac.getBean(CinemaServiceImpl.class);
+        List<Cinema> cinemaList = cinemaService.findCinemasByMovieId(49);
+
+        for (Cinema cinema : cinemaList) {
+            System.out.println("cinema = " + cinema);
+        }
+    }
+
+    @Test
+    public void testFindScheduleByCinemaIdAndMovieId() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        IScheduleService scheduleService = ac.getBean(ScheduleServiceImpl.class);
+        List<Schedule> scheduleList = scheduleService.findScheduleByCinemaIdAndMovieId(1, 49);
+        for (Schedule schedule : scheduleList) {
+            System.out.println("schedule.getScheduleHall() =>>>>>" + schedule.getScheduleHall());
+            System.out.println("schedule.getScheduleMovie() =>>>>" + schedule.getScheduleMovie());
         }
     }
 

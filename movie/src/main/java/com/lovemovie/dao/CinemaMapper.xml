@@ -15,6 +15,16 @@
         from cinema
         where cinema_id = #{cinemaId,jdbcType=BIGINT}
     </select>
+    <select id="findCinemasByMovieId" resultMap="BaseResultMap">
+        select distinct cinema.* from hall,schedule,cinema
+        where hall.hall_id=schedule.hall_id and hall.cinema_id=cinema.cinema_id and schedule.movie_id = #{movie_id}
+    </select>
+    <select id="findAllCinemas" resultMap="BaseResultMap">
+        select * from cinema
+    </select>
+    <select id="findCinemaById" resultMap="BaseResultMap">
+        select * from cinema where cinema_id = #{cinemaId}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from cinema
         where cinema_id = #{cinemaId,jdbcType=BIGINT}

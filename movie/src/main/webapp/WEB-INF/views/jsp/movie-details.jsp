@@ -20,22 +20,27 @@
     <script src="static/bootstrap/Jquery/jquery.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <style>
-        #listActor ul li{
+        #listActor ul li {
             float: left;
             margin-right: 20px;
             margin-bottom: 10px;
         }
 
-        #listActor ul li img{
+        #listActor ul li img {
             width: 128px;
             height: 170px;
         }
+
         .gopinlum {
             position: absolute;
             top: 0;
             right: 0;
             display: inline-block;
 
+        }
+
+        .look {
+            color: #ec971f;
         }
     </style>
     <title>love movie</title>
@@ -59,11 +64,12 @@
             <h5>上映时间：${movie.movieReleasedateStr}</h5>
             <br>
             <div>
-                <button class="btn btn-info"><span class="glyphicon glyphicon-heart"></span> 想看</button>
+                <button id="wantLook" class="btn btn-info"><span class="glyphicon glyphicon-heart"></span> 想看</button>
                 <button class="btn btn-info"><span class="glyphicon glyphicon-star"></span> 评分</button>
             </div>
             <c:if test="${movie.movieState==1}">
-                <a href="order/buyTicketDetails?movieId=${movie.movieId}" class="btn btn-info" style="background-color: #df2d2d;padding: 6px 100px;margin-top: 10px">购&nbsp;&nbsp;票</a>
+                <a href="order/buyTicketDetails?movieId=${movie.movieId}" class="btn btn-info"
+                   style="background-color: #df2d2d;padding: 6px 100px;margin-top: 10px">购&nbsp;&nbsp;票</a>
             </c:if>
 
         </div>
@@ -71,12 +77,15 @@
             <p>用户评分</p>
             <p class="score">
                 <span>${movie.movieScore}</span>
+                <c:forEach begin="1" end="5" var="i">
+
+                    <span class="glyphicon glyphicon-star"></span>
+                </c:forEach>
+                <!--<span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>-->
             </p>
             <p>累计票房</p>
             <p style="font-size: 26px">${movie.movieBoxoffice}万</p>
@@ -122,39 +131,7 @@
     </div>
 
     <ul class="pinlun">
-        <!--<li>
-            <div>
-                <img src="upload/movies/movie1.jpg" alt="头像">
-                <div>
-                    <p>admin</p>
-                    <p>2021-10-19 00:20:44</p>
-                </div>
-            </div>
-            <p>
-                很棒，杰森斯坦森的演技还是很棒，一个沉默又狠的硬汉，我觉得这种电影比小鲜肉更有传播男性的承担，男性的魅力，反派一号把狡诈，阴险和贪婪演的很投入，让观众可以更加带入其中的氛围，带入情绪，融入电影的情节，电影也讽刺了美国退伍军人的待遇问题和持枪问题，反映出了资本社会的黑暗，杰森斯坦森也表演出了对于儿子的爱，全程虽然台词不多，但是一举一动把心中的愤怒表现得淋漓尽致，很是突出了电影名称。</p>
-        </li>
-        <li>
-            <div>
-                <img src="upload/movies/movie1.jpg" alt="头像">
-                <div>
-                    <p>admin</p>
-                    <p>2021-10-19 00:20:44</p>
-                </div>
-            </div>
-            <p>
-                很棒，突出了电影名称。</p>
-        </li>
-        <li>
-            <div>
-                <img src="upload/movies/movie1.jpg" alt="头像">
-                <div>
-                    <p>admin</p>
-                    <p>2021-10-19 00:20:44</p>
-                </div>
-            </div>
-            <p>
-                全程虽然台词不多，但是一举一动把心中的愤怒表现得淋漓尽致，很是突出了电影名称。</p>
-        </li>-->
+
     </ul>
 </div>
 <!--评论模态框-->
@@ -184,6 +161,7 @@
 <!--底部 结束-->
 
 <script>
+
     // 重写方法，自定义格式化日期
     Date.prototype.toLocaleString = function () {
         // 补0   例如 2018/7/10 14:7:2  补完后为 2018/07/10 14:07:02
@@ -199,7 +177,7 @@
     };
 
     //展示评论信息
-    function showComment(){
+    function showComment() {
         $.ajax({
             url: "comment/findComment",
             data: {
@@ -249,7 +227,7 @@
     }
 
     $(function () {
-       showComment();
+        showComment();
     })
 
     $(function () {
@@ -289,18 +267,18 @@
             }
             show_msg("#comment", "success", "");
             $.ajax({
-                url:"comment/addComment",
+                url: "comment/addComment",
                 data: {
-                    "comment":$("#comment").val().trim(),
+                    "comment": $("#comment").val().trim(),
                     "movieId":${movie.movieId}
                 },
-                type:"POST",
-                success:function (res) {
-                    if (res.code ===100){
+                type: "POST",
+                success: function (res) {
+                    if (res.code === 100) {
                         //关闭模态框
                         $('#addCommentModal').modal('hide');
                         showComment();
-                    }else {
+                    } else {
                         show_msg("#comment", "error", res.msg);
                     }
 
@@ -323,6 +301,14 @@
             return false;
         }
     }
+
+    //想看
+    $("#wantLook").click(function () {
+        $(this).css({
+            color: '#ec971f'
+        });
+
+    });
 
 
 </script>

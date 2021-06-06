@@ -32,7 +32,7 @@ public interface IMovieService {
      * 查询所有的电影
      * @return
      */
-    List<Movie> findAllMovies();
+    List<Movie> findAllMovies(String movieName);
 
     /**
      * 添加电影

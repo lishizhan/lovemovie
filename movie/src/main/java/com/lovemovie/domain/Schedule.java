@@ -7,7 +7,7 @@ import java.util.List;
 public class Schedule {
     private Long scheduleId;
 
-    private Long hallId;//所属放映厅
+    private String hallId;//所属放映厅
 
     private Long movieId; //放映的电影编号
 
@@ -19,9 +19,12 @@ public class Schedule {
 
     private Integer scheduleState; //场次状态 1：上映中 0：下架
 
-    private Hall schedule_hall; //所属放映厅对象
-    private Movie schedule_movie; //放映的电影
-    private List<Order> orderList; //所有的订单集合
+    private Hall scheduleHall; //所属放映厅对象
+
+    private Movie scheduleMovie; //放映的电影
+
+    private List<OrderInfo> orderList; //所有的订单集合
+
 
     public Long getScheduleId() {
         return scheduleId;
@@ -31,11 +34,11 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-    public Long getHallId() {
+    public String getHallId() {
         return hallId;
     }
 
-    public void setHallId(Long hallId) {
+    public void setHallId(String hallId) {
         this.hallId = hallId;
     }
 
@@ -77,5 +80,45 @@ public class Schedule {
 
     public void setScheduleState(Integer scheduleState) {
         this.scheduleState = scheduleState;
+    }
+
+    public Hall getScheduleHall() {
+        return scheduleHall;
+    }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "scheduleId=" + scheduleId +
+                ", hallId=" + hallId +
+                ", movieId=" + movieId +
+                ", scheduleStarttime='" + scheduleStarttime + '\'' +
+                ", schedulePrice=" + schedulePrice +
+                ", scheduleRemain=" + scheduleRemain +
+                ", scheduleState=" + scheduleState +
+                ", \n\tscheduleHall=" + scheduleHall +
+                ", \n\tscheduleMovie=" + scheduleMovie +
+                ", \n\torderList=" + orderList +
+                '}';
+    }
+
+    public void setScheduleHall(Hall scheduleHall) {
+        this.scheduleHall = scheduleHall;
+    }
+
+    public Movie getScheduleMovie() {
+        return scheduleMovie;
+    }
+
+    public void setScheduleMovie(Movie scheduleMovie) {
+        this.scheduleMovie = scheduleMovie;
+    }
+
+    public List<OrderInfo> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<OrderInfo> orderList) {
+        this.orderList = orderList;
     }
 }

@@ -88,6 +88,7 @@
         input[type="checkbox"]:checked {
             background: url("static/images/order/seat-green.png") no-repeat center;
             background-size: 100% 100%;
+
         }
 
         button {

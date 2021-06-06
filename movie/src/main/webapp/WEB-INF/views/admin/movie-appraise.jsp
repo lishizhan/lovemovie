@@ -108,10 +108,10 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" id="delBtn" class="btn btn-default" title="删除"><i
+                                    <button type="button" id="delBtn" class="btn btn-danger" title="删除"><i
                                             class="fa fa-trash-o"></i> 删除
                                     </button>
-                                    <button type="button" class="btn btn-default" title="刷新"
+                                    <button type="button" class="btn btn-primary" title="刷新"
                                             onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
@@ -130,10 +130,10 @@
                                 <th class="" style="padding-right:0px;">
                                     <input id="check_all" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_asc">评论编号</th>
-                                <th class="sorting">用户账号</th>
-                                <th class="sorting">评论时间</th>
-                                <th class="sorting">评论内容</th>
+                                <th>评论编号</th>
+                                <th>用户账号</th>
+                                <th>评论时间</th>
+                                <th>评论内容</th>
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>

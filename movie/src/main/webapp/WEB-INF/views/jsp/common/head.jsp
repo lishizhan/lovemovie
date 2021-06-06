@@ -19,7 +19,7 @@
         <!--        </div>-->
         <c:if test="${empty sessionScope.user}">
             <div class="user-pon">
-                <a href="view/goLogin" class="btn btn-danger">登陆</a>
+                <a href="view/goLogin" class="btn btn-danger">登录</a>
                 <a href="view/goRegister" class="btn btn-danger">注册</a>
             </div>
         </c:if>

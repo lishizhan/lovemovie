@@ -1,6 +1,9 @@
 package com.lovemovie.service.impl;
 
+import com.lovemovie.dao.HallMapper;
+import com.lovemovie.domain.Hall;
 import com.lovemovie.service.IHallService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,5 +13,9 @@ import org.springframework.stereotype.Service;
  * @Description :
  */
 @Service
-public class IHallServiceImpl implements IHallService {
+public class HallServiceImpl implements IHallService {
+    @Autowired
+    private HallMapper hallMapper;
+
+
 }

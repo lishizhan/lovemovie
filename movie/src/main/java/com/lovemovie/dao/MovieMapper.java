@@ -38,7 +38,7 @@ public interface MovieMapper {
      * 查询所有的电影
      * @return
      */
-    List<Movie> findMoviesAll();
+    List<Movie> findMoviesAllLikeMovieName(String movieName);
 
     /**
      * 检查数据库中电影名称是否存在
@@ -74,4 +74,6 @@ public interface MovieMapper {
      * @return
      */
     List<Movie> findMovieByNameLike(String searchName);
+
+    Movie findMovieById(Long movieId);
 }

@@ -1,5 +1,7 @@
 package com.lovemovie.service;
 
+import com.lovemovie.domain.Hall;
+
 /**
  * @Author : Alishiz
  * @Date : 2021/6/5/0005 0:50
@@ -7,4 +9,6 @@ package com.lovemovie.service;
  * @Description :
  */
 public interface IHallService {
+
+
 }

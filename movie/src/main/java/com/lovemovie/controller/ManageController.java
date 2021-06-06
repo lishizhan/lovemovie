@@ -151,12 +151,13 @@ public class ManageController {
      * @param pageSize 每页展示条数
      * @return
      */
-    @RequestMapping(value = "getAllMovies")
+    @RequestMapping(value = "/getAllMovies")
     @ResponseBody
     public Msg getAllMovies(@RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
-                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
+                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                            String movieName) {
         PageHelper.startPage(pageNo, pageSize);
-        List<Movie> allMovies = movieService.findAllMovies();
+        List<Movie> allMovies = movieService.findAllMovies(movieName);
         PageInfo<Movie> pageInfo = new PageInfo<>(allMovies, pageSize);
 
         return Msg.success().add("pageInfo", pageInfo);

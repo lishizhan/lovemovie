@@ -135,13 +135,13 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button id="addUserBtn" type="button" class="btn btn-default" title="新建">
-                                        <i class="fa fa-file-o"></i> 新建
+                                    <button id="addUserBtn" type="button" class="btn btn-info" title="新建">
+                                        <i class="fa fa-plus"></i> 新建
                                     </button>
-                                    <button type="button" class="btn btn-default" id="delBtn"><i
+                                    <button type="button" class="btn btn-danger" id="delBtn"><i
                                             class="fa fa-trash-o"></i> 删除
                                     </button>
-                                    <button type="button" class="btn btn-default" title="刷新"
+                                    <button type="button" class="btn btn-primary" title="刷新"
                                             onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
@@ -161,11 +161,11 @@
                                 <th class="" style="padding-right:0px;">
                                     <input id="check_all" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_asc">ID</th>
-                                <th class="sorting">用户名/账号</th>
-                                <th class="sorting">邮箱</th>
-                                <th class="sorting">性别</th>
-                                <th class="sorting">生日</th>
+                                <th>ID</th>
+                                <th>用户名/账号</th>
+                                <th>邮箱</th>
+                                <th>性别</th>
+                                <th>生日</th>
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>
@@ -282,6 +282,14 @@
         $("#dataList tbody").empty();
 
         let users = res.extend.pageInfo.list;
+
+        if (users.length===0){
+            let msg = $("<td colspan='12'></td>").append("<h4>查询不到指定的数据，请点击刷新~</h4>");
+            $("<tr></tr>").append("<d>").append(msg).appendTo($("#dataList tbody"));
+            return;
+        }
+
+
         $.each(users, function (index, item) {
             /*console.log(item);
             console.log(index);*/
@@ -609,7 +617,7 @@
         }
     });
 
-    /*评论搜索*/
+    /*用户搜索*/
     $("#searchBtn").click(function () {
 
         if ($("#searchMsg").val().trim() === '') return false;

@@ -3,7 +3,7 @@ package com.lovemovie.domain;
 import java.util.List;
 
 public class Hall {
-    private Long hallId;
+    private String hallId;
 
     private String hallName;//放映厅名称
 
@@ -15,11 +15,11 @@ public class Hall {
 
     private List<Schedule> scheduleList; //所有的电影场次集合
 
-    public Long getHallId() {
+    public String getHallId() {
         return hallId;
     }
 
-    public void setHallId(Long hallId) {
+    public void setHallId(String hallId) {
         this.hallId = hallId;
     }
 
@@ -45,5 +45,33 @@ public class Hall {
 
     public void setCinemaId(Long cinemaId) {
         this.cinemaId = cinemaId;
+    }
+
+    public Cinema getHallCinema() {
+        return hallCinema;
+    }
+
+    public void setHallCinema(Cinema hallCinema) {
+        this.hallCinema = hallCinema;
+    }
+
+    public List<Schedule> getScheduleList() {
+        return scheduleList;
+    }
+
+    public void setScheduleList(List<Schedule> scheduleList) {
+        this.scheduleList = scheduleList;
+    }
+
+    @Override
+    public String toString() {
+        return "Hall{" +
+                "hallId=" + hallId +
+                ", hallName='" + hallName +
+                ", hallCapacity=" + hallCapacity +
+                ", cinemaId=" + cinemaId +
+                ", hallCinema=" + hallCinema +
+                ", scheduleList=" + scheduleList +
+                '}';
     }
 }

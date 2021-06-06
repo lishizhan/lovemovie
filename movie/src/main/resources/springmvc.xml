@@ -58,6 +58,7 @@
             <mvc:mapping path="/user/**"/>
             <mvc:exclude-mapping path="/user/login"/>
             <mvc:exclude-mapping path="/user/register"/>
+            <mvc:exclude-mapping path="/user/checkUserName"/>
             <!--<mvc:exclude-mapping path="/static/*"/>
             <mvc:exclude-mapping path="/admin/*"/>-->
             <bean class="com.lovemovie.interceptor.LoginInterceptor"/>

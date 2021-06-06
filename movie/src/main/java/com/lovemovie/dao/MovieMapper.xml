@@ -42,10 +42,21 @@
         from movie where movie_state=#{movieState} ORDER BY movie_releaseDate DESC;
 
     </select>
-    <select id="findMoviesAll" resultMap="BaseResultMap">
+    <select id="findMoviesAllLikeMovieName" resultMap="BaseResultMap">
+        <!--select
+        <include refid="Base_Column_List"/>
+        from movie where is_delete=1-->
+
         select
         <include refid="Base_Column_List"/>
-        from movie where is_delete=1
+        from
+        movie
+        <where>
+            is_delete=1
+            <if test="_parameter !=null and _parameter!=''">
+                and movie_cn_name like concat('%',#{_parameter},'%')
+            </if>
+        </where>
     </select>
     <select id="checkMovieByName" resultMap="BaseResultMap">
         select
@@ -98,6 +109,9 @@
         from movie
         where movie_cn_name like concat('%',#{searchName},'%') and is_delete=1
 
+    </select>
+    <select id="findMovieById" resultMap="BaseResultMap">
+        select * from movie where movie_id = #{movieId}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from movie

@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
  * @Description :
  */
 @Service
-public class IOrderServiceImpl implements IOrderService {
+public class OrderServiceImpl implements IOrderService {
 }

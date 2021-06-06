@@ -46,7 +46,11 @@ public class UserController {
         String attribute = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
 
         if (!attribute.equals(code)) {
-            return Msg.fail().add("msg", "验证码错误");
+            Msg msg = new Msg();
+            msg.setMsg("验证码错误");
+            msg.setCode(200);
+            return msg;
+            // return Msg.fail().add("msg", "验证码错误");
         }
         Msg loginMsg = userService.login(userName.trim(), userPwd.trim());
         //没有异常则登陆成功
@@ -60,29 +64,6 @@ public class UserController {
         request.getSession().setAttribute("user", user);
         // System.out.println("user = " + user);
         return Msg.success().add("msg", "userSuccess");
-
-        //使用全局异常处理后就不需要直接try了
-        /*try {
-            Msg loginMsg = userService.login(userName.trim(), userPwd.trim());
-            //没有异常则登陆成功
-            //判断用户权限，如果是1则是管理员，如果是0则是普通用户
-            User user = (User) loginMsg.getExtend().get("user");
-            if (user.getUserRole()==1){
-                request.getSession().setAttribute("admin", user);
-                System.out.println("user = " + user);
-                return Msg.success().add("msg","adminSuccess");
-            }
-            request.getSession().setAttribute("user", user);
-            System.out.println("user = " + user);
-            return Msg.success().add("msg","userSuccess");
-
-        } catch (ParamsException pe) {
-            pe.printStackTrace();
-            return  Msg.fail().add("msg",pe.getMsg());
-        }catch (Exception e){
-            e.printStackTrace();
-            return Msg.fail().add("msg",e.getMessage());
-        }*/
 
     }
 
