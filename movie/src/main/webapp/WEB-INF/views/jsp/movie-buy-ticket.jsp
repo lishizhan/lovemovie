@@ -57,13 +57,13 @@
         .box {
             position: relative;
             background-color: #fff;
-            height: 550px;
+            height: 600px;
         }
 
         .left-box {
             position: absolute;
             left: 150px;
-            width: 385px;
+            width: 440px;
         }
 
         .right-box {
@@ -139,71 +139,143 @@
                 <p style="margin-top: 20px"><img src="static/images/order/screen.png"></p>
                 <p>荧幕中央</p>
             </div>
-            <ul style="padding-left: 28px">
-                <li>1 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>2 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>3 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>4 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>5 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>6 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-                <li>7 <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox"><input type="checkbox"><input type="checkbox">
-                    <input type="checkbox">
-                </li>
-            </ul>
+            <form>
+
+
+                <ul style="padding-left: 28px">
+                    <li>1
+                        <input type="checkbox" value="1-1">
+                        <input type="checkbox" value="1-2">
+                        <input type="checkbox" value="1-3">
+                        <input type="checkbox" value="1-4">
+                        <input type="checkbox" value="1-5">
+                        <input type="checkbox" value="1-6">
+                        <input type="checkbox" value="1-7">
+                        <input type="checkbox" value="1-8">
+                        <input type="checkbox" value="1-9">
+                        <input type="checkbox" value="1-10">
+                        <input type="checkbox" value="1-11">
+                        <input type="checkbox" value="1-12">
+                    </li>
+                    <li>2
+                        <input type="checkbox" value="2-1">
+                        <input type="checkbox" value="2-2">
+                        <input type="checkbox" value="2-3">
+                        <input type="checkbox" value="2-4">
+                        <input type="checkbox" value="2-5">
+                        <input type="checkbox" value="2-6">
+                        <input type="checkbox" value="2-7">
+                        <input type="checkbox" value="2-8">
+                        <input type="checkbox" value="2-9">
+                        <input type="checkbox" value="2-10">
+                        <input type="checkbox" value="2-11">
+                        <input type="checkbox" value="2-12">
+                    </li>
+                    <li>3
+                        <input type="checkbox" value="3-1">
+                        <input type="checkbox" value="3-2">
+                        <input type="checkbox" value="3-3">
+                        <input type="checkbox" value="3-4">
+                        <input type="checkbox" value="3-5">
+                        <input type="checkbox" value="3-6">
+                        <input type="checkbox" value="3-7">
+                        <input type="checkbox" value="3-8">
+                        <input type="checkbox" value="3-9">
+                        <input type="checkbox" value="3-10">
+                        <input type="checkbox" value="3-11">
+                        <input type="checkbox" value="3-12">
+                    </li>
+                    <li>4
+                        <input type="checkbox" value="4-1">
+                        <input type="checkbox" value="4-2">
+                        <input type="checkbox" value="4-3">
+                        <input type="checkbox" value="4-4">
+                        <input type="checkbox" value="4-5">
+                        <input type="checkbox" value="4-6">
+                        <input type="checkbox" value="4-7">
+                        <input type="checkbox" value="4-8">
+                        <input type="checkbox" value="4-9">
+                        <input type="checkbox" value="4-10">
+                        <input type="checkbox" value="4-11">
+                        <input type="checkbox" value="4-12">
+                    </li>
+                    <li>5
+                        <input type="checkbox" value="5-1">
+                        <input type="checkbox" value="5-2">
+                        <input type="checkbox" value="5-3">
+                        <input type="checkbox" value="5-4">
+                        <input type="checkbox" value="5-5">
+                        <input type="checkbox" value="5-6">
+                        <input type="checkbox" value="5-7">
+                        <input type="checkbox" value="5-8">
+                        <input type="checkbox" value="5-9">
+                        <input type="checkbox" value="5-10">
+                        <input type="checkbox" value="5-11">
+                        <input type="checkbox" value="5-12">
+                    </li>
+                    <li>6
+                        <input type="checkbox" value="6-1">
+                        <input type="checkbox" value="6-2">
+                        <input type="checkbox" value="6-3">
+                        <input type="checkbox" value="6-4">
+                        <input type="checkbox" value="6-5">
+                        <input type="checkbox" value="6-6">
+                        <input type="checkbox" value="6-7">
+                        <input type="checkbox" value="6-8">
+                        <input type="checkbox" value="6-9">
+                        <input type="checkbox" value="6-10">
+                        <input type="checkbox" value="6-11">
+                        <input type="checkbox" value="6-12">
+                    </li>
+                    <li>7
+                        <input type="checkbox" value="7-1">
+                        <input type="checkbox" value="7-2">
+                        <input type="checkbox" value="7-3">
+                        <input type="checkbox" value="7-4">
+                        <input type="checkbox" value="7-5">
+                        <input type="checkbox" value="7-6">
+                        <input type="checkbox" value="7-7">
+                        <input type="checkbox" value="7-8">
+                        <input type="checkbox" value="7-9">
+                        <input type="checkbox" value="7-10">
+                        <input type="checkbox" value="7-11">
+                        <input type="checkbox" value="7-12">
+                    </li>
+                </ul>
+            </form>
         </div>
         <div class="right-box">
             <div>
-                <img src="static/images/movie/4.jpg"
-                     style="width: 100px;margin-right:10px;float: left;border:3px solid #fff;">
-                <h3>片名</h3>
-                <p>类型：</p>
-                <p>时长：</p>
+                <img src="${schedule.scheduleMovie.moviePicture}"
+                     style="width: 100px;margin-right:10px;float: left;border:3px solid #fff;border: 3px solid #FF7E00 ">
+                <h4>${schedule.scheduleMovie.movieCnName}</h4>
+                <p>类型：${schedule.scheduleMovie.movieType}</p>
+                <p>时长：${schedule.scheduleMovie.movieDuration} 分钟</p>
+            </div>
+            <br>
+            <br>
+            <hr>
+            <div style="font-weight: 800">
+                <p><span style="font-weight: 400">影院：</span>${schedule.scheduleHall.hallCinema.cinemaName}</p>
+                <p><span style="font-weight: 400">影厅：</span>${schedule.scheduleHall.hallName}</p>
+                <p><span style="font-weight: 400">版本：</span>${schedule.scheduleMovie.movieCountry}</p>
+                <p><span style="font-weight: 400">场次：</span>${schedule.scheduleStarttime}</p>
+                <p><span style="font-weight: 400">票价：</span>￥ ${schedule.schedulePrice} 元/张 </p>
             </div>
             <div>
-                <p>影院：</p>
-                <p>影厅：</p>
-                <p>版本：</p>
-                <p>场次：</p>
-                <p>票价：</p>
-            </div>
-            <div>
-                <p>———————————————————————</p>
-                <p>座位：一次最多选择六个座位</p>
+                <hr style="padding: 0;margin: 0;">
+                <p>座位：一次最多选择3个座位</p>
                 <br>
-                <p class="center">请点击左侧座位图选择座位</p>
+                <div id="ticke">
+
+                </div>
                 <br>
                 <p>总价：￥</p>
-                <p>———————————————————————</p>
+                <hr style="padding: 0;margin: 0;">
             </div>
             <div class="center">
-                <p>手机号：</p>
-                <button>确认选择</button>
+                <p>邮箱：${user.userEmail}</p>
+                <button id="trueBtn" class="btn btn-danger">确认选座</button>
             </div>
         </div>
     </div>
@@ -228,6 +300,59 @@
         return this.getFullYear() + "-" + addZero(this.getMonth() + 1) + "-" + addZero(this.getDate()) + " " +
             addZero(this.getHours()) + ":" + addZero(this.getMinutes()) + ":" + addZero(this.getSeconds());
     };
+
+    $(function () {
+        $("form input[type='checkbox']").click(function () {
+            if ($("form input[type='checkbox']:checked").length > 3) {
+                console.log($(this).prop("checked", false))
+                alert("一次最多选择3个座位");
+                return false;
+            }
+            let ticketNum = $(this).val().split('-');
+            console.log(ticketNum)
+            console.log(ticketNum+"="+$(this).prop("checked"))
+            if ($(this).prop("checked")){
+                let ticket = $("<span style=\"border: 1px solid red;padding: 6px 12px\"></span>")
+                    .append(ticketNum[0] + "排" + ticketNum[1] + "座")
+                    .attr("ticket-num",$(this).val());
+                ticket.appendTo("#ticke");
+            }else {
+                $("[ticket-num="+$(this).val()+"]").remove();
+            }
+        });
+
+        //点击确认选座
+        $("#trueBtn").click(function () {
+            //循环遍历座位信息
+            let seat='';
+            $("#ticke span").each(function () {
+                seat+=$(this).text()+"-";
+            });
+            if (seat.length==0){
+                alert("请选择座位！！！")
+                return false;
+            }
+            console.log(seat);
+            $.ajax({
+                url:"order/buyTickets",
+                type:"POST",
+                data:{
+                    "scheduleId":'${schedule.scheduleId}',
+                    "seat":seat,
+                    "orderPrice":'${schedule.schedulePrice}'
+                },
+                success:function (res) {
+                    if (res.code===100){
+                        alert("购票成功~~")
+                        window.location.href="user/userMain";
+                    }
+                }
+
+            });
+
+        });
+
+    })
 
 
 </script>

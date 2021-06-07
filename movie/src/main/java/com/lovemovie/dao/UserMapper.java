@@ -21,4 +21,6 @@ public interface UserMapper {
     List<User> queryAllUser(String userName);
 
     void deleteBatch(int[] ints);
+
+    User findUserById(Long userId);
 }

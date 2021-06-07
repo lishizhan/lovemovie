@@ -122,4 +122,12 @@ public class MyServiceTest {
         }
     }
 
+    @Test
+    public void testFindScheduleById() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ScheduleServiceImpl scheduleService = ac.getBean(ScheduleServiceImpl.class);
+        Schedule schedule = scheduleService.findScheduleById(317);
+        System.out.println("schedule = " + schedule);
+    }
+
 }

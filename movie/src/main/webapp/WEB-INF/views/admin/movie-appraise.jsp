@@ -116,7 +116,7 @@
                                     </button>
                                 </div>
                                 <div class="input-group input-group-sm">
-                                    <input id="searchMsg" type="text" class="form-control">
+                                    <input id="searchMsg" type="text" class="form-control" placeholder="请输入用户账号">
                                     <span class="input-group-btn"><button id="searchBtn" type="button" class="btn btn-info btn-flat">搜索</button></span>
                                 </div>
                             </div>

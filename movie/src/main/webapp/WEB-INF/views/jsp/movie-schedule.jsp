@@ -141,7 +141,7 @@
                 <td>${item.scheduleMovie.movieCountry}</td>
                 <td>${item.scheduleHall.hallName}</td>
                 <td>￥ ${item.schedulePrice} 元</td>
-                <td><a class="btn btn-danger" href="order/buyTicketOrder">选坐购票</a></td>
+                <td><a class="btn btn-danger" href="order/buyTicketOrder?scheduleId=${item.scheduleId}">选坐购票</a></td>
             </tr>
         </c:forEach>
         </tbody>

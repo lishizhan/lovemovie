@@ -27,4 +27,6 @@ public interface IScheduleService {
     Msg deleteMovieById(String scheduleId);
 
     List<Schedule> findScheduleByCinemaIdAndMovieId(Integer cinemaId, Integer movieId);
+
+    Schedule findScheduleById(Integer scheduleId);
 }

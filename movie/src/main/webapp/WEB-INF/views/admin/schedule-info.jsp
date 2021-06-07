@@ -178,16 +178,12 @@
                                     <button type="button" id="delBtn" class="btn btn-danger"><i
                                             class="fa fa-trash-o"></i> 删除
                                     </button>
-                                    <button type="button" class="btn btn-info">显示上映
-                                    </button>
-                                    <button type="button" class="btn btn-warning">显示下架
-                                    </button>
                                     <button type="button" class="btn btn-primary" title="刷新"
                                             onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
                                 <div class="input-group input-group-sm">
-                                    <input id="searchMsg" type="text" class="form-control">
+                                    <input id="searchMsg" type="text" class="form-control" placeholder="请输入电影名称">
                                     <span class="input-group-btn"><button id="searchBtn" type="button"
                                                                           class="btn btn-info btn-flat">搜索</button></span>
                                 </div>
@@ -379,7 +375,7 @@
                 .css("marginLeft", "20px")
                 .addClass("btn bg-aqua btn-xs query_btn").text("详情/编辑");
             queryBtn.attr("query-id", item.scheduleId);
-            let edit = $("<td></td>").addClass("text-center").append(deleteBtn).append(queryBtn);
+            let edit = $("<td></td>").addClass("text-center").append(deleteBtn);//.append(queryBtn)
             $("<tr></tr>").append(checkBox)
                 .append(scheduleId)
                 .append(cinemaName)
@@ -500,7 +496,7 @@
     //点击批量删除
     $("#delBtn").click(function () {
         if ($(".check_item:checked").length == 0) {
-            alert("请选中要删除的电影！！")
+            alert("请选中要删除的场次！！")
             return false;
         }
         let empNames = "";

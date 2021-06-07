@@ -25,4 +25,6 @@ public interface ScheduleMapper {
     void deleteBatch(int[] ints);
 
     List<Schedule> findScheduleByCinemaAndMovie(@Param("cinemaId") Long cinemaId,@Param("movieId") Long movieId);
+
+    Schedule findScheduleById(Long scheduleId);
 }

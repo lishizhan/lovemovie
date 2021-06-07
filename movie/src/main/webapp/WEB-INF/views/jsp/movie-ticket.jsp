@@ -156,8 +156,7 @@
     </form>-->
     <c:if test="${not empty cinemaList}">
         <span class="h3">日期：</span>
-        <button class="btn btn-danger">今天：6月6号</button>
-        <button class="btn btn-default">明天：6月7号</button>
+        <button class="btn btn-danger">今天：${ft}</button>
     </c:if>
 </div>
 
@@ -181,7 +180,7 @@
             </div>
 
             <div class="buy-btn">
-                <a href="order/chooseSeat?movieId=${movie.movieId}&cinemaId=${item.cinemaId}" class="buy-btn-click">选座购票</a>
+                <a href="schedule/chooseSeat?movieId=${movie.movieId}&cinemaId=${item.cinemaId}" class="buy-btn-click">查看场次</a>
             </div>
 
             <div class="price">

@@ -2,13 +2,12 @@ package com.lovemovie.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lovemovie.dao.CinemaMapper;
-import com.lovemovie.dao.HallMapper;
-import com.lovemovie.dao.MovieMapper;
-import com.lovemovie.dao.ScheduleMapper;
+import com.lovemovie.dao.*;
 import com.lovemovie.domain.Hall;
+import com.lovemovie.domain.OrderInfo;
 import com.lovemovie.domain.Schedule;
 import com.lovemovie.model.Msg;
+import com.lovemovie.service.IOrderService;
 import com.lovemovie.service.IScheduleService;
 import com.lovemovie.utils.AssertUtil;
 import com.lovemovie.utils.UUIDUtil;
@@ -41,6 +40,10 @@ public class ScheduleServiceImpl implements IScheduleService {
     private MovieMapper movieMapper;
 
 
+    @Autowired
+    private OrderInfoMapper orderInfoMapper;
+
+
     @Override
     public List<Schedule> findAllSchedule(String movieName) {
         List<Schedule> allSchedule = scheduleMapper.findAllSchedule(movieName);
@@ -55,7 +58,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         hall.setHallId(hallId);
         hall.setCinemaId(new Long(cinemaName));
         hall.setHallName(hallName);
-        hall.setHallCapacity(144);
+        hall.setHallCapacity(84);
         int insert = hallMapper.insert(hall);
 
         //将场次信息保存到数据库
@@ -63,7 +66,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         schedule.setHallId(hallId);
         schedule.setMovieId(new Long(movieName));
         schedule.setScheduleStarttime(scheduleStartTime);
-        schedule.setScheduleRemain(144);
+        schedule.setScheduleRemain(84);
         schedule.setScheduleState(1);
         schedule.setSchedulePrice(schedulePrice);
         int insert1 = scheduleMapper.insert(schedule);
@@ -102,5 +105,18 @@ public class ScheduleServiceImpl implements IScheduleService {
         }
         return scheduleList;
 
+    }
+
+    @Override
+    public Schedule findScheduleById(Integer scheduleId) {
+        Schedule schedule = scheduleMapper.findScheduleById(new Long(scheduleId));
+        Hall hall = this.hallMapper.findHallById(schedule.getHallId());
+        hall.setHallCinema(this.cinemaMapper.findCinemaById(hall.getCinemaId()));
+        schedule.setScheduleHall(hall);
+        schedule.setScheduleMovie(this.movieMapper.findMovieById(schedule.getMovieId()));
+        List<OrderInfo> list = orderInfoMapper.findOrdersByScheduleId(new Long(scheduleId));
+        schedule.setOrderList(list);
+
+        return schedule;
     }
 }

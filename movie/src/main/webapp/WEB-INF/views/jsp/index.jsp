@@ -102,7 +102,7 @@
                     let li = $("<li></li>");
                     let img = $("<img alt='图片加载失败'>").attr("src",item.moviePicture);
                     img.attr('movie_id',item.movieId);
-                    let a = $("<a href='order/buyTicketDetails?movieId="+item.movieId+"'></a>").text("购票");
+                    let a = $("<a href='schedule/buyTicketDetails?movieId="+item.movieId+"'></a>").text("购票");
                     let p = $("<p></p>");
                     let span = $("<span></span>").text(item.movieCnName);
                     let em = $("<em></em>").text(item.movieScore)

@@ -68,7 +68,7 @@
                 <button class="btn btn-info"><span class="glyphicon glyphicon-star"></span> 评分</button>
             </div>
             <c:if test="${movie.movieState==1}">
-                <a href="order/buyTicketDetails?movieId=${movie.movieId}" class="btn btn-info"
+                <a href="schedule/buyTicketDetails?movieId=${movie.movieId}" class="btn btn-info"
                    style="background-color: #df2d2d;padding: 6px 100px;margin-top: 10px">购&nbsp;&nbsp;票</a>
             </c:if>
 

@@ -166,4 +166,7 @@
 
         </where>
     </select>
+    <select id="findUserById" resultMap="BaseResultMap">
+        select * from user where user_id = #{id}
+    </select>
 </mapper>

@@ -37,7 +37,36 @@
     <script src="static/bootstrap/bootstrap-fileinput/js/locales/zh.js"></script>
 
     <script src="static/js/logout.js"></script>
+    <style>
+        #order .order-title {
 
+            height: 47px;
+            width: 100%;
+            line-height: 47px;
+            background-color: #f4f3f4;
+        }
+
+        #order ul li {
+            position: relative;
+            border: 1px solid #cccccc;
+        }
+
+        .order-column {
+            height: 100%;
+        }
+
+        .order-de {
+            position: absolute;
+            top: 50px;
+            left: 120px;
+        }
+
+        .order-test {
+            position: absolute;
+            top: 100px;
+            right: 84px;
+        }
+    </style>
 
     <title>love movie</title>
 </head>
@@ -109,7 +138,29 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane" id="order">
-                            我的订单
+                            <ul>
+                                <li>
+                                    <div class="order-title">
+                                        <span>2020-9-09 13:13:00</span>
+                                        <span>订单号：124132451324512354</span>
+                                    </div>
+                                    <div class="order-column">
+                                        <div class="order-img">
+                                            <img style="width: 100px" src="static/images/movie/1.jpg" alt="">
+                                        </div>
+                                        <div class="order-de">
+                                            <p>追龙</p>
+                                            <p>广州港撒大噶撒大噶</p>
+                                            <p>1号厅 5排5座</p>
+                                            <p>2020-10-1 12:12</p>
+                                        </div>
+                                        <div class="order-test">
+                                            <span style="padding-right: 20px">￥30</span>
+                                            <button class="btn btn-default">申请退票</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
 
                         </div>
                         <div class="tab-pane" id="settings">
@@ -288,12 +339,12 @@
         $("#updateBtn").click(function () {
             //回显示用户信息
             $.ajax({
-                url:"user/getUserById",
-                data:{
+                url: "user/getUserById",
+                data: {
                     "userId":${user.userId}
                 },
-                type:"POST",
-                success:function (res) {
+                type: "POST",
+                success: function (res) {
                     console.log(res);
                     //展示修改表单信息
                     $("#userName").val(res.extend.user.userName);
@@ -307,12 +358,12 @@
 
                     $("#userBirthday").val(dateTime);
                     let str = res.extend.user.userHobby.split("-");
-                    $("input[type=checkbox]").each(function (index,item) {
+                    $("input[type=checkbox]").each(function (index, item) {
                         // console.log($(this).val());
                         // console.log(index);
-                        for(let i = 0;i<str.length;i++){
-                            if (index===parseInt(str[i])){
-                                $(this).prop("checked",true);
+                        for (let i = 0; i < str.length; i++) {
+                            if (index === parseInt(str[i])) {
+                                $(this).prop("checked", true);
                             }
                         }
 
@@ -429,16 +480,17 @@
             return false;
         }
     }
+
     //展示用户信息
-    function showUserInfo(){
+    function showUserInfo() {
         $.ajax({
-            url:"user/getUserById",
-            data:{
+            url: "user/getUserById",
+            data: {
                 "userId":${user.userId}
             },
-            type:"POST",
-            success:function (res) {
-                if (res.code===100){
+            type: "POST",
+            success: function (res) {
+                if (res.code === 100) {
                     $("#headimg").attr("src", res.extend.headImg);
                     $("#usex").text(res.extend.user.userSexStr);
                     $("#uemail").text(res.extend.user.userEmail);
@@ -453,15 +505,16 @@
             }
         });
     }
-    function returnHobby(res){
+
+    function returnHobby(res) {
         let hobbyStr = ["美食", "动漫", "摄影", "电影", "体育", "财经", "音乐", "游戏", "旅游", "科技", "文学", "公益", "汽车", "时尚", "宠物"];
-        let userHobby=res.extend.user.userHobby.split("-");
+        let userHobby = res.extend.user.userHobby.split("-");
         let str = "";
-        for (let i = 0;i<userHobby.length;i++){
+        for (let i = 0; i < userHobby.length; i++) {
             let j = parseInt(userHobby[i]);
-            str+=hobbyStr[j]+"、";
+            str += hobbyStr[j] + "、";
         }
-        return str.substring(0,str.length-1);
+        return str.substring(0, str.length - 1);
     }
 
 
@@ -501,7 +554,7 @@
         let newPwd = $("#newPwd").val();
         let truePwd = $("#truePwd").val();
 
-        if (oldPwd===""||newPwd===""||truePwd===""){
+        if (oldPwd === "" || newPwd === "" || truePwd === "") {
             alert("请填写信息！！")
             return false;
         }
@@ -545,25 +598,26 @@
     $("#updateUserInfoBtn").click(function () {
         console.log($("#updateUserInfoModal form").serialize())
         //邮箱校验
-        if (!checkEmail()){
+        if (!checkEmail()) {
             return false;
         }
 
         $.ajax({
-            url:"user/updateUserInfo",
-            data:$("#updateUserInfoModal form").serialize(),
-            type:"POST",
-            success:function (res) {
+            url: "user/updateUserInfo",
+            data: $("#updateUserInfoModal form").serialize(),
+            type: "POST",
+            success: function (res) {
                 console.log(res)
-                if (res.code===100){
+                if (res.code === 100) {
                     $('#updateUserInfoModal').modal("hide");
                     showUserInfo();
-                }else {
-                    alert("修改失败："+res.msg);
+                } else {
+                    alert("修改失败：" + res.msg);
                 }
             }
         });
     });
+
     function checkEmail() {
         let userMail = $("#userEmail").val();
         let regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
@@ -575,6 +629,15 @@
         return true;
     }
 
+    $(function () {
+        $.ajax({
+            url:"order/findAllOrderInfo",
+            type:"POST",
+            success:function (res) {
+                console.log(res);
+            }
+        });
+    })
 
 </script>
 </body>
