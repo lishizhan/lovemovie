@@ -47,10 +47,10 @@
                 <li><a href="view/movieCodepen">电影</a></li>
             </c:if>
             <c:if test="${requestScope.page==3}">
-                <li><a href="view/movieTheatreList" class="nav-active">影院</a></li>
+                <li><a href="view/movieTop" class="nav-active">榜单</a></li>
             </c:if>
             <c:if test="${requestScope.page!=3}">
-                <li><a href="view/movieTheatreList">影院</a></li>
+                <li><a href="view/movieTop">榜单</a></li>
             </c:if>
         </ul>
     </div>

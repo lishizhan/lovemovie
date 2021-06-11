@@ -6,10 +6,12 @@ import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
 import com.lovemovie.service.IScheduleService;
 import com.lovemovie.service.impl.*;
+import com.lovemovie.utils.DateUtils;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -128,6 +130,41 @@ public class MyServiceTest {
         ScheduleServiceImpl scheduleService = ac.getBean(ScheduleServiceImpl.class);
         Schedule schedule = scheduleService.findScheduleById(317);
         System.out.println("schedule = " + schedule);
+    }
+
+    @Test
+    public void testFindAllOrderInfo() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        OrderServiceImpl orderService = ac.getBean(OrderServiceImpl.class);
+        List<OrderInfo> orderInfo = orderService.findAllOrderInfo("helloworld");
+        for (OrderInfo info : orderInfo) {
+            System.out.println("info = " + DateUtils.dateToString(info.getOrderTime(), "yyyy 年 MM 月 dd 日 E HH 点 mm 分 ss 秒"));
+            System.out.println("info = " + DateUtils.dateToString(info.getOrderTime(), "yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    @Test
+    public void testGetAllOrderInfo() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        OrderServiceImpl orderService = ac.getBean(OrderServiceImpl.class);
+        List<OrderInfo> allOrderInfo = orderService.getAllOrderInfoForManage("");
+        for (OrderInfo orderInfo : allOrderInfo) {
+            System.out.println("orderInfo = " + orderInfo);
+        }
+    }
+    @Test
+    public void testFindAllOrder() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        OrderServiceImpl orderService = ac.getBean(OrderServiceImpl.class);
+        List<OrderInfo> allOrder = orderService.findAllOrder("");
+        for (OrderInfo orderInfo : allOrder) {
+            System.out.println("\"--------------\" = " + "--------------");
+            System.out.println(orderInfo.getOrderSchedule());
+            System.out.println(orderInfo.getOrderUser());
+            System.out.println("\"--------------\" = " + "--------------");
+
+        }
     }
 
 }

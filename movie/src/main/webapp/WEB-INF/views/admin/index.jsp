@@ -14,7 +14,7 @@
     <title>电影售票管理</title>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 
-<%@include file="common/link.jsp"%>
+    <%@include file="common/link.jsp" %>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -22,105 +22,32 @@
 <div class="wrapper">
 
     <!-- 页面头部 -->
-    <%@include file="common/pageHead.jsp"%>
+    <%@include file="common/pageHead.jsp" %>
     <!-- 页面头部 /-->
 
     <!-- 导航侧栏 -->
-    <%@include file="common/sidebar.jsp"%>
+    <%@include file="common/sidebar.jsp" %>
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
-    <div class="content-wrapper" >
+    <div class="content-wrapper">
+        <style>
+            .content {
+                position: relative;
+            }
 
-        <!-- 内容头部 -->
-        <section class="content-header">
-            <h1>
-                控制面板
-                <small>首页</small>
-            </h1>
-           <!-- <ol class="breadcrumb">
-                <li><a href="admin/index"><i class="fa fa-dashboard"></i> 首页</a></li>
-            </ol>-->
-        </section>
-        <!-- 内容头部 /-->
+            .content h1 {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+
+                transform: translate(-50%, -50%);
+            }
+        </style>
 
         <!-- 正文区域 -->
         <section class="content">
-            
-            <!-- 统计数值 -->
-            <div class="row">
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>150</h3>
-
-                            <p>新订单</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
-                        </div>
-                        <a href="all-order-manage-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-green">
-                        <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>转化率</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-yellow">
-                        <div class="inner">
-                            <h3>44</h3>
-
-                            <p>新注册用户</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="all-member-manage-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-red">
-                        <div class="inner">
-                            <h3>65</h3>
-
-                            <p>日PV</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="all-ad-statistics-list.html" class="small-box-footer">详细 <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-            </div>
-            <!-- /.row -->
-
-            <!-- 待处理订单 -->
-            <div class="box box-primary" >
-
-                <h1 style="color: #fff">电影售票系统管理平台</h1>
-                <img width="100%" src="" alt="">
-
-            </div>
-            <!-- 待处理订单 /-->
-
+            <h1 style="color: #000">欢迎使用电影售票系统管理平台</h1>
         </section>
         <!-- 正文区域 /-->
 
@@ -128,15 +55,15 @@
     <!-- 内容区域 /-->
 
     <!-- 底部导航 -->
-    <%@ include file="common/footer.jsp"%>
+    <%@ include file="common/footer.jsp" %>
     <!-- 底部导航 /-->
 
 </div>
 
-<%@include file="common/script.jsp"%>
+<%@include file="common/script.jsp" %>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 选择框
         $(".select2").select2();
 
@@ -157,12 +84,10 @@
     }
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 激活导航位置
         setSidebarActive("admin-index");
     });
-
-
 
 
 </script>

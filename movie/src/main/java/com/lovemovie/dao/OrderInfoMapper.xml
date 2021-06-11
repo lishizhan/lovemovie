@@ -10,6 +10,17 @@
     <result column="order_price" jdbcType="INTEGER" property="orderPrice" />
     <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
   </resultMap>
+    <resultMap id="BaseResultMapAll" type="com.lovemovie.domain.OrderInfo">
+        <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="schedule_id" jdbcType="BIGINT" property="scheduleId" />
+        <result column="order_position" jdbcType="VARCHAR" property="orderPosition" />
+        <result column="order_state" jdbcType="INTEGER" property="orderState" />
+        <result column="order_price" jdbcType="INTEGER" property="orderPrice" />
+        <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+        <association property="orderUser" column="user_id" select="com.lovemovie.dao.UserMapper.findUserById"/>
+        <association property="orderSchedule" column="schedule_id" select="com.lovemovie.dao.ScheduleMapper.findScheduleById"/>
+    </resultMap>
   <sql id="Base_Column_List">
     order_id, user_id, schedule_id, order_position, order_state, order_price, order_time
   </sql>
@@ -27,13 +38,42 @@
         where
         orderinfo.user_id = user.user_id
         and user.user_name = #{userName}
-        and orderinfo.order_state = 1
+        and orderinfo.order_state = 1 ORDER BY orderinfo.order_time desc
+
+    </select>
+    <select id="findAllOrders" resultMap="BaseResultMap">
+        select * from orderinfo order by order_time desc
+    </select>
+    <select id="getAllOrders" resultMap="BaseResultMapAll">
+        select * from orderinfo o,user u,schedule s
+        <where>
+            u.user_id=o.user_id and o.schedule_id=s.schedule_id
+            <if test="_parameter !=null and _parameter!=''">
+                and o.userName like concat('%',#{_parameter},'%')
+            </if>
+        </where>
+    </select>
+    <select id="findAllOrdersSearchUserName" resultMap="BaseResultMap">
+        SELECT o.*
+        FROM orderinfo o,user u
+        <where>
+            u.user_id=o.user_id
+            <if test="_parameter !=null and _parameter!=''">
+                and u.user_name like concat('%',#{_parameter},'%')
+            </if>
+        </where>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from orderinfo
     where order_id = #{orderId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.lovemovie.domain.OrderInfo">
+    <delete id="deleteBatch">
+        delete from orderinfo where order_id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <insert id="insert" parameterType="com.lovemovie.domain.OrderInfo">
     insert into orderinfo (order_id, user_id, schedule_id, 
       order_position, order_state, order_price, 
       order_time)

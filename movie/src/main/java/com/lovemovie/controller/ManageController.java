@@ -2,13 +2,11 @@ package com.lovemovie.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lovemovie.domain.Actor;
-import com.lovemovie.domain.Movie;
-import com.lovemovie.domain.MovieInfo;
-import com.lovemovie.domain.User;
+import com.lovemovie.domain.*;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.IActorService;
 import com.lovemovie.service.IMovieService;
+import com.lovemovie.service.IOrderService;
 import com.lovemovie.service.IUserService;
 import com.lovemovie.utils.AssertUtil;
 import com.lovemovie.utils.ImageUtils;
@@ -40,6 +38,10 @@ public class ManageController {
 
     @Autowired
     private IActorService actorService;
+
+
+    @Autowired
+    private IOrderService orderService;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -299,5 +301,60 @@ public class ManageController {
         Msg msg = userService.addUser(user);
         return msg;
     }
+
+
+    /**
+     * 获取所有的订单信息
+     * @param pageNum
+     * @param pageSize
+     * @param userName
+     * @return
+     */
+    @RequestMapping(value = "/getAllOrderInfo")
+    @ResponseBody
+    public Msg getAllOrderInfo(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                               @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                               String userName) {
+        System.out.println("pageNum = " + pageNum);
+        System.out.println("pageSize = " + pageSize);
+        System.out.println("userName = " + userName);
+        PageHelper.startPage(pageNum, pageSize);
+        List<OrderInfo> orderInfoList = orderService.getAllOrderInfoForManage(userName);
+        PageInfo<OrderInfo> pageInfo = new PageInfo<>(orderInfoList, pageSize);
+        return Msg.success().add("pageInfo", pageInfo);
+    }
+
+    //根据订单id删除订单，单个删除和批量删除二合一，1-2-3-4，1
+    @RequestMapping(value = "/deleteOrder/{orderId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Msg deleteOrder(@PathVariable("orderId") String orderId) {
+        System.out.println("ids = " + orderId);
+        if (orderId.contains("-")) {
+            //批量删除
+            String[] arrId = orderId.split("-");
+            int[] ints = new int[arrId.length];
+            for (int i = 0; i < arrId.length; i++) {
+                ints[i] = Integer.parseInt(arrId[i]);
+            }
+            // System.out.println("int[]:"+ Arrays.toString(ints));
+            orderService.deleteBatch(ints);
+            return Msg.success();
+        } else {
+            //单个删除
+            return orderService.deleteMovieById(orderId);
+        }
+    }
+
+
+    @RequestMapping(value = "/findAllOrder")
+    public Msg findAllOrder(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                            String userName){
+        PageHelper.offsetPage(pageNum,pageSize);
+        List<OrderInfo> orderInfoList = orderService.findAllOrder(userName);
+        PageInfo<OrderInfo> pageInfo = new PageInfo<>(orderInfoList,pageSize);
+        return Msg.success().add("pageInfo", pageInfo);
+    }
+
 
 }

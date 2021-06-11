@@ -1,5 +1,7 @@
 package com.lovemovie.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lovemovie.domain.*;
 import com.lovemovie.model.Msg;
 import com.lovemovie.service.*;
@@ -9,6 +11,7 @@ import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import sun.rmi.runtime.Log;
@@ -126,7 +129,7 @@ public class OrderController {
         return Msg.success();
     }
 
-    @RequestMapping(value = "/findAllOrderInfo")
+    @RequestMapping(value = "/findAllOrderInfoByUser")
     @ResponseBody
     public Msg findAllOrderInfo(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
@@ -136,6 +139,8 @@ public class OrderController {
 
         return Msg.success().add("orderInfoList", orderInfoList);
     }
+
+
 
 
 }

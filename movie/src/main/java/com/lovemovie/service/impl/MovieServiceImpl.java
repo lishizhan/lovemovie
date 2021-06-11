@@ -198,4 +198,10 @@ public class MovieServiceImpl implements IMovieService {
         List<Movie> movieList = movieMapper.findMovieByNameLike(searchName);
         return movieList;
     }
+
+    @Override
+    public List<Movie> getMovieByScore(int num) {
+
+        return movieMapper.getMovieByScore(num);
+    }
 }

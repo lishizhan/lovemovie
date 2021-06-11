@@ -1,6 +1,7 @@
 package com.lovemovie.service;
 
 import com.lovemovie.domain.OrderInfo;
+import com.lovemovie.model.Msg;
 
 import java.util.List;
 
@@ -14,4 +15,12 @@ public interface IOrderService {
     void addOrder(OrderInfo orderInfo);
 
     List<OrderInfo> findAllOrderInfo(String userName);
+
+    List<OrderInfo> getAllOrderInfoForManage(String userName);
+
+    List<OrderInfo> findAllOrder(String userName);
+
+    void deleteBatch(int[] ints);
+
+    Msg deleteMovieById(String orderId);
 }

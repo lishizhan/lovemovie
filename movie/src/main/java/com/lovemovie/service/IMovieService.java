@@ -74,4 +74,6 @@ public interface IMovieService {
      * @return
      */
     List<Movie> findMovieByNameLike(String searchName);
+
+    List<Movie> getMovieByScore(int num);
 }

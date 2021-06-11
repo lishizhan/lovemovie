@@ -49,6 +49,7 @@
         #order ul li {
             position: relative;
             border: 1px solid #cccccc;
+            margin-bottom: 15px;
         }
 
         .order-column {
@@ -65,6 +66,11 @@
             position: absolute;
             top: 100px;
             right: 84px;
+
+        }
+        #order{
+            height: 412px;
+            overflow-y:auto;max-height:412px;
         }
     </style>
 
@@ -137,31 +143,11 @@
                         <li><a href="#settings" data-toggle="tab">修改密码</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="order">
+                        <div class="tab-pane active" id="order">
                             <ul>
-                                <li>
-                                    <div class="order-title">
-                                        <span>2020-9-09 13:13:00</span>
-                                        <span>订单号：124132451324512354</span>
-                                    </div>
-                                    <div class="order-column">
-                                        <div class="order-img">
-                                            <img style="width: 100px" src="static/images/movie/1.jpg" alt="">
-                                        </div>
-                                        <div class="order-de">
-                                            <p>追龙</p>
-                                            <p>广州港撒大噶撒大噶</p>
-                                            <p>1号厅 5排5座</p>
-                                            <p>2020-10-1 12:12</p>
-                                        </div>
-                                        <div class="order-test">
-                                            <span style="padding-right: 20px">￥30</span>
-                                            <button class="btn btn-default">申请退票</button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
 
+
+                            </ul>
                         </div>
                         <div class="tab-pane" id="settings">
                             <form class="form-horizontal">
@@ -327,7 +313,8 @@
         }
 
         // 按自定义拼接格式返回
-        return this.getFullYear() + "-" + addZero(this.getMonth() + 1) + "-" + addZero(this.getDate());
+        return this.getFullYear() + "-" + addZero(this.getMonth() + 1) + "-" + addZero(this.getDate()) + " " +
+            addZero(this.getHours()) + ":" + addZero(this.getMinutes()) + ":" + addZero(this.getSeconds());
     };
     /*$(".user").click(function () {
         window.location.href = 'jsp/user-main.html';
@@ -629,15 +616,102 @@
         return true;
     }
 
+    //生成订单列表
     $(function () {
+        /*
+        * <ul>
+            <li>
+                <div class="order-title">
+                    <span>2020-9-09 13:13:00</span>
+                    <span>订单号：124132451324512354</span>
+                </div>
+                <div class="order-column">
+                    <div class="order-img">
+                        <img style="width: 100px" src="static/images/movie/1.jpg" alt="">
+                    </div>
+                    <div class="order-de">
+                        <p>追龙</p>
+                        <p>广州港撒大噶撒大噶</p>
+                        <p>1号厅 5排5座</p>
+                        <p>2020-10-1 12:12</p>
+                    </div>
+                    <div class="order-test">
+                        <span style="padding-right: 20px">￥30</span>
+                        <button class="btn btn-default">申请退票</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        * */
+
         $.ajax({
-            url:"order/findAllOrderInfo",
+            url:"order/findAllOrderInfoByUser",
             type:"POST",
             success:function (res) {
                 console.log(res);
+                if (res.code==100){
+                    budil_order_list(res);
+                }
             }
         });
     })
+    function budil_order_list(res) {
+        let orderInfoList = res.extend.orderInfoList;
+
+        $.each(orderInfoList,function () {
+            let li = $("<li></li>")
+            let lidiv1 = $("<div class=\"order-title\"></div>");
+
+            // 根据毫秒数构建 Date 对象
+            let date = new Date(this.orderTime);
+            // 按重写的自定义格式，格式化日期
+            let span2=$("<span style='margin-left: 20px;'>订票时间："+date.toLocaleString()+"</span>")
+            let span1=$("<span style='margin-left: 10px;'>订单号："+this.orderId+"</span>")
+            lidiv1.append(span1).append(span2);
+
+            let lidiv2 = $("<div class=\"order-column\"></div>");
+            let lidiv21=$("<div class=\"order-img\"></div>");
+            let img = $("<img style=\"width: 100px\" src="+this.orderSchedule.scheduleMovie.moviePicture+" alt=\"\">");
+            lidiv21.append(img);
+            let lidiv22=$("<div class=\"order-de\"></div>");
+            let p1 = $("<p style='font-size:18px'>"+this.orderSchedule.scheduleMovie.movieCnName+"</p>");
+            let p2 = $("<p>"+this.orderSchedule.scheduleHall.hallCinema.cinemaName+"</p>");
+            let p3 = $("<p>"+this.orderSchedule.scheduleHall.hallName+"、"+this.orderPosition+"</p>");
+            let p4 = $("<p style='color:red;'>场次时间："+this.orderSchedule.scheduleStarttime+"</p>");
+            lidiv22.append(p1).append(p2).append(p3).append(p4);
+
+            let lidiv23=$("<div class=\"order-test\"></div>");
+            let span231=$("<span style=\"padding-right: 20px\">￥ "+this.orderPrice+"</span>");
+            let button=$("<button class=\"btn btn-primary\">申请退票</button>");
+            lidiv23.append(span231).append(button);
+            lidiv2.append(lidiv21).append(lidiv22).append(lidiv23);
+            li.append(lidiv1).append(lidiv2).appendTo("#order ul");
+        })
+    }
+    /*
+
+<li>
+    <div class="order-title">
+        <span>2020-9-09 13:13:00</span>
+        <span>订单号：124132451324512354</span>
+    </div>
+    <div class="order-column">
+        <div class="order-img">
+            <img style="width: 100px" src="static/images/movie/1.jpg" alt="">
+        </div>
+        <div class="order-de">
+            <p>追龙</p>
+            <p>广州港撒大噶撒大噶</p>
+            <p>1号厅 5排5座</p>
+            <p>2020-10-1 12:12</p>
+        </div>
+        <div class="order-test">
+            <span style="padding-right: 20px">￥30</span>
+            <button class="btn btn-default">申请退票</button>
+        </div>
+    </div>
+</li>
+* */
 
 </script>
 </body>

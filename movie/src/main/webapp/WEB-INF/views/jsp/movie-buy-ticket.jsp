@@ -105,6 +105,7 @@
         }
 
         li {
+
             margin-bottom: 20px;
             list-style: none;
         }
@@ -270,7 +271,7 @@
 
                 </div>
                 <br>
-                <p>总价：￥</p>
+                <p id="totalPrices"></p>
                 <hr style="padding: 0;margin: 0;">
             </div>
             <div class="center">
@@ -312,13 +313,16 @@
             console.log(ticketNum)
             console.log(ticketNum+"="+$(this).prop("checked"))
             if ($(this).prop("checked")){
-                let ticket = $("<span style=\"border: 1px solid red;padding: 6px 12px\"></span>")
+                let ticket = $("<span style=\"border: 1px solid red;padding: 6px 12px;margin-left: 5px;\"></span>")
                     .append(ticketNum[0] + "排" + ticketNum[1] + "座")
                     .attr("ticket-num",$(this).val());
                 ticket.appendTo("#ticke");
             }else {
                 $("[ticket-num="+$(this).val()+"]").remove();
             }
+            //计算总金额
+            let total = $("form input[type='checkbox']:checked").length*'${schedule.schedulePrice}';
+            $("#totalPrices").text("总价：￥"+total+" 元");
         });
 
         //点击确认选座
@@ -351,6 +355,9 @@
             });
 
         });
+
+
+
 
     })
 

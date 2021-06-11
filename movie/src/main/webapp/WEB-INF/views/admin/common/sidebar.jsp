@@ -40,8 +40,8 @@
                 <a href="management/cityInfo">
                     <i class="fa fa-building-o "></i> <span>城市信息管理</span>
                 </a>
-            </li>
-            <li id="cinema-info">
+            </li>-->
+            <!--<li id="cinema-info">
                 <a href="management/cinemaInfo">
                     <i class="fa fa-institution "></i> <span>影院信息管理</span>
                 </a>

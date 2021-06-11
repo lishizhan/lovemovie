@@ -34,6 +34,11 @@ public class ViewForwardController {
         request.setAttribute("page", 3);
         return "jsp/movie-theatre-list";
     }
+    @RequestMapping(value = "/movieTop")
+    public String movieTop(HttpServletRequest request) {
+        request.setAttribute("page", 3);
+        return "jsp/movie-top";
+    }
 
     //登陆
     @RequestMapping(value = "/goLogin")

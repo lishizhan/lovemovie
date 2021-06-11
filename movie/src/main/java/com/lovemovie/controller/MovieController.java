@@ -174,4 +174,13 @@ public class MovieController {
     }
 
 
+    @RequestMapping(value = "/getMovieByScore")
+    @ResponseBody
+    public Msg getMovieByScore(){
+
+        List<Movie> movieList = movieService.getMovieByScore(10);
+        return Msg.success().add("movieList",movieList);
+    }
+
+
 }

@@ -76,4 +76,6 @@ public interface MovieMapper {
     List<Movie> findMovieByNameLike(String searchName);
 
     Movie findMovieById(Long movieId);
+
+    List<Movie> getMovieByScore(int num);
 }

@@ -21,4 +21,12 @@ public interface OrderInfoMapper {
     List<OrderInfo> findOrdersByScheduleId(Long scheduleId);
 
     List<OrderInfo> findRefundOrderByUserName(String userName);
+
+    List<OrderInfo> findAllOrders();
+
+    List<OrderInfo> getAllOrders(String userName);
+
+    List<OrderInfo> findAllOrdersSearchUserName(String userName);
+
+    void deleteBatch(int[] ints);
 }
